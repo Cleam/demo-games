@@ -14,7 +14,10 @@
       "Bash(kill %1)",
       "Bash(echo \"BUILD:$?\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/?mode=win)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/?mode=lose)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/?mode=lose)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)",
+      "Bash(curl -s http://localhost:5174/manifest.json)"
     ]
   }
 }

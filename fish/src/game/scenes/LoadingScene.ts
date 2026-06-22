@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import { GAME_WIDTH, GAME_HEIGHT } from '@/config/constants'
+import { ManifestLoader } from '@/utils/ManifestLoader'
 
 export class LoadingScene extends Phaser.Scene {
   constructor() {
@@ -8,7 +9,7 @@ export class LoadingScene extends Phaser.Scene {
 
   preload(): void {
     this.setupProgressBar()
-    // Stage 1 只预加载背景图；后续阶段在此处加载 manifest 和角色帧序列
+    this.load.json('manifest', '/manifest.json')
     this.load.image('bg', '/assets/images/bg.png')
     this.load.image('sk', '/assets/images/sk.png')
   }
@@ -34,6 +35,8 @@ export class LoadingScene extends Phaser.Scene {
   }
 
   create(): void {
+    // 初始化 ManifestLoader，供 Actor 等模块同步读取帧路径
+    ManifestLoader.init(this.cache.json.get('manifest'))
     this.scene.start('GameScene')
   }
 }

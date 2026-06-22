@@ -2,21 +2,18 @@ import Phaser from 'phaser'
 import { GAME_WIDTH, GAME_HEIGHT, LAYER_DEPTH } from '@/config/constants'
 import { type GameMode } from '@/config/modeConfig'
 import { stateManager, type GameState } from '@/core/StateManager'
-import { TimelineRunner, type TimelineEventType } from '@/systems/TimelineRunner'
+import { TimelineRunner, type TimelineEvent } from '@/systems/TimelineRunner'
 import { winTimeline } from '@/config/timeline.win'
 import { loseTimeline } from '@/config/timeline.lose'
-
-/** 所有需要注册调试日志的事件类型 */
-const ALL_EVENT_TYPES: TimelineEventType[] = [
-  'spawnActor', 'spawnEnemyGroup', 'removeEnemyGroup', 'setActorState',
-  'actorAttack', 'actorHit', 'actorExit', 'showEffect',
-  'unlockEvolution', 'updateEvolutionProgress', 'showBoss', 'removeBoss',
-  'updateBossHp', 'showStamina', 'updateStamina', 'showTimer', 'updateTimer',
-  'showResult', 'showCta', 'playAudio', 'changeState',
-]
+import { type CharacterSlot, PLAYER_SLOTS } from '@/config/assetMapping'
+import { Actor } from '@/game/actors/Actor'
+import { EvolutionCard } from '@/ui/EvolutionCard'
+import { BossHpBar } from '@/ui/BossHpBar'
+import { WinModal } from '@/ui/WinModal'
+import { CtaPage } from '@/ui/CtaPage'
 
 export class GameScene extends Phaser.Scene {
-  // ── 层级容器 ─────────────────────────────────────────────────────
+  // ── 7 层级容器 ──────────────────────────────────────────────────
   backgroundLayer!: Phaser.GameObjects.Container
   battleLayer!:     Phaser.GameObjects.Container
   effectLayer!:     Phaser.GameObjects.Container
@@ -27,31 +24,50 @@ export class GameScene extends Phaser.Scene {
 
   // ── 核心系统 ─────────────────────────────────────────────────────
   runner!: TimelineRunner
-
   private mode!: GameMode
-  private debugEventText?: Phaser.GameObjects.Text
-  private debugElapsedText?: Phaser.GameObjects.Text
 
-  constructor() {
-    super({ key: 'GameScene' })
-  }
+  // ── 角色管理 ─────────────────────────────────────────────────────
+  /** slot 名称 → Actor 实例（支持玩家角色与 Boss/敌方角色并存） */
+  private actors = new Map<string, Actor>()
+  /** 当前显示的玩家角色槽位名（用于进化替换逻辑） */
+  private playerSlot?: string
+  /** 普通敌鱼群占位容器（进入 Boss 战后移除） */
+  private enemyGroup?: Phaser.GameObjects.Container
+
+  // ── UI 组件 ──────────────────────────────────────────────────────
+  private evolutionCards: EvolutionCard[] = []
+  private bossHpBar?: BossHpBar
+  private winModal?: WinModal
+  private ctaPage?: CtaPage
+
+  // ── 调试 ─────────────────────────────────────────────────────────
+  private debugTxt?: Phaser.GameObjects.Text
+
+  constructor() { super({ key: 'GameScene' }) }
 
   init(): void {
     this.mode = this.registry.get('mode') as GameMode
+    this.actors.clear()
+    this.playerSlot = undefined
     stateManager.enter('playing')
   }
 
   create(): void {
     this.createLayers()
     this.createBackground()
-    this.createDebugOverlay()
+    this.createTopHud()
+    this.createEvolutionPanel()
+    this.createBattleUi()
     this.setupTimeline()
 
-    // 场景销毁时（scene.restart / scene.stop）自动停止时间轴
-    this.events.once('shutdown', () => this.runner.stop())
+    this.events.once('shutdown', () => {
+      this.runner.stop()
+      for (const actor of this.actors.values()) actor.destroy()
+      this.actors.clear()
+    })
   }
 
-  // ── 私有：层级初始化 ──────────────────────────────────────────────
+  // ── 层级初始化 ────────────────────────────────────────────────────
 
   private createLayers(): void {
     this.backgroundLayer = this.add.container(0, 0).setDepth(LAYER_DEPTH.background)
@@ -63,103 +79,260 @@ export class GameScene extends Phaser.Scene {
     this.ctaLayer        = this.add.container(0, 0).setDepth(LAYER_DEPTH.cta)
   }
 
-  // ── 私有：背景 ────────────────────────────────────────────────────
+  // ── 背景 ─────────────────────────────────────────────────────────
 
   private createBackground(): void {
     const bg = this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'bg')
-    // bg.png 3328×2048 横向，按"覆盖"策略适配竖屏 720×1280
     const scale = Math.max(GAME_WIDTH / bg.width, GAME_HEIGHT / bg.height)
     bg.setScale(scale)
     this.backgroundLayer.add(bg)
   }
 
-  // ── 私有：调试面板（Stage 1–2 临时，Stage 7 移除）────────────────
+  // ── 顶部 HUD ─────────────────────────────────────────────────────
 
-  private createDebugOverlay(): void {
-    const cx = GAME_WIDTH / 2
-    const depth = 200
+  private createTopHud(): void {
+    const hudBg = this.add.rectangle(GAME_WIDTH / 2, 44, GAME_WIDTH, 88, 0x000000, 0.60)
 
-    const modeColor = this.mode === 'win' ? '#ffd700' : '#ff6b6b'
-    const modeLabel = this.mode === 'win' ? '胜利流程 (mode=win)' : '失败流程 (mode=lose)'
-
-    // 顶部半透明信息栏
-    this.add.rectangle(cx, 55, GAME_WIDTH, 110, 0x000000, 0.70).setDepth(depth)
-
-    this.add.text(cx, 22, modeLabel, {
+    const levelTxt = this.add.text(24, 44, '第 185 关', {
       fontSize: '22px',
-      color: modeColor,
+      color: '#ffffff',
+      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
-      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-    }).setOrigin(0.5).setDepth(depth)
+    }).setOrigin(0, 0.5)
 
-    const stateText = this.add.text(cx, 50, `状态: ${stateManager.state}`, {
-      fontSize: '15px',
-      color: '#88bbff',
-      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-    }).setOrigin(0.5).setDepth(depth)
+    const modeTxt = this.add.text(GAME_WIDTH - 14, 44,
+      this.mode === 'win' ? '胜利模式' : '挑战模式', {
+        fontSize: '14px',
+        color: this.mode === 'win' ? '#ffd700' : '#ff8888',
+        fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+      }).setOrigin(1, 0.5)
 
-    // 时间轴最新事件显示
-    this.debugEventText = this.add.text(cx, 74, '时间轴: 等待启动...', {
-      fontSize: '13px',
-      color: '#99ffcc',
-      fontFamily: 'monospace',
-    }).setOrigin(0.5).setDepth(depth)
-
-    // 时间轴经过时间
-    this.debugElapsedText = this.add.text(cx, 94, 'elapsed: 0ms', {
-      fontSize: '12px',
-      color: '#778899',
-      fontFamily: 'monospace',
-    }).setOrigin(0.5).setDepth(depth)
-
-    // 每 300ms 刷新状态与耗时
-    this.time.addEvent({
-      delay: 300,
-      loop: true,
-      callback: () => {
-        stateText.setText(`状态: ${stateManager.state}`)
-        if (this.runner?.running) {
-          this.debugElapsedText?.setText(`elapsed: ${this.runner.elapsed}ms`)
-        }
-      },
-    })
-
-    // 底部层级说明
-    this.add.text(cx, GAME_HEIGHT - 10,
-      'BG(0) › Battle(10) › Effect(20) › HUD(30) › Evolution(40) › Modal(50) › CTA(60)', {
+    // 右下角小型调试文字（状态机当前状态）
+    this.debugTxt = this.add.text(GAME_WIDTH - 8, GAME_HEIGHT - 86, '', {
       fontSize: '10px',
       color: '#334455',
       fontFamily: 'monospace',
-    }).setOrigin(0.5, 1).setDepth(depth)
+    }).setOrigin(1, 1).setDepth(201)
 
-    this.add.text(cx, GAME_HEIGHT - 22, '切换: ?mode=win  /  ?mode=lose', {
-      fontSize: '11px',
-      color: '#556677',
-      fontFamily: 'monospace',
-    }).setOrigin(0.5, 1).setDepth(depth)
+    this.time.addEvent({
+      delay: 500,
+      loop: true,
+      callback: () => this.debugTxt?.setText(`state:${stateManager.state}`),
+    })
+
+    this.hudLayer.add([hudBg, levelTxt, modeTxt])
   }
 
-  // ── 私有：时间轴初始化与调试处理器 ───────────────────────────────
+  // ── 底部进化卡面板 ────────────────────────────────────────────────
+
+  private createEvolutionPanel(): void {
+    // 底部半透明深色面板
+    const panelBg = this.add.rectangle(GAME_WIDTH / 2, 1214, GAME_WIDTH, 132, 0x040818, 0.88)
+    const titleTxt = this.add.text(GAME_WIDTH / 2, 1157, '生物进化', {
+      fontSize: '16px',
+      color: '#8899bb',
+      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+      letterSpacing: 3,
+    }).setOrigin(0.5)
+
+    this.evolutionLayer.add([panelBg, titleTxt])
+
+    // 4 张进化卡：均分 720px 宽度
+    // 4×158 + 3×13 = 671 → 两侧各留 24.5px
+    const cardCY = 1222
+    const cardCXList = [104, 275, 446, 617]
+    for (let i = 0; i < 4; i++) {
+      const card = new EvolutionCard(this, cardCXList[i], cardCY, i, this.evolutionLayer)
+      this.evolutionCards.push(card)
+    }
+  }
+
+  // ── 战斗相关 UI ──────────────────────────────────────────────────
+
+  private createBattleUi(): void {
+    if (this.mode === 'win') {
+      this.bossHpBar = new BossHpBar(this, GAME_WIDTH / 2, 108, this.hudLayer)
+      this.winModal  = new WinModal(this, this.modalLayer, () => this.onClaimReward())
+    }
+    this.ctaPage = new CtaPage(this, this.ctaLayer, () => {
+      console.log('[CTA] clickthrough — 宿主注入跳链')
+    })
+  }
+
+  // ── 时间轴初始化 ─────────────────────────────────────────────────
 
   private setupTimeline(): void {
     this.runner = new TimelineRunner(this)
     this.runner.load(this.mode === 'win' ? winTimeline : loseTimeline)
 
-    // Stage 2 调试：所有事件均输出到 console + 调试面板
-    for (const type of ALL_EVENT_TYPES) {
-      this.runner.on(type, (event) => {
-        const tgt = event.target ? ` → ${event.target}` : ''
-        console.log(`[TL ${this.mode}] ${event.at}ms  ${event.type}${tgt}`, event.payload ?? '')
-        this.debugEventText?.setText(`${event.at}ms ${event.type}${tgt}`)
-      })
-    }
-
-    // 状态转换事件：驱动全局状态机
-    this.runner.on('changeState', (event) => {
-      const nextState = (event.payload as { state: string }).state
-      stateManager.enter(nextState as GameState)
+    this.runner.on('spawnActor',              e => this.handleSpawnActor(e))
+    this.runner.on('spawnEnemyGroup',         e => this.handleSpawnEnemyGroup(e))
+    this.runner.on('removeEnemyGroup',        e => this.handleRemoveEnemyGroup(e))
+    this.runner.on('setActorState',           e => this.handleSetActorState(e))
+    this.runner.on('actorAttack',             e => this.handleActorAttack(e))
+    this.runner.on('actorHit',                e => this.handleActorHit(e))
+    this.runner.on('actorExit',               e => this.handleActorExit(e))
+    this.runner.on('unlockEvolution',         e => this.handleUnlockEvolution(e))
+    this.runner.on('updateEvolutionProgress', e => this.handleUpdateEvolutionProgress(e))
+    this.runner.on('showBoss',                e => this.handleShowBoss(e))
+    this.runner.on('removeBoss',              e => this.handleRemoveBoss(e))
+    this.runner.on('updateBossHp',            e => this.handleUpdateBossHp(e))
+    this.runner.on('showResult',              e => this.handleShowResult(e))
+    this.runner.on('changeState',             e => {
+      const state = (e.payload as { state: string }).state
+      stateManager.enter(state as GameState)
     })
 
     this.runner.start()
+  }
+
+  // ── 时间轴事件处理 ───────────────────────────────────────────────
+
+  /**
+   * 角色生成：若生成的是玩家槽位且当前已有玩家角色，先淡出旧角色。
+   * Boss/敌方角色不触发替换逻辑。
+   */
+  private handleSpawnActor(event: TimelineEvent): void {
+    const slot = event.target as CharacterSlot
+
+    if (PLAYER_SLOTS.includes(slot) && this.playerSlot && this.playerSlot !== slot) {
+      const prev = this.actors.get(this.playerSlot)
+      if (prev) {
+        prev.exit()
+        this.actors.delete(this.playerSlot)
+      }
+    }
+    if (PLAYER_SLOTS.includes(slot)) this.playerSlot = slot
+
+    const actor = new Actor(this, slot, this.battleLayer)
+    actor.spawn()
+    this.actors.set(slot, actor)
+  }
+
+  /** 生成普通敌鱼群占位（3 个半透明椭圆形） */
+  private handleSpawnEnemyGroup(_event: TimelineEvent): void {
+    if (this.enemyGroup) return
+    const grp = this.add.container(0, 0)
+    const positions: [number, number][] = [[545, 575], [625, 645], [565, 725]]
+    for (const [x, y] of positions) {
+      grp.add(this.add.ellipse(x, y, 58, 36, 0x1a4488, 0.75))
+    }
+    this.battleLayer.add(grp)
+    this.enemyGroup = grp
+  }
+
+  /** 移除普通敌鱼群（进入 Boss 战时调用） */
+  private handleRemoveEnemyGroup(_event: TimelineEvent): void {
+    if (!this.enemyGroup) return
+    const grp = this.enemyGroup
+    this.tweens.add({
+      targets: grp,
+      alpha: 0,
+      duration: 400,
+      ease: 'Sine.easeIn',
+      onComplete: () => { grp.destroy(true); this.enemyGroup = undefined },
+    })
+  }
+
+  /** 设置角色动作（idle / move / attack / die） */
+  private handleSetActorState(event: TimelineEvent): void {
+    const slot   = event.target!
+    const action = (event.payload as { action: string }).action
+    const actor  = this.actors.get(slot)
+    if (!actor) return
+
+    switch (action) {
+      case 'idle':   actor.idle(); break
+      case 'attack': actor.attack(); break
+      case 'die':    actor.die(); break
+      case 'move': {
+        const toX = (event.payload as { toX?: number }).toX ?? actor.x
+        actor.move(toX, 800)
+        break
+      }
+    }
+  }
+
+  private handleActorAttack(event: TimelineEvent): void {
+    this.actors.get(event.target!)?.attack()
+  }
+
+  private handleActorHit(event: TimelineEvent): void {
+    this.actors.get(event.target!)?.hit()
+  }
+
+  /** 角色退场：die 动画 → 淡出 → 销毁 */
+  private handleActorExit(event: TimelineEvent): void {
+    const slot  = event.target!
+    const actor = this.actors.get(slot)
+    if (!actor) return
+
+    const action = (event.payload as { action?: string }).action
+    const cleanup = () => {
+      actor.exit(() => { actor.destroy(); this.actors.delete(slot) })
+    }
+    if (action === 'die') {
+      actor.die(cleanup)
+    } else {
+      cleanup()
+    }
+  }
+
+  /** 更新进化卡状态（locked / unlocking / unlocked） */
+  private handleUnlockEvolution(event: TimelineEvent): void {
+    const p    = event.payload as { index: number; state: string }
+    const card = this.evolutionCards[p.index]
+    card?.setState(p.state as 'locked' | 'unlocking' | 'unlocked')
+  }
+
+  /** 更新进化卡经验进度条（0–1） */
+  private handleUpdateEvolutionProgress(event: TimelineEvent): void {
+    const p    = event.payload as { index: number; progress: number }
+    const card = this.evolutionCards[p.index]
+    card?.setProgress(p.progress)
+  }
+
+  /** 显示 Boss 血条 */
+  private handleShowBoss(_event: TimelineEvent): void {
+    this.bossHpBar?.show()
+  }
+
+  /** 隐藏 Boss 血条并移除 Boss 角色 */
+  private handleRemoveBoss(_event: TimelineEvent): void {
+    this.bossHpBar?.hide()
+    const boss = this.actors.get('boss_win')
+    if (boss) {
+      boss.exit(() => { boss.destroy(); this.actors.delete('boss_win') })
+    }
+  }
+
+  /** 更新 Boss 血条百分比 */
+  private handleUpdateBossHp(event: TimelineEvent): void {
+    const percent = (event.payload as { percent: number }).percent
+    this.bossHpBar?.setPercent(percent)
+  }
+
+  /** 显示结果弹窗（win_modal / lose_modal） */
+  private handleShowResult(event: TimelineEvent): void {
+    if (event.target === 'win_modal') {
+      this.winModal?.show()
+    }
+    // lose_modal → Stage 5 实现
+  }
+
+  // ── 用户交互 ─────────────────────────────────────────────────────
+
+  /** 点击"领取"后进入 CTA，隐藏战斗层与弹窗 */
+  private onClaimReward(): void {
+    stateManager.enter('cta')
+    this.runner.stop()
+    this.winModal?.hide()
+
+    this.battleLayer.setVisible(false)
+    this.effectLayer.setVisible(false)
+    this.hudLayer.setVisible(false)
+    this.evolutionLayer.setVisible(false)
+
+    this.ctaPage?.show()
   }
 }
