@@ -14,8 +14,8 @@
 ```text
 1. GAME_FLOW.md       // 交互、状态、流程、功能验收
 2. VIDEO_ANALYSIS.md  // 画面、节奏、镜头、UI 参考
-3. assets/v1.mp4      // 胜利流程视觉参考
-4. assets/v2.mp4      // 失败流程视觉参考
+3. assets/win.mp4      // 胜利流程视觉参考
+4. assets/lose.mp4      // 失败流程视觉参考
 5. assets/images      // 实际可用美术资源
 ```
 
@@ -73,8 +73,8 @@
 
 ```text
 assets/
-├── v1.mp4
-├── v2.mp4
+├── win.mp4
+├── lose.mp4
 └── images/
     ├── bg.png
     ├── sk.png

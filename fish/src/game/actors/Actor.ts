@@ -135,6 +135,38 @@ export class Actor {
     this.play('die', { loop: false, onComplete })
   }
 
+  /**
+   * 从背景位置移动到前景，同时 tween 恢复缩放和透明度。
+   * 仅供 enemy_lose 在 lose 模式最终战斗前调用。
+   */
+  moveToForeground(toX: number, duration: number, targetScale: number): void {
+    this.moveTween?.stop()
+    this.play('move', { loop: true })
+    const img = this.player.gameObject
+    this.moveTween = this.scene.tweens.add({
+      targets: img,
+      x: toX,
+      scaleX: targetScale,
+      scaleY: targetScale,
+      alpha: 1,
+      duration,
+      ease: 'Sine.easeInOut',
+      onComplete: () => {
+        this.moveTween = undefined
+        this.idle()
+      },
+    })
+  }
+
+  /** 直接设置变换属性（供外部设置初始背景/前景位置） */
+  setTransform(opts: { x?: number; y?: number; scale?: number; alpha?: number }): void {
+    const img = this.player.gameObject
+    if (opts.x     !== undefined) img.x = opts.x
+    if (opts.y     !== undefined) img.y = opts.y
+    if (opts.scale !== undefined) img.setScale(opts.scale)
+    if (opts.alpha !== undefined) img.setAlpha(opts.alpha)
+  }
+
   /** 淡出（300ms）后执行回调；通常配合 destroy() 使用 */
   exit(onComplete?: () => void): void {
     this.scene.tweens.add({

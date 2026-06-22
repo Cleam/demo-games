@@ -63,8 +63,8 @@ npm run typecheck
 fish/
 ├── assets/               原始美术资源（只读，不修改）
 │   ├── images/           PNG 帧序列 + bg.png + sk.png
-│   ├── v1.mp4            胜利流程视觉参考
-│   └── v2.mp4            失败流程视觉参考
+│   ├── win.mp4            胜利流程视觉参考
+│   └── lose.mp4            失败流程视觉参考
 ├── docs/                 项目文档（Phase 0 产出）
 ├── public/
 │   └── manifest.json     构建时自动生成，不手写

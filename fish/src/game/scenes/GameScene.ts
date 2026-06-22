@@ -5,11 +5,14 @@ import { stateManager, type GameState } from '@/core/StateManager'
 import { TimelineRunner, type TimelineEvent } from '@/systems/TimelineRunner'
 import { winTimeline } from '@/config/timeline.win'
 import { loseTimeline } from '@/config/timeline.lose'
-import { type CharacterSlot, PLAYER_SLOTS } from '@/config/assetMapping'
+import { type CharacterSlot, PLAYER_SLOTS, slotConfig } from '@/config/assetMapping'
 import { Actor } from '@/game/actors/Actor'
 import { EvolutionCard } from '@/ui/EvolutionCard'
 import { BossHpBar } from '@/ui/BossHpBar'
+import { StaminaBar } from '@/ui/StaminaBar'
+import { TimerDisplay } from '@/ui/TimerDisplay'
 import { WinModal } from '@/ui/WinModal'
+import { LoseModal } from '@/ui/LoseModal'
 import { CtaPage } from '@/ui/CtaPage'
 
 export class GameScene extends Phaser.Scene {
@@ -33,11 +36,19 @@ export class GameScene extends Phaser.Scene {
   private playerSlot?: string
   /** 普通敌鱼群占位容器（进入 Boss 战后移除） */
   private enemyGroup?: Phaser.GameObjects.Container
+  /** 处于背景位置的 slot 集合（enemy_lose 初始背景态追踪） */
+  private backgroundActors = new Set<string>()
 
   // ── UI 组件 ──────────────────────────────────────────────────────
   private evolutionCards: EvolutionCard[] = []
+  // win mode
   private bossHpBar?: BossHpBar
-  private winModal?: WinModal
+  private winModal?:  WinModal
+  // lose mode
+  private staminaBar?:   StaminaBar
+  private timerDisplay?: TimerDisplay
+  private loseModal?:    LoseModal
+  // shared
   private ctaPage?: CtaPage
 
   // ── 调试 ─────────────────────────────────────────────────────────
@@ -49,6 +60,7 @@ export class GameScene extends Phaser.Scene {
     this.mode = this.registry.get('mode') as GameMode
     this.actors.clear()
     this.playerSlot = undefined
+    this.backgroundActors.clear()
     stateManager.enter('playing')
   }
 
@@ -61,7 +73,7 @@ export class GameScene extends Phaser.Scene {
     this.setupTimeline()
 
     this.events.once('shutdown', () => {
-      this.runner.stop()
+      this.runner?.stop()
       for (const actor of this.actors.values()) actor.destroy()
       this.actors.clear()
     })
@@ -126,7 +138,6 @@ export class GameScene extends Phaser.Scene {
   // ── 底部进化卡面板 ────────────────────────────────────────────────
 
   private createEvolutionPanel(): void {
-    // 底部半透明深色面板
     const panelBg = this.add.rectangle(GAME_WIDTH / 2, 1214, GAME_WIDTH, 132, 0x040818, 0.88)
     const titleTxt = this.add.text(GAME_WIDTH / 2, 1157, '生物进化', {
       fontSize: '16px',
@@ -137,8 +148,7 @@ export class GameScene extends Phaser.Scene {
 
     this.evolutionLayer.add([panelBg, titleTxt])
 
-    // 4 张进化卡：均分 720px 宽度
-    // 4×158 + 3×13 = 671 → 两侧各留 24.5px
+    // 4 张进化卡均分 720px 宽度
     const cardCY = 1222
     const cardCXList = [104, 275, 446, 617]
     for (let i = 0; i < 4; i++) {
@@ -153,6 +163,14 @@ export class GameScene extends Phaser.Scene {
     if (this.mode === 'win') {
       this.bossHpBar = new BossHpBar(this, GAME_WIDTH / 2, 108, this.hudLayer)
       this.winModal  = new WinModal(this, this.modalLayer, () => this.onClaimReward())
+    } else {
+      // lose mode：体力条在下方，倒计时在上方
+      this.timerDisplay = new TimerDisplay(this, GAME_WIDTH / 2, 100, this.hudLayer)
+      this.staminaBar   = new StaminaBar(this, GAME_WIDTH / 2, 138, this.hudLayer)
+      this.loseModal    = new LoseModal(this, this.modalLayer,
+        () => this.onRetry(),
+        () => this.onExitChallenge(),
+      )
     }
     this.ctaPage = new CtaPage(this, this.ctaLayer, () => {
       console.log('[CTA] clickthrough — 宿主注入跳链')
@@ -177,6 +195,10 @@ export class GameScene extends Phaser.Scene {
     this.runner.on('showBoss',                e => this.handleShowBoss(e))
     this.runner.on('removeBoss',              e => this.handleRemoveBoss(e))
     this.runner.on('updateBossHp',            e => this.handleUpdateBossHp(e))
+    this.runner.on('showStamina',             _e => this.handleShowStamina())
+    this.runner.on('updateStamina',           e => this.handleUpdateStamina(e))
+    this.runner.on('showTimer',               e => this.handleShowTimer(e))
+    this.runner.on('updateTimer',             e => this.handleUpdateTimer(e))
     this.runner.on('showResult',              e => this.handleShowResult(e))
     this.runner.on('changeState',             e => {
       const state = (e.payload as { state: string }).state
@@ -189,11 +211,14 @@ export class GameScene extends Phaser.Scene {
   // ── 时间轴事件处理 ───────────────────────────────────────────────
 
   /**
-   * 角色生成：若生成的是玩家槽位且当前已有玩家角色，先淡出旧角色。
-   * Boss/敌方角色不触发替换逻辑。
+   * 角色生成。
+   * - 玩家槽位替换：新进化出现时淡出旧角色。
+   * - background: true → enemy_lose 在背景位置生成（较小、偏右、半透明），
+   *   后续 setActorState.move 时从背景过渡到前景。
    */
   private handleSpawnActor(event: TimelineEvent): void {
-    const slot = event.target as CharacterSlot
+    const slot       = event.target as CharacterSlot
+    const background = (event.payload as { background?: boolean }).background === true
 
     if (PLAYER_SLOTS.includes(slot) && this.playerSlot && this.playerSlot !== slot) {
       const prev = this.actors.get(this.playerSlot)
@@ -206,6 +231,13 @@ export class GameScene extends Phaser.Scene {
 
     const actor = new Actor(this, slot, this.battleLayer)
     actor.spawn()
+
+    if (background) {
+      // 背景态：远景位置（偏右），缩小，半透明
+      actor.setTransform({ x: 640, y: 700, scale: 0.17, alpha: 0.45 })
+      this.backgroundActors.add(slot)
+    }
+
     this.actors.set(slot, actor)
   }
 
@@ -221,7 +253,7 @@ export class GameScene extends Phaser.Scene {
     this.enemyGroup = grp
   }
 
-  /** 移除普通敌鱼群（进入 Boss 战时调用） */
+  /** 移除普通敌鱼群（进入 Boss 战 / 最终对抗时调用） */
   private handleRemoveEnemyGroup(_event: TimelineEvent): void {
     if (!this.enemyGroup) return
     const grp = this.enemyGroup
@@ -234,7 +266,10 @@ export class GameScene extends Phaser.Scene {
     })
   }
 
-  /** 设置角色动作（idle / move / attack / die） */
+  /**
+   * 设置角色动作（idle / move / attack / die）。
+   * 若 slot 处于背景态且触发 move，则同步恢复至前景缩放和透明度。
+   */
   private handleSetActorState(event: TimelineEvent): void {
     const slot   = event.target!
     const action = (event.payload as { action: string }).action
@@ -247,7 +282,14 @@ export class GameScene extends Phaser.Scene {
       case 'die':    actor.die(); break
       case 'move': {
         const toX = (event.payload as { toX?: number }).toX ?? actor.x
-        actor.move(toX, 800)
+        if (this.backgroundActors.has(slot)) {
+          // enemy_lose 从背景过渡到前景，同时恢复缩放和透明度
+          this.backgroundActors.delete(slot)
+          const cfg = slotConfig[slot as CharacterSlot]
+          actor.moveToForeground(toX, 1200, cfg.scale)
+        } else {
+          actor.move(toX, 800)
+        }
         break
       }
     }
@@ -292,12 +334,12 @@ export class GameScene extends Phaser.Scene {
     card?.setProgress(p.progress)
   }
 
-  /** 显示 Boss 血条 */
+  // ── Win mode 处理器 ──────────────────────────────────────────────
+
   private handleShowBoss(_event: TimelineEvent): void {
     this.bossHpBar?.show()
   }
 
-  /** 隐藏 Boss 血条并移除 Boss 角色 */
   private handleRemoveBoss(_event: TimelineEvent): void {
     this.bossHpBar?.hide()
     const boss = this.actors.get('boss_win')
@@ -306,18 +348,40 @@ export class GameScene extends Phaser.Scene {
     }
   }
 
-  /** 更新 Boss 血条百分比 */
   private handleUpdateBossHp(event: TimelineEvent): void {
     const percent = (event.payload as { percent: number }).percent
     this.bossHpBar?.setPercent(percent)
   }
 
-  /** 显示结果弹窗（win_modal / lose_modal） */
+  // ── Lose mode 处理器 ─────────────────────────────────────────────
+
+  private handleShowStamina(): void {
+    this.staminaBar?.show()
+  }
+
+  private handleUpdateStamina(event: TimelineEvent): void {
+    const percent = (event.payload as { percent: number }).percent
+    this.staminaBar?.setPercent(percent)
+  }
+
+  private handleShowTimer(event: TimelineEvent): void {
+    const value = (event.payload as { value?: number }).value
+    this.timerDisplay?.show(value)
+  }
+
+  private handleUpdateTimer(event: TimelineEvent): void {
+    const value = (event.payload as { value: number }).value
+    this.timerDisplay?.setValue(value)
+  }
+
+  // ── 结果弹窗 ────────────────────────────────────────────────────
+
   private handleShowResult(event: TimelineEvent): void {
     if (event.target === 'win_modal') {
       this.winModal?.show()
+    } else if (event.target === 'lose_modal') {
+      this.loseModal?.show()
     }
-    // lose_modal → Stage 5 实现
   }
 
   // ── 用户交互 ─────────────────────────────────────────────────────
@@ -327,6 +391,34 @@ export class GameScene extends Phaser.Scene {
     stateManager.enter('cta')
     this.runner.stop()
     this.winModal?.hide()
+
+    this.battleLayer.setVisible(false)
+    this.effectLayer.setVisible(false)
+    this.hudLayer.setVisible(false)
+    this.evolutionLayer.setVisible(false)
+
+    this.ctaPage?.show()
+  }
+
+  /**
+   * 点击"重新挑战"后完整重启场景。
+   * scene.restart() 触发 shutdown → init → create，全部 GameObject 由 Phaser 自动清理。
+   * init() 中 stateManager.enter('playing') 需要 restarting 状态作为前置，
+   * 因此这里先确保状态机进入合法路径再 restart。
+   */
+  private onRetry(): void {
+    this.runner.stop()
+    // 确保状态机路径合法：resultLose → restarting，init() 中再 → playing
+    if (stateManager.state === 'finalBattle') stateManager.enter('resultLose')
+    stateManager.enter('restarting')
+    this.scene.restart()
+  }
+
+  /** 点击"退出挑战"后进入 CTA，隐藏战斗层与弹窗 */
+  private onExitChallenge(): void {
+    stateManager.enter('cta')
+    this.runner.stop()
+    this.loseModal?.hide()
 
     this.battleLayer.setVisible(false)
     this.effectLayer.setVisible(false)
