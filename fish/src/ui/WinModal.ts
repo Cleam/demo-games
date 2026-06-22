@@ -1,15 +1,25 @@
 /**
  * WinModal.ts
  * 胜利奖励弹窗（ModalLayer）。
- * showResult 事件触发后显示；点击"领取"按钮执行 onClaim 回调。
+ * 样式对齐截图 win06：标题"奖励卡"，2行×3列奖励格，金黄色主调。
  */
 
 import Phaser from 'phaser'
 import { GAME_WIDTH, GAME_HEIGHT } from '@/config/constants'
 
-const CARD_W = 580
-const CARD_H = 560
-const CARD_Y = GAME_HEIGHT / 2 - 40  // 略靠上，避免被底部进化卡遮挡
+const CARD_W = 570
+const CARD_H  = 580
+const CARD_Y  = GAME_HEIGHT / 2 - 40  // 600
+
+/** 奖励格内容（鱼名 → 对应颜色，缺少图片素材用彩色圆形代替） */
+const REWARDS = [
+  { name: '食人鱼',   color: 0xff6644 },
+  { name: '史前蛮鳄', color: 0xcc8822 },
+  { name: '巨型弹弹鱼', color: 0x4488ff },
+  { name: '史前巨鳄', color: 0x9944cc },
+  { name: '稀有金币', color: 0xffcc00 },
+  { name: '进化之源', color: 0x44cc88 },
+]
 
 export class WinModal {
   private scene: Phaser.Scene
@@ -25,17 +35,17 @@ export class WinModal {
     this.root.setVisible(false)
 
     // 全屏暗色遮罩
-    const overlay = scene.add.rectangle(0, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x000000, 0.82)
+    const overlay = scene.add.rectangle(0, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x000000, 0.85)
 
-    // 弹窗卡片背景
+    // 弹窗卡片
     const card = scene.add.rectangle(0, CARD_Y, CARD_W, CARD_H, 0x0d1a3a)
     card.setStrokeStyle(2, 0xffd700)
 
-    // 装饰条（顶部）
-    const topBar = scene.add.rectangle(0, CARD_Y - CARD_H / 2 + 16, CARD_W, 32, 0xffd700, 0.15)
+    // 顶部金色装饰条
+    const topBar = scene.add.rectangle(0, CARD_Y - CARD_H / 2 + 16, CARD_W, 32, 0xffd700, 0.18)
 
-    // 标题
-    const titleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 50, '恭喜获得！', {
+    // 标题 "奖励卡"
+    const titleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 54, '奖励卡', {
       fontSize: '32px',
       color: '#ffd700',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
@@ -43,29 +53,26 @@ export class WinModal {
     }).setOrigin(0.5)
 
     // 副标题
-    const subtitleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 92, '进化之路的胜利', {
-      fontSize: '16px',
+    const subtitleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 94, '挑战成功！', {
+      fontSize: '15px',
       color: '#88aacc',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
     }).setOrigin(0.5)
 
-    // 奖励格（3 个占位格子）
-    const rewardItems = this.createRewardItems(scene, CARD_Y - 20)
+    // 2行 × 3列奖励格
+    const rewardItems = this.createRewardGrid(scene, CARD_Y - 60)
 
     // 领取按钮
-    const btnW  = 300
-    const btnH  = 66
     const btnY  = CARD_Y + CARD_H / 2 - 62
-    const btnBg = scene.add.rectangle(0, btnY, btnW, btnH, 0xffd700)
+    const btnBg = scene.add.rectangle(0, btnY, 320, 66, 0xffd700)
     btnBg.setStrokeStyle(2, 0xffeebb)
-    const btnTxt = scene.add.text(0, btnY, '领  取', {
+    const btnTxt = scene.add.text(0, btnY, '领取奖励', {
       fontSize: '26px',
       color: '#1a1000',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
     }).setOrigin(0.5)
 
-    // 按钮交互
     btnBg.setInteractive({ useHandCursor: true })
     btnBg.on('pointerover',  () => btnBg.setFillStyle(0xffe066))
     btnBg.on('pointerout',   () => btnBg.setFillStyle(0xffd700))
@@ -73,10 +80,8 @@ export class WinModal {
       btnBg.setInteractive(false)
       scene.tweens.add({
         targets: [btnBg, btnTxt],
-        scaleX: 0.93,
-        scaleY: 0.93,
-        duration: 80,
-        yoyo: true,
+        scaleX: 0.93, scaleY: 0.93,
+        duration: 80, yoyo: true,
         onComplete: () => onClaim(),
       })
     })
@@ -91,9 +96,7 @@ export class WinModal {
     this.root.setScale(0.9)
     this.scene.tweens.add({
       targets: this.root,
-      alpha: 1,
-      scaleX: 1,
-      scaleY: 1,
+      alpha: 1, scaleX: 1, scaleY: 1,
       duration: 350,
       ease: 'Back.easeOut',
     })
@@ -115,28 +118,41 @@ export class WinModal {
 
   // ──────────────────────────────────────────────────────────────────
 
-  private createRewardItems(scene: Phaser.Scene, baseY: number): Phaser.GameObjects.GameObject[] {
+  private createRewardGrid(
+    scene:  Phaser.Scene,
+    baseY:  number,
+  ): Phaser.GameObjects.GameObject[] {
     const items: Phaser.GameObjects.GameObject[] = []
-    const positions = [-150, 0, 150]
-    const labels    = ['稀有鱼', '金币 ×1000', '进化加速']
 
-    for (let i = 0; i < 3; i++) {
-      const x = positions[i]
-      const itemBg = scene.add.rectangle(x, baseY, 140, 140, 0x132040)
-      itemBg.setStrokeStyle(1, 0x2255aa)
+    // 3 列 × 2 行，格子 158×74
+    const colX  = [-162, 0, 162]
+    const rowY  = [baseY - 42, baseY + 44]
+    const gW = 154
+    const gH  = 72
 
-      // 图标占位（彩色圆形）
-      const colors = [0xff8844, 0xffcc44, 0x44aaff]
-      const icon   = scene.add.arc(x, baseY - 20, 38, 0, 360, false, colors[i])
-      icon.setStrokeStyle(2, 0xffffff, 0.3)
+    for (let row = 0; row < 2; row++) {
+      for (let col = 0; col < 3; col++) {
+        const r   = REWARDS[row * 3 + col]
+        const cx  = colX[col]
+        const cy  = rowY[row]
 
-      const txt = scene.add.text(x, baseY + 42, labels[i], {
-        fontSize: '13px',
-        color: '#aabbdd',
-        fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-      }).setOrigin(0.5)
+        // 格子底色（琥珀黄）
+        const bg = scene.add.rectangle(cx, cy, gW, gH, 0x5a3800)
+        bg.setStrokeStyle(1.5, 0xffdd44)
 
-      items.push(itemBg, icon, txt)
+        // 彩色鱼图标占位圆（缺少真实鱼类图片素材）
+        const icon = scene.add.arc(cx, cy - 12, 22, 0, 360, false, r.color)
+        icon.setStrokeStyle(1.5, 0xffffff, 0.35)
+
+        // 鱼名
+        const txt = scene.add.text(cx, cy + 24, r.name, {
+          fontSize: '11px',
+          color: '#ffeeaa',
+          fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+        }).setOrigin(0.5)
+
+        items.push(bg, icon, txt)
+      }
     }
     return items
   }

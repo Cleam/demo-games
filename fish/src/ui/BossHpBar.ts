@@ -28,7 +28,7 @@ export class BossHpBar {
     const labelBg = scene.add.rectangle(CENTER_X, -20, BAR_W + 20, 28, 0x000000, 0.55)
 
     // Boss 名称
-    this.nameTxt = scene.add.text(CENTER_X - BAR_W / 2 + 6, -20, '鱼皇', {
+    this.nameTxt = scene.add.text(CENTER_X - BAR_W / 2 + 6, -20, '史前巨鳄', {
       fontSize: '14px',
       color: '#ff4444',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',

@@ -14,6 +14,8 @@ import { TimerDisplay } from '@/ui/TimerDisplay'
 import { WinModal } from '@/ui/WinModal'
 import { LoseModal } from '@/ui/LoseModal'
 import { CtaPage } from '@/ui/CtaPage'
+import { EffectPlayer } from '@/effects/EffectPlayer'
+import { getFishId } from '@/config/assetMapping'
 
 export class GameScene extends Phaser.Scene {
   // ── 7 层级容器 ──────────────────────────────────────────────────
@@ -51,6 +53,9 @@ export class GameScene extends Phaser.Scene {
   // shared
   private ctaPage?: CtaPage
 
+  // ── 特效 ─────────────────────────────────────────────────────────
+  private effectPlayer?: EffectPlayer
+
   // ── 调试 ─────────────────────────────────────────────────────────
   private debugTxt?: Phaser.GameObjects.Text
 
@@ -74,6 +79,7 @@ export class GameScene extends Phaser.Scene {
 
     this.events.once('shutdown', () => {
       this.runner?.stop()
+      this.effectPlayer?.destroyAll()
       for (const actor of this.actors.values()) actor.destroy()
       this.actors.clear()
     })
@@ -95,26 +101,49 @@ export class GameScene extends Phaser.Scene {
 
   private createBackground(): void {
     const bg = this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'bg')
-    const scale = Math.max(GAME_WIDTH / bg.width, GAME_HEIGHT / bg.height)
-    bg.setScale(scale)
+    const bgScale = Math.max(GAME_WIDTH / bg.width, GAME_HEIGHT / bg.height)
+    bg.setScale(bgScale)
     this.backgroundLayer.add(bg)
+
+    // sk.png 叠加层（光效/氛围图）
+    const skTex = this.textures.get('sk')
+    if (skTex.key !== '__MISSING') {
+      const sk = this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'sk')
+      const skScale = Math.max(GAME_WIDTH / sk.width, GAME_HEIGHT / sk.height)
+      sk.setScale(skScale)
+      sk.setAlpha(0.45)
+      this.backgroundLayer.add(sk)
+    }
   }
 
   // ── 顶部 HUD ─────────────────────────────────────────────────────
 
   private createTopHud(): void {
-    const hudBg = this.add.rectangle(GAME_WIDTH / 2, 44, GAME_WIDTH, 88, 0x000000, 0.60)
+    // 深蓝紫底色（120px 高，对齐截图横幅风格）
+    const hudBg = this.add.rectangle(GAME_WIDTH / 2, 60, GAME_WIDTH, 120, 0x060a1e, 0.92)
 
-    const levelTxt = this.add.text(24, 44, '第 185 关', {
-      fontSize: '22px',
-      color: '#ffffff',
+    // 顶部紫蓝色装饰线
+    const topLine = this.add.rectangle(GAME_WIDTH / 2, 1.5, GAME_WIDTH, 3, 0x6644cc)
+
+    // 游戏标题（仿"海底幽灵"横幅样式）
+    const titleTxt = this.add.text(GAME_WIDTH / 2, 34, '≪ 海底幽灵 ≫', {
+      fontSize: '26px',
+      color: '#c8a0ff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
-    }).setOrigin(0, 0.5)
+    }).setOrigin(0.5)
 
-    const modeTxt = this.add.text(GAME_WIDTH - 14, 44,
+    // 关卡文字（居中）
+    const levelTxt = this.add.text(GAME_WIDTH / 2, 76, '第 185 天', {
+      fontSize: '18px',
+      color: '#aabbdd',
+      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+    }).setOrigin(0.5)
+
+    // 模式标签（右侧）
+    const modeTxt = this.add.text(GAME_WIDTH - 14, 76,
       this.mode === 'win' ? '胜利模式' : '挑战模式', {
-        fontSize: '14px',
+        fontSize: '13px',
         color: this.mode === 'win' ? '#ffd700' : '#ff8888',
         fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       }).setOrigin(1, 0.5)
@@ -132,7 +161,7 @@ export class GameScene extends Phaser.Scene {
       callback: () => this.debugTxt?.setText(`state:${stateManager.state}`),
     })
 
-    this.hudLayer.add([hudBg, levelTxt, modeTxt])
+    this.hudLayer.add([hudBg, topLine, titleTxt, levelTxt, modeTxt])
   }
 
   // ── 底部进化卡面板 ────────────────────────────────────────────────
@@ -161,12 +190,13 @@ export class GameScene extends Phaser.Scene {
 
   private createBattleUi(): void {
     if (this.mode === 'win') {
-      this.bossHpBar = new BossHpBar(this, GAME_WIDTH / 2, 108, this.hudLayer)
+      // y=140：HUD 横幅扩大到 120px 后下移避免重叠
+      this.bossHpBar = new BossHpBar(this, GAME_WIDTH / 2, 140, this.hudLayer)
       this.winModal  = new WinModal(this, this.modalLayer, () => this.onClaimReward())
     } else {
-      // lose mode：体力条在下方，倒计时在上方
-      this.timerDisplay = new TimerDisplay(this, GAME_WIDTH / 2, 100, this.hudLayer)
-      this.staminaBar   = new StaminaBar(this, GAME_WIDTH / 2, 138, this.hudLayer)
+      // lose mode：倒计时 y=132，体力条 y=168（均在新 HUD 120px 下方）
+      this.timerDisplay = new TimerDisplay(this, GAME_WIDTH / 2, 132, this.hudLayer)
+      this.staminaBar   = new StaminaBar(this, GAME_WIDTH / 2, 168, this.hudLayer)
       this.loseModal    = new LoseModal(this, this.modalLayer,
         () => this.onRetry(),
         () => this.onExitChallenge(),
@@ -175,6 +205,9 @@ export class GameScene extends Phaser.Scene {
     this.ctaPage = new CtaPage(this, this.ctaLayer, () => {
       console.log('[CTA] clickthrough — 宿主注入跳链')
     })
+
+    // 特效播放器（共用 effectLayer）
+    this.effectPlayer = new EffectPlayer(this, this.effectLayer)
   }
 
   // ── 时间轴初始化 ─────────────────────────────────────────────────
@@ -233,21 +266,31 @@ export class GameScene extends Phaser.Scene {
     actor.spawn()
 
     if (background) {
-      // 背景态：远景位置（偏右），缩小，半透明
-      actor.setTransform({ x: 640, y: 700, scale: 0.17, alpha: 0.45 })
+      // 背景态：远景位置（偏右），缩小，半透明；scale 约为前景 0.42 的 45%
+      actor.setTransform({ x: 650, y: 730, scale: 0.19, alpha: 0.45 })
       this.backgroundActors.add(slot)
     }
 
     this.actors.set(slot, actor)
   }
 
-  /** 生成普通敌鱼群占位（3 个半透明椭圆形） */
+  /** 生成普通敌鱼群占位（3 条程序绘制的彩色小鱼，对齐截图中的粉红/橙色敌鱼） */
   private handleSpawnEnemyGroup(_event: TimelineEvent): void {
     if (this.enemyGroup) return
     const grp = this.add.container(0, 0)
-    const positions: [number, number][] = [[545, 575], [625, 645], [565, 725]]
-    for (const [x, y] of positions) {
-      grp.add(this.add.ellipse(x, y, 58, 36, 0x1a4488, 0.75))
+    const fishData: [number, number, number][] = [
+      [548, 575, 0xff8899],
+      [628, 648, 0xff6644],
+      [568, 725, 0xffaacc],
+    ]
+    for (const [x, y, color] of fishData) {
+      // 鱼体（椭圆）
+      const body = this.add.ellipse(x, y, 56, 32, color, 0.85)
+      // 尾巴（小椭圆，偏右）
+      const tail = this.add.ellipse(x + 36, y, 18, 12, color, 0.62)
+      // 眼睛（小白圆）
+      const eye  = this.add.arc(x - 12, y - 5, 4, 0, 360, false, 0xffffff, 0.90)
+      grp.add([body, tail, eye])
     }
     this.battleLayer.add(grp)
     this.enemyGroup = grp
@@ -296,11 +339,30 @@ export class GameScene extends Phaser.Scene {
   }
 
   private handleActorAttack(event: TimelineEvent): void {
-    this.actors.get(event.target!)?.attack()
+    const slot  = event.target!
+    const actor = this.actors.get(slot)
+    if (!actor) return
+    actor.attack()
+
+    // 攻击特效叠加在角色位置
+    if (this.effectPlayer) {
+      const fishId = getFishId(slot as CharacterSlot)
+      this.effectPlayer.play(fishId, 'eff_atk', actor.x, actor.y)
+    }
   }
 
   private handleActorHit(event: TimelineEvent): void {
-    this.actors.get(event.target!)?.hit()
+    const slot  = event.target!
+    const actor = this.actors.get(slot)
+    if (!actor) return
+    actor.hit()
+
+    // 命中特效 + 屏幕震动
+    if (this.effectPlayer) {
+      const fishId = getFishId(slot as CharacterSlot)
+      this.effectPlayer.play(fishId, 'eff_hit', actor.x, actor.y)
+    }
+    this.cameras.main.shake(90, 0.006)
   }
 
   /** 角色退场：die 动画 → 淡出 → 销毁 */
@@ -325,6 +387,15 @@ export class GameScene extends Phaser.Scene {
     const p    = event.payload as { index: number; state: string }
     const card = this.evolutionCards[p.index]
     card?.setState(p.state as 'locked' | 'unlocking' | 'unlocked')
+
+    // 解锁时在当前玩家角色位置播放 eff_ult 庆典特效
+    if (p.state === 'unlocked' && this.effectPlayer && this.playerSlot) {
+      const actor = this.actors.get(this.playerSlot)
+      if (actor) {
+        const fishId = getFishId(this.playerSlot as CharacterSlot)
+        this.effectPlayer.play(fishId, 'eff_ult', actor.x, actor.y)
+      }
+    }
   }
 
   /** 更新进化卡经验进度条（0–1） */
@@ -408,6 +479,7 @@ export class GameScene extends Phaser.Scene {
    */
   private onRetry(): void {
     this.runner.stop()
+    this.effectPlayer?.destroyAll()
     // 确保状态机路径合法：resultLose → restarting，init() 中再 → playing
     if (stateManager.state === 'finalBattle') stateManager.enter('resultLose')
     stateManager.enter('restarting')

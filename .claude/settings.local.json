@@ -17,7 +17,10 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/?mode=lose)",
       "Bash(npm run *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)",
-      "Bash(curl -s http://localhost:5174/manifest.json)"
+      "Bash(curl -s http://localhost:5174/manifest.json)",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); keys=list\\(data.keys\\(\\)\\); print\\(f'Total keys: {len\\(keys\\)}'\\); print\\('Sample keys:', keys[:10]\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:5174/?mode=lose\")",
+      "Bash(pkill -f \"vite\")"
     ]
   }
 }

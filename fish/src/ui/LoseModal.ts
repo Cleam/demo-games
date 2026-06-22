@@ -1,7 +1,7 @@
 /**
  * LoseModal.ts
  * 失败弹窗（ModalLayer）。
- * showResult 事件触发后显示；提供"重新挑战"和"退出挑战"两个按钮。
+ * 样式对齐截图 lose07：标题"挑战失败"，副标题金色，绿色重试按钮。
  */
 
 import Phaser from 'phaser'
@@ -9,7 +9,7 @@ import { GAME_WIDTH, GAME_HEIGHT } from '@/config/constants'
 
 const CARD_W = 580
 const CARD_H  = 460
-const CARD_Y  = GAME_HEIGHT / 2 - 40
+const CARD_Y  = GAME_HEIGHT / 2 - 40  // 600
 
 export class LoseModal {
   private scene: Phaser.Scene
@@ -28,43 +28,44 @@ export class LoseModal {
     // 全屏遮罩
     const overlay = scene.add.rectangle(0, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x000000, 0.88)
 
-    // 弹窗主体（红色系）
-    const card = scene.add.rectangle(0, CARD_Y, CARD_W, CARD_H, 0x180808)
-    card.setStrokeStyle(2, 0xcc2222)
+    // 弹窗主体（深蓝色系，对齐截图）
+    const card = scene.add.rectangle(0, CARD_Y, CARD_W, CARD_H, 0x070e28)
+    card.setStrokeStyle(2, 0x2233aa)
 
     // 顶部装饰条
-    const topBar = scene.add.rectangle(0, CARD_Y - CARD_H / 2 + 16, CARD_W, 32, 0xcc2222, 0.22)
+    const topBar = scene.add.rectangle(0, CARD_Y - CARD_H / 2 + 16, CARD_W, 32, 0x2233aa, 0.25)
 
-    // 标题
-    const titleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 58, '失败了！', {
-      fontSize: '36px',
-      color: '#ff4444',
+    // 标题 "挑战失败"（白色大字）
+    const titleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 62, '挑战失败', {
+      fontSize: '38px',
+      color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
     }).setOrigin(0.5)
 
-    // 副标题
-    const subtitleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 108, '再试一次吧', {
-      fontSize: '18px',
-      color: '#aa6666',
+    // 副标题（金色）
+    const subtitleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 114, '你的体力需要加强', {
+      fontSize: '20px',
+      color: '#ffcc44',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
     }).setOrigin(0.5)
 
-    // 图标区（红色圆 + X 标志）
-    const iconY = CARD_Y - 24
-    const iconCirc = scene.add.arc(0, iconY, 54, 0, 360, false, 0x2a0808)
-    iconCirc.setStrokeStyle(3, 0xaa2222)
-    const iconX = scene.add.text(0, iconY, '✕', {
-      fontSize: '48px',
-      color: '#ff4444',
-      fontFamily: 'monospace',
-      fontStyle: 'bold',
-    }).setOrigin(0.5)
+    // 灰色小鱼轮廓图标（代表玩家鱼倒下，缺少真实素材）
+    const iconY = CARD_Y - 20
+    const fishBody = scene.add.ellipse(0, iconY, 80, 44, 0x334466, 0.75)
+    fishBody.setStrokeStyle(2, 0x556688)
+    const fishTail = scene.add.triangle(
+      0, iconY,
+      -40, -10, -40, 10, -62, 0,
+      0x334466, 0.65,
+    )
+    // 小眼睛
+    const fishEye = scene.add.arc(16, iconY - 8, 4, 0, 360, false, 0x8899aa)
 
-    // 主按钮：重新挑战
+    // 主按钮：重新挑战（绿色，对齐截图）
     const retryBtnY = CARD_Y + CARD_H / 2 - 116
-    const retryBg   = scene.add.rectangle(0, retryBtnY, 320, 68, 0xdd3333)
-    retryBg.setStrokeStyle(2, 0xff6666)
+    const retryBg   = scene.add.rectangle(0, retryBtnY, 320, 68, 0x22bb55)
+    retryBg.setStrokeStyle(2, 0x66dd88)
     const retryTxt = scene.add.text(0, retryBtnY, '重新挑战', {
       fontSize: '26px',
       color: '#ffffff',
@@ -73,8 +74,8 @@ export class LoseModal {
     }).setOrigin(0.5)
 
     retryBg.setInteractive({ useHandCursor: true })
-    retryBg.on('pointerover', () => retryBg.setFillStyle(0xff4444))
-    retryBg.on('pointerout',  () => retryBg.setFillStyle(0xdd3333))
+    retryBg.on('pointerover', () => retryBg.setFillStyle(0x33dd66))
+    retryBg.on('pointerout',  () => retryBg.setFillStyle(0x22bb55))
     retryBg.on('pointerdown', () => {
       retryBg.disableInteractive()
       exitBg.disableInteractive()
@@ -110,7 +111,13 @@ export class LoseModal {
       })
     })
 
-    this.root.add([overlay, card, topBar, titleTxt, subtitleTxt, iconCirc, iconX, retryBg, retryTxt, exitBg, exitTxt])
+    this.root.add([
+      overlay, card, topBar,
+      titleTxt, subtitleTxt,
+      fishBody, fishTail, fishEye,
+      retryBg, retryTxt,
+      exitBg, exitTxt,
+    ])
     layer.add(this.root)
   }
 
@@ -120,9 +127,7 @@ export class LoseModal {
     this.root.setScale(0.9)
     this.scene.tweens.add({
       targets: this.root,
-      alpha: 1,
-      scaleX: 1,
-      scaleY: 1,
+      alpha: 1, scaleX: 1, scaleY: 1,
       duration: 350,
       ease: 'Back.easeOut',
     })
