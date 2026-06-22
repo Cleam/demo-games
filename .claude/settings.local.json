@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(node_modules/.bin/tsc --noEmit)",
+      "Bash(node_modules/.bin/vite build *)",
+      "Bash(echo \"BUILD_EXIT:$?\")",
+      "Bash(node_modules/.bin/vite --port 5173)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/assets/images/bg.png)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/manifest.json)",
+      "Bash(kill %1)"
+    ]
+  }
+}
