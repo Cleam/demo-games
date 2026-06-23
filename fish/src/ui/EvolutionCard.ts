@@ -18,6 +18,7 @@ export class EvolutionCard {
   private portrait: Phaser.GameObjects.Image
   private titleTxt: Phaser.GameObjects.Text
   private subTxt: Phaser.GameObjects.Text
+  private actionBg: Phaser.GameObjects.Rectangle
   private actionTxt: Phaser.GameObjects.Text
   private progressBg: Phaser.GameObjects.Rectangle
   private progressFill: Phaser.GameObjects.Rectangle
@@ -84,13 +85,13 @@ export class EvolutionCard {
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
     }).setOrigin(0, 0.5)
 
+    this.actionBg = scene.add.rectangle(228, 0, 136, 48, 0xa7a4a0)
+    this.actionBg.setStrokeStyle(1.5, 0xffffff, 0.18)
     this.actionTxt = scene.add.text(228, 0, '', {
       fontSize: '22px',
       color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
-      backgroundColor: '#a7a4a0',
-      padding: { left: 16, right: 16, top: 8, bottom: 8 },
     }).setOrigin(0.5)
 
     this.progressBg = scene.add.rectangle(52, 36, 290, 8, 0x21345a, 0.92).setOrigin(0, 0.5)
@@ -103,6 +104,7 @@ export class EvolutionCard {
       this.levelTxt,
       this.titleTxt,
       this.subTxt,
+      this.actionBg,
       this.actionTxt,
       this.progressBg,
       this.progressFill,
@@ -115,7 +117,7 @@ export class EvolutionCard {
       this.bg.setFillStyle(0xf8f2de)
       this.bg.setStrokeStyle(2, 0xd1c8b0)
       this.portrait.setTint(0x000000)
-      this.actionTxt.setBackgroundColor('#9d9b99')
+      this.actionBg.setFillStyle(0x9d9b99)
       this.actionTxt.setText(this.mode === 'lose' ? `${HERO_LEVEL_INFO[this.level].levelRequired}级解锁` : '待解锁')
       this.progressBg.setVisible(this.mode === 'win')
       this.progressFill.setVisible(this.mode === 'win')
@@ -128,12 +130,12 @@ export class EvolutionCard {
     this.bg.setStrokeStyle(2, state === 'current' ? 0xffd86a : 0xe1c76f)
 
     if (this.mode === 'lose') {
-      this.actionTxt.setBackgroundColor(state === 'current' ? '#22a655' : '#9d9b99')
+      this.actionBg.setFillStyle(state === 'current' ? 0x22a655 : 0x9d9b99)
       this.actionTxt.setText(state === 'current' ? '当前等级' : '已解锁')
       this.progressBg.setVisible(false)
       this.progressFill.setVisible(false)
     } else {
-      this.actionTxt.setBackgroundColor(state === 'current' ? '#d84c48' : '#9d9b99')
+      this.actionBg.setFillStyle(state === 'current' ? 0xd84c48 : 0x9d9b99)
       this.actionTxt.setText(state === 'current' ? '已解锁' : '已达成')
       this.progressBg.setVisible(true)
       this.progressFill.setVisible(true)

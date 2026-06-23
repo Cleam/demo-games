@@ -3,16 +3,18 @@ import { GAME_WIDTH, GAME_HEIGHT } from '@/config/constants'
 import { ManifestLoader } from '@/utils/ManifestLoader'
 
 export class LoadingScene extends Phaser.Scene {
+  private readonly baseUrl = import.meta.env.BASE_URL || './'
+
   constructor() {
     super({ key: 'LoadingScene' })
   }
 
   preload(): void {
     this.setupProgressBar()
-    this.load.json('manifest', '/manifest.json')
-    this.load.image('bg', '/assets/images/bg.png')
-    this.load.image('as1', '/assets/images/as1.png')
-    this.load.image('as2', '/assets/images/as2.png')
+    this.load.json('manifest', this.resolveAssetUrl('manifest.json'))
+    this.load.image('bg', this.resolveAssetUrl('assets/images/bg.png'))
+    this.load.image('as1', this.resolveAssetUrl('assets/images/as1.png'))
+    this.load.image('as2', this.resolveAssetUrl('assets/images/as2.png'))
   }
 
   private setupProgressBar(): void {
@@ -39,5 +41,9 @@ export class LoadingScene extends Phaser.Scene {
     // 初始化 ManifestLoader，供 Actor 等模块同步读取帧路径
     ManifestLoader.init(this.cache.json.get('manifest'))
     this.scene.start('GameScene')
+  }
+
+  private resolveAssetUrl(path: string): string {
+    return `${this.baseUrl}${path}`
   }
 }

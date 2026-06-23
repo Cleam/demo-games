@@ -7,6 +7,7 @@ import { stateManager } from '@/core/StateManager'
 import { SuctionEffectPlayer } from '@/effects/SuctionEffectPlayer'
 import { Actor } from '@/game/actors/Actor'
 import { NpcWaveController } from '@/game/actors/NpcWaveController'
+import { ensureTexturesPromise } from '@/utils/DynamicTexture'
 import { ManifestLoader } from '@/utils/ManifestLoader'
 import { CtaPage } from '@/ui/CtaPage'
 import { EvolutionCard } from '@/ui/EvolutionCard'
@@ -68,18 +69,25 @@ export class GameScene extends Phaser.Scene {
     this.createTopHud()
     this.createEvolutionPanel()
     this.createOverlayUi()
-    this.spawnHero('lv0')
-    if (this.mode === 'lose') this.spawnLoseBoss()
     this.npcController = new NpcWaveController(this, this.battleLayer)
     this.suctionEffect = new SuctionEffectPlayer(this, this.effectLayer)
-
-    void this.startFlow()
+    void this.bootstrapFlow()
 
     this.events.once('shutdown', () => {
       this.npcController?.destroy()
       this.heroActor?.destroy()
       this.bossActor?.destroy()
     })
+  }
+
+  private async bootstrapFlow(): Promise<void> {
+    await this.ensureFramesReady([
+      ...ManifestLoader.getHeroFrames('lv0'),
+      ...(this.mode === 'lose' ? ManifestLoader.getBossFrames() : []),
+    ])
+    this.spawnHero('lv0')
+    if (this.mode === 'lose') this.spawnLoseBoss()
+    await this.startFlow()
   }
 
   update(_time: number, delta: number): void {
@@ -253,6 +261,10 @@ export class GameScene extends Phaser.Scene {
   }
 
   private async playWave(wave: NpcWaveId): Promise<void> {
+    await this.ensureFramesReady([
+      ...ManifestLoader.getNpcFrames(wave),
+      ...ManifestLoader.getHeroFrames(this.currentHeroLevel),
+    ])
     const heroMouth = this.heroActor?.getMouthWorldPoint() ?? { x: 300, y: 590 }
     const npcs = this.npcController?.spawnWave(wave, heroMouth) ?? []
     this.refreshEvolutionCards(0.12)
@@ -314,6 +326,7 @@ export class GameScene extends Phaser.Scene {
 
   private async upgradeHero(nextLevel: HeroLevel): Promise<void> {
     this.isUpgrading = true
+    await this.ensureFramesReady(ManifestLoader.getHeroFrames(nextLevel))
     const mouth = this.heroActor?.getMouthWorldPoint() ?? { x: 250, y: 580 }
     this.suctionEffect?.playBurst(mouth.x - 32, mouth.y + 8)
     await this.delay(260)
@@ -477,6 +490,14 @@ export class GameScene extends Phaser.Scene {
 
   private delay(ms: number): Promise<void> {
     return new Promise((resolve) => this.time.delayedCall(ms, () => resolve()))
+  }
+
+  private async ensureFramesReady(urls: string[]): Promise<void> {
+    try {
+      await ensureTexturesPromise(this, urls)
+    } catch {
+      // 维持容错，避免单帧失败直接阻断整段流程。
+    }
   }
 
   private onClaimReward(): void {

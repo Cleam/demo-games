@@ -52,7 +52,7 @@ function naturalSort(arr) {
 
 function toUrlPath(absPath) {
   const rel = absPath.slice(ROOT.length).replace(/\\/g, '/')
-  return rel.startsWith('/') ? rel : '/' + rel
+  return rel.startsWith('/') ? rel.slice(1) : rel
 }
 
 function paethPredictor(a, b, c) {

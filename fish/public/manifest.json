@@ -3,515 +3,515 @@
   "heroesByLevel": {
     "lv0": {
       "atk": [
-        "/assets/images/hero/lv0/fish_12102-atk_00.png",
-        "/assets/images/hero/lv0/fish_12102-atk_01.png",
-        "/assets/images/hero/lv0/fish_12102-atk_02.png",
-        "/assets/images/hero/lv0/fish_12102-atk_03.png",
-        "/assets/images/hero/lv0/fish_12102-atk_04.png",
-        "/assets/images/hero/lv0/fish_12102-atk_05.png",
-        "/assets/images/hero/lv0/fish_12102-atk_06.png",
-        "/assets/images/hero/lv0/fish_12102-atk_07.png",
-        "/assets/images/hero/lv0/fish_12102-atk_08.png",
-        "/assets/images/hero/lv0/fish_12102-atk_09.png",
-        "/assets/images/hero/lv0/fish_12102-atk_10.png",
-        "/assets/images/hero/lv0/fish_12102-atk_11.png",
-        "/assets/images/hero/lv0/fish_12102-atk_12.png",
-        "/assets/images/hero/lv0/fish_12102-atk_13.png",
-        "/assets/images/hero/lv0/fish_12102-atk_14.png",
-        "/assets/images/hero/lv0/fish_12102-atk_15.png",
-        "/assets/images/hero/lv0/fish_12102-atk_16.png",
-        "/assets/images/hero/lv0/fish_12102-atk_17.png",
-        "/assets/images/hero/lv0/fish_12102-atk_18.png",
-        "/assets/images/hero/lv0/fish_12102-atk_19.png",
-        "/assets/images/hero/lv0/fish_12102-atk_20.png",
-        "/assets/images/hero/lv0/fish_12102-atk_21.png"
+        "assets/images/hero/lv0/fish_12102-atk_00.png",
+        "assets/images/hero/lv0/fish_12102-atk_01.png",
+        "assets/images/hero/lv0/fish_12102-atk_02.png",
+        "assets/images/hero/lv0/fish_12102-atk_03.png",
+        "assets/images/hero/lv0/fish_12102-atk_04.png",
+        "assets/images/hero/lv0/fish_12102-atk_05.png",
+        "assets/images/hero/lv0/fish_12102-atk_06.png",
+        "assets/images/hero/lv0/fish_12102-atk_07.png",
+        "assets/images/hero/lv0/fish_12102-atk_08.png",
+        "assets/images/hero/lv0/fish_12102-atk_09.png",
+        "assets/images/hero/lv0/fish_12102-atk_10.png",
+        "assets/images/hero/lv0/fish_12102-atk_11.png",
+        "assets/images/hero/lv0/fish_12102-atk_12.png",
+        "assets/images/hero/lv0/fish_12102-atk_13.png",
+        "assets/images/hero/lv0/fish_12102-atk_14.png",
+        "assets/images/hero/lv0/fish_12102-atk_15.png",
+        "assets/images/hero/lv0/fish_12102-atk_16.png",
+        "assets/images/hero/lv0/fish_12102-atk_17.png",
+        "assets/images/hero/lv0/fish_12102-atk_18.png",
+        "assets/images/hero/lv0/fish_12102-atk_19.png",
+        "assets/images/hero/lv0/fish_12102-atk_20.png",
+        "assets/images/hero/lv0/fish_12102-atk_21.png"
       ]
     },
     "lv30": {
       "atk": [
-        "/assets/images/hero/lv30/fish_14104-atk_00.png",
-        "/assets/images/hero/lv30/fish_14104-atk_01.png",
-        "/assets/images/hero/lv30/fish_14104-atk_02.png",
-        "/assets/images/hero/lv30/fish_14104-atk_03.png",
-        "/assets/images/hero/lv30/fish_14104-atk_04.png",
-        "/assets/images/hero/lv30/fish_14104-atk_05.png",
-        "/assets/images/hero/lv30/fish_14104-atk_06.png",
-        "/assets/images/hero/lv30/fish_14104-atk_07.png",
-        "/assets/images/hero/lv30/fish_14104-atk_08.png",
-        "/assets/images/hero/lv30/fish_14104-atk_09.png",
-        "/assets/images/hero/lv30/fish_14104-atk_10.png",
-        "/assets/images/hero/lv30/fish_14104-atk_11.png",
-        "/assets/images/hero/lv30/fish_14104-atk_12.png",
-        "/assets/images/hero/lv30/fish_14104-atk_13.png",
-        "/assets/images/hero/lv30/fish_14104-atk_14.png",
-        "/assets/images/hero/lv30/fish_14104-atk_15.png",
-        "/assets/images/hero/lv30/fish_14104-atk_16.png",
-        "/assets/images/hero/lv30/fish_14104-atk_17.png",
-        "/assets/images/hero/lv30/fish_14104-atk_18.png",
-        "/assets/images/hero/lv30/fish_14104-atk_19.png",
-        "/assets/images/hero/lv30/fish_14104-atk_20.png",
-        "/assets/images/hero/lv30/fish_14104-atk_21.png",
-        "/assets/images/hero/lv30/fish_14104-atk_22.png"
+        "assets/images/hero/lv30/fish_14104-atk_00.png",
+        "assets/images/hero/lv30/fish_14104-atk_01.png",
+        "assets/images/hero/lv30/fish_14104-atk_02.png",
+        "assets/images/hero/lv30/fish_14104-atk_03.png",
+        "assets/images/hero/lv30/fish_14104-atk_04.png",
+        "assets/images/hero/lv30/fish_14104-atk_05.png",
+        "assets/images/hero/lv30/fish_14104-atk_06.png",
+        "assets/images/hero/lv30/fish_14104-atk_07.png",
+        "assets/images/hero/lv30/fish_14104-atk_08.png",
+        "assets/images/hero/lv30/fish_14104-atk_09.png",
+        "assets/images/hero/lv30/fish_14104-atk_10.png",
+        "assets/images/hero/lv30/fish_14104-atk_11.png",
+        "assets/images/hero/lv30/fish_14104-atk_12.png",
+        "assets/images/hero/lv30/fish_14104-atk_13.png",
+        "assets/images/hero/lv30/fish_14104-atk_14.png",
+        "assets/images/hero/lv30/fish_14104-atk_15.png",
+        "assets/images/hero/lv30/fish_14104-atk_16.png",
+        "assets/images/hero/lv30/fish_14104-atk_17.png",
+        "assets/images/hero/lv30/fish_14104-atk_18.png",
+        "assets/images/hero/lv30/fish_14104-atk_19.png",
+        "assets/images/hero/lv30/fish_14104-atk_20.png",
+        "assets/images/hero/lv30/fish_14104-atk_21.png",
+        "assets/images/hero/lv30/fish_14104-atk_22.png"
       ]
     },
     "lv60": {
       "atk": [
-        "/assets/images/hero/lv60/fish_15102-atk_00.png",
-        "/assets/images/hero/lv60/fish_15102-atk_01.png",
-        "/assets/images/hero/lv60/fish_15102-atk_02.png",
-        "/assets/images/hero/lv60/fish_15102-atk_03.png",
-        "/assets/images/hero/lv60/fish_15102-atk_04.png",
-        "/assets/images/hero/lv60/fish_15102-atk_05.png",
-        "/assets/images/hero/lv60/fish_15102-atk_06.png",
-        "/assets/images/hero/lv60/fish_15102-atk_07.png",
-        "/assets/images/hero/lv60/fish_15102-atk_08.png",
-        "/assets/images/hero/lv60/fish_15102-atk_09.png",
-        "/assets/images/hero/lv60/fish_15102-atk_10.png",
-        "/assets/images/hero/lv60/fish_15102-atk_11.png",
-        "/assets/images/hero/lv60/fish_15102-atk_12.png",
-        "/assets/images/hero/lv60/fish_15102-atk_13.png",
-        "/assets/images/hero/lv60/fish_15102-atk_14.png",
-        "/assets/images/hero/lv60/fish_15102-atk_15.png",
-        "/assets/images/hero/lv60/fish_15102-atk_16.png",
-        "/assets/images/hero/lv60/fish_15102-atk_17.png",
-        "/assets/images/hero/lv60/fish_15102-atk_18.png",
-        "/assets/images/hero/lv60/fish_15102-atk_19.png",
-        "/assets/images/hero/lv60/fish_15102-atk_20.png",
-        "/assets/images/hero/lv60/fish_15102-atk_21.png",
-        "/assets/images/hero/lv60/fish_15102-atk_22.png"
+        "assets/images/hero/lv60/fish_15102-atk_00.png",
+        "assets/images/hero/lv60/fish_15102-atk_01.png",
+        "assets/images/hero/lv60/fish_15102-atk_02.png",
+        "assets/images/hero/lv60/fish_15102-atk_03.png",
+        "assets/images/hero/lv60/fish_15102-atk_04.png",
+        "assets/images/hero/lv60/fish_15102-atk_05.png",
+        "assets/images/hero/lv60/fish_15102-atk_06.png",
+        "assets/images/hero/lv60/fish_15102-atk_07.png",
+        "assets/images/hero/lv60/fish_15102-atk_08.png",
+        "assets/images/hero/lv60/fish_15102-atk_09.png",
+        "assets/images/hero/lv60/fish_15102-atk_10.png",
+        "assets/images/hero/lv60/fish_15102-atk_11.png",
+        "assets/images/hero/lv60/fish_15102-atk_12.png",
+        "assets/images/hero/lv60/fish_15102-atk_13.png",
+        "assets/images/hero/lv60/fish_15102-atk_14.png",
+        "assets/images/hero/lv60/fish_15102-atk_15.png",
+        "assets/images/hero/lv60/fish_15102-atk_16.png",
+        "assets/images/hero/lv60/fish_15102-atk_17.png",
+        "assets/images/hero/lv60/fish_15102-atk_18.png",
+        "assets/images/hero/lv60/fish_15102-atk_19.png",
+        "assets/images/hero/lv60/fish_15102-atk_20.png",
+        "assets/images/hero/lv60/fish_15102-atk_21.png",
+        "assets/images/hero/lv60/fish_15102-atk_22.png"
       ]
     },
     "lv90": {
       "atk": [
-        "/assets/images/hero/lv90/fish_15101-atk_00.png",
-        "/assets/images/hero/lv90/fish_15101-atk_01.png",
-        "/assets/images/hero/lv90/fish_15101-atk_02.png",
-        "/assets/images/hero/lv90/fish_15101-atk_03.png",
-        "/assets/images/hero/lv90/fish_15101-atk_04.png",
-        "/assets/images/hero/lv90/fish_15101-atk_05.png",
-        "/assets/images/hero/lv90/fish_15101-atk_06.png",
-        "/assets/images/hero/lv90/fish_15101-atk_07.png",
-        "/assets/images/hero/lv90/fish_15101-atk_08.png",
-        "/assets/images/hero/lv90/fish_15101-atk_09.png",
-        "/assets/images/hero/lv90/fish_15101-atk_10.png",
-        "/assets/images/hero/lv90/fish_15101-atk_11.png",
-        "/assets/images/hero/lv90/fish_15101-atk_12.png",
-        "/assets/images/hero/lv90/fish_15101-atk_13.png",
-        "/assets/images/hero/lv90/fish_15101-atk_14.png",
-        "/assets/images/hero/lv90/fish_15101-atk_15.png",
-        "/assets/images/hero/lv90/fish_15101-atk_16.png",
-        "/assets/images/hero/lv90/fish_15101-atk_17.png",
-        "/assets/images/hero/lv90/fish_15101-atk_18.png",
-        "/assets/images/hero/lv90/fish_15101-atk_19.png",
-        "/assets/images/hero/lv90/fish_15101-atk_20.png",
-        "/assets/images/hero/lv90/fish_15101-atk_21.png",
-        "/assets/images/hero/lv90/fish_15101-atk_22.png"
+        "assets/images/hero/lv90/fish_15101-atk_00.png",
+        "assets/images/hero/lv90/fish_15101-atk_01.png",
+        "assets/images/hero/lv90/fish_15101-atk_02.png",
+        "assets/images/hero/lv90/fish_15101-atk_03.png",
+        "assets/images/hero/lv90/fish_15101-atk_04.png",
+        "assets/images/hero/lv90/fish_15101-atk_05.png",
+        "assets/images/hero/lv90/fish_15101-atk_06.png",
+        "assets/images/hero/lv90/fish_15101-atk_07.png",
+        "assets/images/hero/lv90/fish_15101-atk_08.png",
+        "assets/images/hero/lv90/fish_15101-atk_09.png",
+        "assets/images/hero/lv90/fish_15101-atk_10.png",
+        "assets/images/hero/lv90/fish_15101-atk_11.png",
+        "assets/images/hero/lv90/fish_15101-atk_12.png",
+        "assets/images/hero/lv90/fish_15101-atk_13.png",
+        "assets/images/hero/lv90/fish_15101-atk_14.png",
+        "assets/images/hero/lv90/fish_15101-atk_15.png",
+        "assets/images/hero/lv90/fish_15101-atk_16.png",
+        "assets/images/hero/lv90/fish_15101-atk_17.png",
+        "assets/images/hero/lv90/fish_15101-atk_18.png",
+        "assets/images/hero/lv90/fish_15101-atk_19.png",
+        "assets/images/hero/lv90/fish_15101-atk_20.png",
+        "assets/images/hero/lv90/fish_15101-atk_21.png",
+        "assets/images/hero/lv90/fish_15101-atk_22.png"
       ]
     },
     "lv120": {
       "atk": [
-        "/assets/images/hero/lv120/fish_151011-atk_00.png",
-        "/assets/images/hero/lv120/fish_151011-atk_01.png",
-        "/assets/images/hero/lv120/fish_151011-atk_02.png",
-        "/assets/images/hero/lv120/fish_151011-atk_03.png",
-        "/assets/images/hero/lv120/fish_151011-atk_04.png",
-        "/assets/images/hero/lv120/fish_151011-atk_05.png",
-        "/assets/images/hero/lv120/fish_151011-atk_06.png",
-        "/assets/images/hero/lv120/fish_151011-atk_07.png",
-        "/assets/images/hero/lv120/fish_151011-atk_08.png",
-        "/assets/images/hero/lv120/fish_151011-atk_09.png",
-        "/assets/images/hero/lv120/fish_151011-atk_10.png",
-        "/assets/images/hero/lv120/fish_151011-atk_11.png",
-        "/assets/images/hero/lv120/fish_151011-atk_12.png",
-        "/assets/images/hero/lv120/fish_151011-atk_13.png",
-        "/assets/images/hero/lv120/fish_151011-atk_14.png",
-        "/assets/images/hero/lv120/fish_151011-atk_15.png",
-        "/assets/images/hero/lv120/fish_151011-atk_16.png",
-        "/assets/images/hero/lv120/fish_151011-atk_17.png",
-        "/assets/images/hero/lv120/fish_151011-atk_18.png",
-        "/assets/images/hero/lv120/fish_151011-atk_19.png",
-        "/assets/images/hero/lv120/fish_151011-atk_20.png",
-        "/assets/images/hero/lv120/fish_151011-atk_21.png",
-        "/assets/images/hero/lv120/fish_151011-atk_22.png"
+        "assets/images/hero/lv120/fish_151011-atk_00.png",
+        "assets/images/hero/lv120/fish_151011-atk_01.png",
+        "assets/images/hero/lv120/fish_151011-atk_02.png",
+        "assets/images/hero/lv120/fish_151011-atk_03.png",
+        "assets/images/hero/lv120/fish_151011-atk_04.png",
+        "assets/images/hero/lv120/fish_151011-atk_05.png",
+        "assets/images/hero/lv120/fish_151011-atk_06.png",
+        "assets/images/hero/lv120/fish_151011-atk_07.png",
+        "assets/images/hero/lv120/fish_151011-atk_08.png",
+        "assets/images/hero/lv120/fish_151011-atk_09.png",
+        "assets/images/hero/lv120/fish_151011-atk_10.png",
+        "assets/images/hero/lv120/fish_151011-atk_11.png",
+        "assets/images/hero/lv120/fish_151011-atk_12.png",
+        "assets/images/hero/lv120/fish_151011-atk_13.png",
+        "assets/images/hero/lv120/fish_151011-atk_14.png",
+        "assets/images/hero/lv120/fish_151011-atk_15.png",
+        "assets/images/hero/lv120/fish_151011-atk_16.png",
+        "assets/images/hero/lv120/fish_151011-atk_17.png",
+        "assets/images/hero/lv120/fish_151011-atk_18.png",
+        "assets/images/hero/lv120/fish_151011-atk_19.png",
+        "assets/images/hero/lv120/fish_151011-atk_20.png",
+        "assets/images/hero/lv120/fish_151011-atk_21.png",
+        "assets/images/hero/lv120/fish_151011-atk_22.png"
       ]
     }
   },
   "heroEnd": [
-    "/assets/images/hero/end/fish_151011-idle_00.png",
-    "/assets/images/hero/end/fish_151011-idle_01.png",
-    "/assets/images/hero/end/fish_151011-idle_02.png",
-    "/assets/images/hero/end/fish_151011-idle_03.png",
-    "/assets/images/hero/end/fish_151011-idle_04.png",
-    "/assets/images/hero/end/fish_151011-idle_05.png",
-    "/assets/images/hero/end/fish_151011-idle_06.png",
-    "/assets/images/hero/end/fish_151011-idle_07.png",
-    "/assets/images/hero/end/fish_151011-idle_08.png",
-    "/assets/images/hero/end/fish_151011-idle_09.png",
-    "/assets/images/hero/end/fish_151011-idle_10.png",
-    "/assets/images/hero/end/fish_151011-idle_11.png",
-    "/assets/images/hero/end/fish_151011-idle_12.png",
-    "/assets/images/hero/end/fish_151011-idle_13.png",
-    "/assets/images/hero/end/fish_151011-idle_14.png",
-    "/assets/images/hero/end/fish_151011-idle_15.png",
-    "/assets/images/hero/end/fish_151011-idle_16.png",
-    "/assets/images/hero/end/fish_151011-idle_17.png",
-    "/assets/images/hero/end/fish_151011-idle_18.png",
-    "/assets/images/hero/end/fish_151011-idle_19.png",
-    "/assets/images/hero/end/fish_151011-idle_20.png",
-    "/assets/images/hero/end/fish_151011-idle_21.png",
-    "/assets/images/hero/end/fish_151011-idle_22.png",
-    "/assets/images/hero/end/fish_151011-idle_23.png",
-    "/assets/images/hero/end/fish_151011-idle_24.png",
-    "/assets/images/hero/end/fish_151011-idle_25.png",
-    "/assets/images/hero/end/fish_151011-idle_26.png",
-    "/assets/images/hero/end/fish_151011-idle_27.png",
-    "/assets/images/hero/end/fish_151011-idle_28.png",
-    "/assets/images/hero/end/fish_151011-idle_29.png"
+    "assets/images/hero/end/fish_151011-idle_00.png",
+    "assets/images/hero/end/fish_151011-idle_01.png",
+    "assets/images/hero/end/fish_151011-idle_02.png",
+    "assets/images/hero/end/fish_151011-idle_03.png",
+    "assets/images/hero/end/fish_151011-idle_04.png",
+    "assets/images/hero/end/fish_151011-idle_05.png",
+    "assets/images/hero/end/fish_151011-idle_06.png",
+    "assets/images/hero/end/fish_151011-idle_07.png",
+    "assets/images/hero/end/fish_151011-idle_08.png",
+    "assets/images/hero/end/fish_151011-idle_09.png",
+    "assets/images/hero/end/fish_151011-idle_10.png",
+    "assets/images/hero/end/fish_151011-idle_11.png",
+    "assets/images/hero/end/fish_151011-idle_12.png",
+    "assets/images/hero/end/fish_151011-idle_13.png",
+    "assets/images/hero/end/fish_151011-idle_14.png",
+    "assets/images/hero/end/fish_151011-idle_15.png",
+    "assets/images/hero/end/fish_151011-idle_16.png",
+    "assets/images/hero/end/fish_151011-idle_17.png",
+    "assets/images/hero/end/fish_151011-idle_18.png",
+    "assets/images/hero/end/fish_151011-idle_19.png",
+    "assets/images/hero/end/fish_151011-idle_20.png",
+    "assets/images/hero/end/fish_151011-idle_21.png",
+    "assets/images/hero/end/fish_151011-idle_22.png",
+    "assets/images/hero/end/fish_151011-idle_23.png",
+    "assets/images/hero/end/fish_151011-idle_24.png",
+    "assets/images/hero/end/fish_151011-idle_25.png",
+    "assets/images/hero/end/fish_151011-idle_26.png",
+    "assets/images/hero/end/fish_151011-idle_27.png",
+    "assets/images/hero/end/fish_151011-idle_28.png",
+    "assets/images/hero/end/fish_151011-idle_29.png"
   ],
   "npcWaves": {
     "01": {
       "idle": [
-        "/assets/images/npc/01/fish_13203-idle_00.png",
-        "/assets/images/npc/01/fish_13203-idle_01.png",
-        "/assets/images/npc/01/fish_13203-idle_02.png",
-        "/assets/images/npc/01/fish_13203-idle_03.png",
-        "/assets/images/npc/01/fish_13203-idle_04.png",
-        "/assets/images/npc/01/fish_13203-idle_05.png",
-        "/assets/images/npc/01/fish_13203-idle_06.png",
-        "/assets/images/npc/01/fish_13203-idle_07.png",
-        "/assets/images/npc/01/fish_13203-idle_08.png",
-        "/assets/images/npc/01/fish_13203-idle_09.png",
-        "/assets/images/npc/01/fish_13203-idle_10.png",
-        "/assets/images/npc/01/fish_13203-idle_11.png",
-        "/assets/images/npc/01/fish_13203-idle_12.png",
-        "/assets/images/npc/01/fish_13203-idle_13.png",
-        "/assets/images/npc/01/fish_13203-idle_14.png",
-        "/assets/images/npc/01/fish_13203-idle_15.png",
-        "/assets/images/npc/01/fish_13203-idle_16.png",
-        "/assets/images/npc/01/fish_13203-idle_17.png",
-        "/assets/images/npc/01/fish_13203-idle_18.png",
-        "/assets/images/npc/01/fish_13203-idle_19.png",
-        "/assets/images/npc/01/fish_13203-idle_20.png",
-        "/assets/images/npc/01/fish_13203-idle_21.png",
-        "/assets/images/npc/01/fish_13203-idle_22.png",
-        "/assets/images/npc/01/fish_13203-idle_23.png",
-        "/assets/images/npc/01/fish_13203-idle_24.png",
-        "/assets/images/npc/01/fish_13203-idle_25.png",
-        "/assets/images/npc/01/fish_13203-idle_26.png",
-        "/assets/images/npc/01/fish_13203-idle_27.png",
-        "/assets/images/npc/01/fish_13203-idle_28.png",
-        "/assets/images/npc/01/fish_13203-idle_29.png",
-        "/assets/images/npc/01/fish_13203-idle_30.png",
-        "/assets/images/npc/01/fish_13203-idle_31.png",
-        "/assets/images/npc/01/fish_13203-idle_32.png",
-        "/assets/images/npc/01/fish_13203-idle_33.png",
-        "/assets/images/npc/01/fish_13203-idle_34.png",
-        "/assets/images/npc/01/fish_13203-idle_35.png",
-        "/assets/images/npc/01/fish_13203-idle_36.png",
-        "/assets/images/npc/01/fish_13203-idle_37.png",
-        "/assets/images/npc/01/fish_13203-idle_38.png",
-        "/assets/images/npc/01/fish_13203-idle_39.png",
-        "/assets/images/npc/01/fish_13203-idle_40.png",
-        "/assets/images/npc/01/fish_13203-idle_41.png",
-        "/assets/images/npc/01/fish_13203-idle_42.png",
-        "/assets/images/npc/01/fish_13203-idle_43.png",
-        "/assets/images/npc/01/fish_13203-idle_44.png",
-        "/assets/images/npc/01/fish_13203-idle_45.png",
-        "/assets/images/npc/01/fish_13203-idle_46.png",
-        "/assets/images/npc/01/fish_13203-idle_47.png",
-        "/assets/images/npc/01/fish_13203-idle_48.png",
-        "/assets/images/npc/01/fish_13203-idle_49.png",
-        "/assets/images/npc/01/fish_13203-idle_50.png",
-        "/assets/images/npc/01/fish_13203-idle_51.png",
-        "/assets/images/npc/01/fish_13203-idle_52.png",
-        "/assets/images/npc/01/fish_13203-idle_53.png",
-        "/assets/images/npc/01/fish_13203-idle_54.png",
-        "/assets/images/npc/01/fish_13203-idle_55.png",
-        "/assets/images/npc/01/fish_13203-idle_56.png",
-        "/assets/images/npc/01/fish_13203-idle_57.png",
-        "/assets/images/npc/01/fish_13203-idle_58.png",
-        "/assets/images/npc/01/fish_13203-idle_59.png"
+        "assets/images/npc/01/fish_13203-idle_00.png",
+        "assets/images/npc/01/fish_13203-idle_01.png",
+        "assets/images/npc/01/fish_13203-idle_02.png",
+        "assets/images/npc/01/fish_13203-idle_03.png",
+        "assets/images/npc/01/fish_13203-idle_04.png",
+        "assets/images/npc/01/fish_13203-idle_05.png",
+        "assets/images/npc/01/fish_13203-idle_06.png",
+        "assets/images/npc/01/fish_13203-idle_07.png",
+        "assets/images/npc/01/fish_13203-idle_08.png",
+        "assets/images/npc/01/fish_13203-idle_09.png",
+        "assets/images/npc/01/fish_13203-idle_10.png",
+        "assets/images/npc/01/fish_13203-idle_11.png",
+        "assets/images/npc/01/fish_13203-idle_12.png",
+        "assets/images/npc/01/fish_13203-idle_13.png",
+        "assets/images/npc/01/fish_13203-idle_14.png",
+        "assets/images/npc/01/fish_13203-idle_15.png",
+        "assets/images/npc/01/fish_13203-idle_16.png",
+        "assets/images/npc/01/fish_13203-idle_17.png",
+        "assets/images/npc/01/fish_13203-idle_18.png",
+        "assets/images/npc/01/fish_13203-idle_19.png",
+        "assets/images/npc/01/fish_13203-idle_20.png",
+        "assets/images/npc/01/fish_13203-idle_21.png",
+        "assets/images/npc/01/fish_13203-idle_22.png",
+        "assets/images/npc/01/fish_13203-idle_23.png",
+        "assets/images/npc/01/fish_13203-idle_24.png",
+        "assets/images/npc/01/fish_13203-idle_25.png",
+        "assets/images/npc/01/fish_13203-idle_26.png",
+        "assets/images/npc/01/fish_13203-idle_27.png",
+        "assets/images/npc/01/fish_13203-idle_28.png",
+        "assets/images/npc/01/fish_13203-idle_29.png",
+        "assets/images/npc/01/fish_13203-idle_30.png",
+        "assets/images/npc/01/fish_13203-idle_31.png",
+        "assets/images/npc/01/fish_13203-idle_32.png",
+        "assets/images/npc/01/fish_13203-idle_33.png",
+        "assets/images/npc/01/fish_13203-idle_34.png",
+        "assets/images/npc/01/fish_13203-idle_35.png",
+        "assets/images/npc/01/fish_13203-idle_36.png",
+        "assets/images/npc/01/fish_13203-idle_37.png",
+        "assets/images/npc/01/fish_13203-idle_38.png",
+        "assets/images/npc/01/fish_13203-idle_39.png",
+        "assets/images/npc/01/fish_13203-idle_40.png",
+        "assets/images/npc/01/fish_13203-idle_41.png",
+        "assets/images/npc/01/fish_13203-idle_42.png",
+        "assets/images/npc/01/fish_13203-idle_43.png",
+        "assets/images/npc/01/fish_13203-idle_44.png",
+        "assets/images/npc/01/fish_13203-idle_45.png",
+        "assets/images/npc/01/fish_13203-idle_46.png",
+        "assets/images/npc/01/fish_13203-idle_47.png",
+        "assets/images/npc/01/fish_13203-idle_48.png",
+        "assets/images/npc/01/fish_13203-idle_49.png",
+        "assets/images/npc/01/fish_13203-idle_50.png",
+        "assets/images/npc/01/fish_13203-idle_51.png",
+        "assets/images/npc/01/fish_13203-idle_52.png",
+        "assets/images/npc/01/fish_13203-idle_53.png",
+        "assets/images/npc/01/fish_13203-idle_54.png",
+        "assets/images/npc/01/fish_13203-idle_55.png",
+        "assets/images/npc/01/fish_13203-idle_56.png",
+        "assets/images/npc/01/fish_13203-idle_57.png",
+        "assets/images/npc/01/fish_13203-idle_58.png",
+        "assets/images/npc/01/fish_13203-idle_59.png"
       ]
     },
     "02": {
       "idle": [
-        "/assets/images/npc/02/fish_11002-idle_00.png",
-        "/assets/images/npc/02/fish_11002-idle_01.png",
-        "/assets/images/npc/02/fish_11002-idle_02.png",
-        "/assets/images/npc/02/fish_11002-idle_03.png",
-        "/assets/images/npc/02/fish_11002-idle_04.png",
-        "/assets/images/npc/02/fish_11002-idle_05.png",
-        "/assets/images/npc/02/fish_11002-idle_06.png",
-        "/assets/images/npc/02/fish_11002-idle_07.png",
-        "/assets/images/npc/02/fish_11002-idle_08.png",
-        "/assets/images/npc/02/fish_11002-idle_09.png",
-        "/assets/images/npc/02/fish_11002-idle_10.png",
-        "/assets/images/npc/02/fish_11002-idle_11.png",
-        "/assets/images/npc/02/fish_11002-idle_12.png",
-        "/assets/images/npc/02/fish_11002-idle_13.png",
-        "/assets/images/npc/02/fish_11002-idle_14.png",
-        "/assets/images/npc/02/fish_11002-idle_15.png",
-        "/assets/images/npc/02/fish_11002-idle_16.png",
-        "/assets/images/npc/02/fish_11002-idle_17.png",
-        "/assets/images/npc/02/fish_11002-idle_18.png",
-        "/assets/images/npc/02/fish_11002-idle_19.png",
-        "/assets/images/npc/02/fish_11002-idle_20.png",
-        "/assets/images/npc/02/fish_11002-idle_21.png",
-        "/assets/images/npc/02/fish_11002-idle_22.png",
-        "/assets/images/npc/02/fish_11002-idle_23.png",
-        "/assets/images/npc/02/fish_11002-idle_24.png",
-        "/assets/images/npc/02/fish_11002-idle_25.png",
-        "/assets/images/npc/02/fish_11002-idle_26.png",
-        "/assets/images/npc/02/fish_11002-idle_27.png",
-        "/assets/images/npc/02/fish_11002-idle_28.png",
-        "/assets/images/npc/02/fish_11002-idle_29.png",
-        "/assets/images/npc/02/fish_11002-idle_30.png",
-        "/assets/images/npc/02/fish_11002-idle_31.png",
-        "/assets/images/npc/02/fish_11002-idle_32.png",
-        "/assets/images/npc/02/fish_11002-idle_33.png",
-        "/assets/images/npc/02/fish_11002-idle_34.png",
-        "/assets/images/npc/02/fish_11002-idle_35.png",
-        "/assets/images/npc/02/fish_11002-idle_36.png",
-        "/assets/images/npc/02/fish_11002-idle_37.png",
-        "/assets/images/npc/02/fish_11002-idle_38.png",
-        "/assets/images/npc/02/fish_11002-idle_39.png",
-        "/assets/images/npc/02/fish_11002-idle_40.png",
-        "/assets/images/npc/02/fish_11002-idle_41.png",
-        "/assets/images/npc/02/fish_11002-idle_42.png",
-        "/assets/images/npc/02/fish_11002-idle_43.png",
-        "/assets/images/npc/02/fish_11002-idle_44.png",
-        "/assets/images/npc/02/fish_11002-idle_45.png",
-        "/assets/images/npc/02/fish_11002-idle_46.png",
-        "/assets/images/npc/02/fish_11002-idle_47.png",
-        "/assets/images/npc/02/fish_11002-idle_48.png",
-        "/assets/images/npc/02/fish_11002-idle_49.png",
-        "/assets/images/npc/02/fish_11002-idle_50.png",
-        "/assets/images/npc/02/fish_11002-idle_51.png",
-        "/assets/images/npc/02/fish_11002-idle_52.png",
-        "/assets/images/npc/02/fish_11002-idle_53.png",
-        "/assets/images/npc/02/fish_11002-idle_54.png",
-        "/assets/images/npc/02/fish_11002-idle_55.png",
-        "/assets/images/npc/02/fish_11002-idle_56.png",
-        "/assets/images/npc/02/fish_11002-idle_57.png",
-        "/assets/images/npc/02/fish_11002-idle_58.png",
-        "/assets/images/npc/02/fish_11002-idle_59.png"
+        "assets/images/npc/02/fish_11002-idle_00.png",
+        "assets/images/npc/02/fish_11002-idle_01.png",
+        "assets/images/npc/02/fish_11002-idle_02.png",
+        "assets/images/npc/02/fish_11002-idle_03.png",
+        "assets/images/npc/02/fish_11002-idle_04.png",
+        "assets/images/npc/02/fish_11002-idle_05.png",
+        "assets/images/npc/02/fish_11002-idle_06.png",
+        "assets/images/npc/02/fish_11002-idle_07.png",
+        "assets/images/npc/02/fish_11002-idle_08.png",
+        "assets/images/npc/02/fish_11002-idle_09.png",
+        "assets/images/npc/02/fish_11002-idle_10.png",
+        "assets/images/npc/02/fish_11002-idle_11.png",
+        "assets/images/npc/02/fish_11002-idle_12.png",
+        "assets/images/npc/02/fish_11002-idle_13.png",
+        "assets/images/npc/02/fish_11002-idle_14.png",
+        "assets/images/npc/02/fish_11002-idle_15.png",
+        "assets/images/npc/02/fish_11002-idle_16.png",
+        "assets/images/npc/02/fish_11002-idle_17.png",
+        "assets/images/npc/02/fish_11002-idle_18.png",
+        "assets/images/npc/02/fish_11002-idle_19.png",
+        "assets/images/npc/02/fish_11002-idle_20.png",
+        "assets/images/npc/02/fish_11002-idle_21.png",
+        "assets/images/npc/02/fish_11002-idle_22.png",
+        "assets/images/npc/02/fish_11002-idle_23.png",
+        "assets/images/npc/02/fish_11002-idle_24.png",
+        "assets/images/npc/02/fish_11002-idle_25.png",
+        "assets/images/npc/02/fish_11002-idle_26.png",
+        "assets/images/npc/02/fish_11002-idle_27.png",
+        "assets/images/npc/02/fish_11002-idle_28.png",
+        "assets/images/npc/02/fish_11002-idle_29.png",
+        "assets/images/npc/02/fish_11002-idle_30.png",
+        "assets/images/npc/02/fish_11002-idle_31.png",
+        "assets/images/npc/02/fish_11002-idle_32.png",
+        "assets/images/npc/02/fish_11002-idle_33.png",
+        "assets/images/npc/02/fish_11002-idle_34.png",
+        "assets/images/npc/02/fish_11002-idle_35.png",
+        "assets/images/npc/02/fish_11002-idle_36.png",
+        "assets/images/npc/02/fish_11002-idle_37.png",
+        "assets/images/npc/02/fish_11002-idle_38.png",
+        "assets/images/npc/02/fish_11002-idle_39.png",
+        "assets/images/npc/02/fish_11002-idle_40.png",
+        "assets/images/npc/02/fish_11002-idle_41.png",
+        "assets/images/npc/02/fish_11002-idle_42.png",
+        "assets/images/npc/02/fish_11002-idle_43.png",
+        "assets/images/npc/02/fish_11002-idle_44.png",
+        "assets/images/npc/02/fish_11002-idle_45.png",
+        "assets/images/npc/02/fish_11002-idle_46.png",
+        "assets/images/npc/02/fish_11002-idle_47.png",
+        "assets/images/npc/02/fish_11002-idle_48.png",
+        "assets/images/npc/02/fish_11002-idle_49.png",
+        "assets/images/npc/02/fish_11002-idle_50.png",
+        "assets/images/npc/02/fish_11002-idle_51.png",
+        "assets/images/npc/02/fish_11002-idle_52.png",
+        "assets/images/npc/02/fish_11002-idle_53.png",
+        "assets/images/npc/02/fish_11002-idle_54.png",
+        "assets/images/npc/02/fish_11002-idle_55.png",
+        "assets/images/npc/02/fish_11002-idle_56.png",
+        "assets/images/npc/02/fish_11002-idle_57.png",
+        "assets/images/npc/02/fish_11002-idle_58.png",
+        "assets/images/npc/02/fish_11002-idle_59.png"
       ]
     },
     "03": {
       "idle": [
-        "/assets/images/npc/03/fish_11003-idle_00.png",
-        "/assets/images/npc/03/fish_11003-idle_01.png",
-        "/assets/images/npc/03/fish_11003-idle_02.png",
-        "/assets/images/npc/03/fish_11003-idle_03.png",
-        "/assets/images/npc/03/fish_11003-idle_04.png",
-        "/assets/images/npc/03/fish_11003-idle_05.png",
-        "/assets/images/npc/03/fish_11003-idle_06.png",
-        "/assets/images/npc/03/fish_11003-idle_07.png",
-        "/assets/images/npc/03/fish_11003-idle_08.png",
-        "/assets/images/npc/03/fish_11003-idle_09.png",
-        "/assets/images/npc/03/fish_11003-idle_10.png",
-        "/assets/images/npc/03/fish_11003-idle_11.png",
-        "/assets/images/npc/03/fish_11003-idle_12.png",
-        "/assets/images/npc/03/fish_11003-idle_13.png",
-        "/assets/images/npc/03/fish_11003-idle_14.png",
-        "/assets/images/npc/03/fish_11003-idle_15.png",
-        "/assets/images/npc/03/fish_11003-idle_16.png",
-        "/assets/images/npc/03/fish_11003-idle_17.png",
-        "/assets/images/npc/03/fish_11003-idle_18.png",
-        "/assets/images/npc/03/fish_11003-idle_19.png",
-        "/assets/images/npc/03/fish_11003-idle_20.png",
-        "/assets/images/npc/03/fish_11003-idle_21.png",
-        "/assets/images/npc/03/fish_11003-idle_22.png",
-        "/assets/images/npc/03/fish_11003-idle_23.png",
-        "/assets/images/npc/03/fish_11003-idle_24.png",
-        "/assets/images/npc/03/fish_11003-idle_25.png",
-        "/assets/images/npc/03/fish_11003-idle_26.png",
-        "/assets/images/npc/03/fish_11003-idle_27.png",
-        "/assets/images/npc/03/fish_11003-idle_28.png",
-        "/assets/images/npc/03/fish_11003-idle_29.png",
-        "/assets/images/npc/03/fish_11003-idle_30.png",
-        "/assets/images/npc/03/fish_11003-idle_31.png",
-        "/assets/images/npc/03/fish_11003-idle_32.png",
-        "/assets/images/npc/03/fish_11003-idle_33.png",
-        "/assets/images/npc/03/fish_11003-idle_34.png",
-        "/assets/images/npc/03/fish_11003-idle_35.png",
-        "/assets/images/npc/03/fish_11003-idle_36.png",
-        "/assets/images/npc/03/fish_11003-idle_37.png",
-        "/assets/images/npc/03/fish_11003-idle_38.png",
-        "/assets/images/npc/03/fish_11003-idle_39.png",
-        "/assets/images/npc/03/fish_11003-idle_40.png",
-        "/assets/images/npc/03/fish_11003-idle_41.png",
-        "/assets/images/npc/03/fish_11003-idle_42.png",
-        "/assets/images/npc/03/fish_11003-idle_43.png",
-        "/assets/images/npc/03/fish_11003-idle_44.png",
-        "/assets/images/npc/03/fish_11003-idle_45.png",
-        "/assets/images/npc/03/fish_11003-idle_46.png",
-        "/assets/images/npc/03/fish_11003-idle_47.png",
-        "/assets/images/npc/03/fish_11003-idle_48.png",
-        "/assets/images/npc/03/fish_11003-idle_49.png",
-        "/assets/images/npc/03/fish_11003-idle_50.png",
-        "/assets/images/npc/03/fish_11003-idle_51.png",
-        "/assets/images/npc/03/fish_11003-idle_52.png",
-        "/assets/images/npc/03/fish_11003-idle_53.png",
-        "/assets/images/npc/03/fish_11003-idle_54.png",
-        "/assets/images/npc/03/fish_11003-idle_55.png",
-        "/assets/images/npc/03/fish_11003-idle_56.png",
-        "/assets/images/npc/03/fish_11003-idle_57.png",
-        "/assets/images/npc/03/fish_11003-idle_58.png",
-        "/assets/images/npc/03/fish_11003-idle_59.png"
+        "assets/images/npc/03/fish_11003-idle_00.png",
+        "assets/images/npc/03/fish_11003-idle_01.png",
+        "assets/images/npc/03/fish_11003-idle_02.png",
+        "assets/images/npc/03/fish_11003-idle_03.png",
+        "assets/images/npc/03/fish_11003-idle_04.png",
+        "assets/images/npc/03/fish_11003-idle_05.png",
+        "assets/images/npc/03/fish_11003-idle_06.png",
+        "assets/images/npc/03/fish_11003-idle_07.png",
+        "assets/images/npc/03/fish_11003-idle_08.png",
+        "assets/images/npc/03/fish_11003-idle_09.png",
+        "assets/images/npc/03/fish_11003-idle_10.png",
+        "assets/images/npc/03/fish_11003-idle_11.png",
+        "assets/images/npc/03/fish_11003-idle_12.png",
+        "assets/images/npc/03/fish_11003-idle_13.png",
+        "assets/images/npc/03/fish_11003-idle_14.png",
+        "assets/images/npc/03/fish_11003-idle_15.png",
+        "assets/images/npc/03/fish_11003-idle_16.png",
+        "assets/images/npc/03/fish_11003-idle_17.png",
+        "assets/images/npc/03/fish_11003-idle_18.png",
+        "assets/images/npc/03/fish_11003-idle_19.png",
+        "assets/images/npc/03/fish_11003-idle_20.png",
+        "assets/images/npc/03/fish_11003-idle_21.png",
+        "assets/images/npc/03/fish_11003-idle_22.png",
+        "assets/images/npc/03/fish_11003-idle_23.png",
+        "assets/images/npc/03/fish_11003-idle_24.png",
+        "assets/images/npc/03/fish_11003-idle_25.png",
+        "assets/images/npc/03/fish_11003-idle_26.png",
+        "assets/images/npc/03/fish_11003-idle_27.png",
+        "assets/images/npc/03/fish_11003-idle_28.png",
+        "assets/images/npc/03/fish_11003-idle_29.png",
+        "assets/images/npc/03/fish_11003-idle_30.png",
+        "assets/images/npc/03/fish_11003-idle_31.png",
+        "assets/images/npc/03/fish_11003-idle_32.png",
+        "assets/images/npc/03/fish_11003-idle_33.png",
+        "assets/images/npc/03/fish_11003-idle_34.png",
+        "assets/images/npc/03/fish_11003-idle_35.png",
+        "assets/images/npc/03/fish_11003-idle_36.png",
+        "assets/images/npc/03/fish_11003-idle_37.png",
+        "assets/images/npc/03/fish_11003-idle_38.png",
+        "assets/images/npc/03/fish_11003-idle_39.png",
+        "assets/images/npc/03/fish_11003-idle_40.png",
+        "assets/images/npc/03/fish_11003-idle_41.png",
+        "assets/images/npc/03/fish_11003-idle_42.png",
+        "assets/images/npc/03/fish_11003-idle_43.png",
+        "assets/images/npc/03/fish_11003-idle_44.png",
+        "assets/images/npc/03/fish_11003-idle_45.png",
+        "assets/images/npc/03/fish_11003-idle_46.png",
+        "assets/images/npc/03/fish_11003-idle_47.png",
+        "assets/images/npc/03/fish_11003-idle_48.png",
+        "assets/images/npc/03/fish_11003-idle_49.png",
+        "assets/images/npc/03/fish_11003-idle_50.png",
+        "assets/images/npc/03/fish_11003-idle_51.png",
+        "assets/images/npc/03/fish_11003-idle_52.png",
+        "assets/images/npc/03/fish_11003-idle_53.png",
+        "assets/images/npc/03/fish_11003-idle_54.png",
+        "assets/images/npc/03/fish_11003-idle_55.png",
+        "assets/images/npc/03/fish_11003-idle_56.png",
+        "assets/images/npc/03/fish_11003-idle_57.png",
+        "assets/images/npc/03/fish_11003-idle_58.png",
+        "assets/images/npc/03/fish_11003-idle_59.png"
       ]
     },
     "04": {
       "idle": [
-        "/assets/images/npc/04/fish_13201-idle_00.png",
-        "/assets/images/npc/04/fish_13201-idle_01.png",
-        "/assets/images/npc/04/fish_13201-idle_02.png",
-        "/assets/images/npc/04/fish_13201-idle_03.png",
-        "/assets/images/npc/04/fish_13201-idle_04.png",
-        "/assets/images/npc/04/fish_13201-idle_05.png",
-        "/assets/images/npc/04/fish_13201-idle_06.png",
-        "/assets/images/npc/04/fish_13201-idle_07.png",
-        "/assets/images/npc/04/fish_13201-idle_08.png",
-        "/assets/images/npc/04/fish_13201-idle_09.png",
-        "/assets/images/npc/04/fish_13201-idle_10.png",
-        "/assets/images/npc/04/fish_13201-idle_11.png",
-        "/assets/images/npc/04/fish_13201-idle_12.png",
-        "/assets/images/npc/04/fish_13201-idle_13.png",
-        "/assets/images/npc/04/fish_13201-idle_14.png",
-        "/assets/images/npc/04/fish_13201-idle_15.png",
-        "/assets/images/npc/04/fish_13201-idle_16.png",
-        "/assets/images/npc/04/fish_13201-idle_17.png",
-        "/assets/images/npc/04/fish_13201-idle_18.png",
-        "/assets/images/npc/04/fish_13201-idle_19.png",
-        "/assets/images/npc/04/fish_13201-idle_20.png",
-        "/assets/images/npc/04/fish_13201-idle_21.png",
-        "/assets/images/npc/04/fish_13201-idle_22.png",
-        "/assets/images/npc/04/fish_13201-idle_23.png",
-        "/assets/images/npc/04/fish_13201-idle_24.png",
-        "/assets/images/npc/04/fish_13201-idle_25.png",
-        "/assets/images/npc/04/fish_13201-idle_26.png",
-        "/assets/images/npc/04/fish_13201-idle_27.png",
-        "/assets/images/npc/04/fish_13201-idle_28.png",
-        "/assets/images/npc/04/fish_13201-idle_29.png",
-        "/assets/images/npc/04/fish_13201-idle_30.png",
-        "/assets/images/npc/04/fish_13201-idle_31.png",
-        "/assets/images/npc/04/fish_13201-idle_32.png",
-        "/assets/images/npc/04/fish_13201-idle_33.png",
-        "/assets/images/npc/04/fish_13201-idle_34.png",
-        "/assets/images/npc/04/fish_13201-idle_35.png",
-        "/assets/images/npc/04/fish_13201-idle_36.png",
-        "/assets/images/npc/04/fish_13201-idle_37.png",
-        "/assets/images/npc/04/fish_13201-idle_38.png",
-        "/assets/images/npc/04/fish_13201-idle_39.png",
-        "/assets/images/npc/04/fish_13201-idle_40.png",
-        "/assets/images/npc/04/fish_13201-idle_41.png",
-        "/assets/images/npc/04/fish_13201-idle_42.png",
-        "/assets/images/npc/04/fish_13201-idle_43.png",
-        "/assets/images/npc/04/fish_13201-idle_44.png",
-        "/assets/images/npc/04/fish_13201-idle_45.png",
-        "/assets/images/npc/04/fish_13201-idle_46.png",
-        "/assets/images/npc/04/fish_13201-idle_47.png",
-        "/assets/images/npc/04/fish_13201-idle_48.png",
-        "/assets/images/npc/04/fish_13201-idle_49.png",
-        "/assets/images/npc/04/fish_13201-idle_50.png",
-        "/assets/images/npc/04/fish_13201-idle_51.png",
-        "/assets/images/npc/04/fish_13201-idle_52.png",
-        "/assets/images/npc/04/fish_13201-idle_53.png",
-        "/assets/images/npc/04/fish_13201-idle_54.png",
-        "/assets/images/npc/04/fish_13201-idle_55.png",
-        "/assets/images/npc/04/fish_13201-idle_56.png",
-        "/assets/images/npc/04/fish_13201-idle_57.png",
-        "/assets/images/npc/04/fish_13201-idle_58.png",
-        "/assets/images/npc/04/fish_13201-idle_59.png"
+        "assets/images/npc/04/fish_13201-idle_00.png",
+        "assets/images/npc/04/fish_13201-idle_01.png",
+        "assets/images/npc/04/fish_13201-idle_02.png",
+        "assets/images/npc/04/fish_13201-idle_03.png",
+        "assets/images/npc/04/fish_13201-idle_04.png",
+        "assets/images/npc/04/fish_13201-idle_05.png",
+        "assets/images/npc/04/fish_13201-idle_06.png",
+        "assets/images/npc/04/fish_13201-idle_07.png",
+        "assets/images/npc/04/fish_13201-idle_08.png",
+        "assets/images/npc/04/fish_13201-idle_09.png",
+        "assets/images/npc/04/fish_13201-idle_10.png",
+        "assets/images/npc/04/fish_13201-idle_11.png",
+        "assets/images/npc/04/fish_13201-idle_12.png",
+        "assets/images/npc/04/fish_13201-idle_13.png",
+        "assets/images/npc/04/fish_13201-idle_14.png",
+        "assets/images/npc/04/fish_13201-idle_15.png",
+        "assets/images/npc/04/fish_13201-idle_16.png",
+        "assets/images/npc/04/fish_13201-idle_17.png",
+        "assets/images/npc/04/fish_13201-idle_18.png",
+        "assets/images/npc/04/fish_13201-idle_19.png",
+        "assets/images/npc/04/fish_13201-idle_20.png",
+        "assets/images/npc/04/fish_13201-idle_21.png",
+        "assets/images/npc/04/fish_13201-idle_22.png",
+        "assets/images/npc/04/fish_13201-idle_23.png",
+        "assets/images/npc/04/fish_13201-idle_24.png",
+        "assets/images/npc/04/fish_13201-idle_25.png",
+        "assets/images/npc/04/fish_13201-idle_26.png",
+        "assets/images/npc/04/fish_13201-idle_27.png",
+        "assets/images/npc/04/fish_13201-idle_28.png",
+        "assets/images/npc/04/fish_13201-idle_29.png",
+        "assets/images/npc/04/fish_13201-idle_30.png",
+        "assets/images/npc/04/fish_13201-idle_31.png",
+        "assets/images/npc/04/fish_13201-idle_32.png",
+        "assets/images/npc/04/fish_13201-idle_33.png",
+        "assets/images/npc/04/fish_13201-idle_34.png",
+        "assets/images/npc/04/fish_13201-idle_35.png",
+        "assets/images/npc/04/fish_13201-idle_36.png",
+        "assets/images/npc/04/fish_13201-idle_37.png",
+        "assets/images/npc/04/fish_13201-idle_38.png",
+        "assets/images/npc/04/fish_13201-idle_39.png",
+        "assets/images/npc/04/fish_13201-idle_40.png",
+        "assets/images/npc/04/fish_13201-idle_41.png",
+        "assets/images/npc/04/fish_13201-idle_42.png",
+        "assets/images/npc/04/fish_13201-idle_43.png",
+        "assets/images/npc/04/fish_13201-idle_44.png",
+        "assets/images/npc/04/fish_13201-idle_45.png",
+        "assets/images/npc/04/fish_13201-idle_46.png",
+        "assets/images/npc/04/fish_13201-idle_47.png",
+        "assets/images/npc/04/fish_13201-idle_48.png",
+        "assets/images/npc/04/fish_13201-idle_49.png",
+        "assets/images/npc/04/fish_13201-idle_50.png",
+        "assets/images/npc/04/fish_13201-idle_51.png",
+        "assets/images/npc/04/fish_13201-idle_52.png",
+        "assets/images/npc/04/fish_13201-idle_53.png",
+        "assets/images/npc/04/fish_13201-idle_54.png",
+        "assets/images/npc/04/fish_13201-idle_55.png",
+        "assets/images/npc/04/fish_13201-idle_56.png",
+        "assets/images/npc/04/fish_13201-idle_57.png",
+        "assets/images/npc/04/fish_13201-idle_58.png",
+        "assets/images/npc/04/fish_13201-idle_59.png"
       ]
     },
     "05": {
       "idle": [
-        "/assets/images/npc/05/fish_14102-idle_00.png",
-        "/assets/images/npc/05/fish_14102-idle_01.png",
-        "/assets/images/npc/05/fish_14102-idle_02.png",
-        "/assets/images/npc/05/fish_14102-idle_03.png",
-        "/assets/images/npc/05/fish_14102-idle_04.png",
-        "/assets/images/npc/05/fish_14102-idle_05.png",
-        "/assets/images/npc/05/fish_14102-idle_06.png",
-        "/assets/images/npc/05/fish_14102-idle_07.png",
-        "/assets/images/npc/05/fish_14102-idle_08.png",
-        "/assets/images/npc/05/fish_14102-idle_09.png",
-        "/assets/images/npc/05/fish_14102-idle_10.png",
-        "/assets/images/npc/05/fish_14102-idle_11.png",
-        "/assets/images/npc/05/fish_14102-idle_12.png",
-        "/assets/images/npc/05/fish_14102-idle_13.png",
-        "/assets/images/npc/05/fish_14102-idle_14.png",
-        "/assets/images/npc/05/fish_14102-idle_15.png",
-        "/assets/images/npc/05/fish_14102-idle_16.png",
-        "/assets/images/npc/05/fish_14102-idle_17.png",
-        "/assets/images/npc/05/fish_14102-idle_18.png",
-        "/assets/images/npc/05/fish_14102-idle_19.png",
-        "/assets/images/npc/05/fish_14102-idle_20.png",
-        "/assets/images/npc/05/fish_14102-idle_21.png",
-        "/assets/images/npc/05/fish_14102-idle_22.png",
-        "/assets/images/npc/05/fish_14102-idle_23.png",
-        "/assets/images/npc/05/fish_14102-idle_24.png",
-        "/assets/images/npc/05/fish_14102-idle_25.png",
-        "/assets/images/npc/05/fish_14102-idle_26.png",
-        "/assets/images/npc/05/fish_14102-idle_27.png",
-        "/assets/images/npc/05/fish_14102-idle_28.png",
-        "/assets/images/npc/05/fish_14102-idle_29.png",
-        "/assets/images/npc/05/fish_14102-idle_30.png",
-        "/assets/images/npc/05/fish_14102-idle_31.png",
-        "/assets/images/npc/05/fish_14102-idle_32.png",
-        "/assets/images/npc/05/fish_14102-idle_33.png",
-        "/assets/images/npc/05/fish_14102-idle_34.png",
-        "/assets/images/npc/05/fish_14102-idle_35.png",
-        "/assets/images/npc/05/fish_14102-idle_36.png",
-        "/assets/images/npc/05/fish_14102-idle_37.png",
-        "/assets/images/npc/05/fish_14102-idle_38.png",
-        "/assets/images/npc/05/fish_14102-idle_39.png",
-        "/assets/images/npc/05/fish_14102-idle_40.png",
-        "/assets/images/npc/05/fish_14102-idle_41.png",
-        "/assets/images/npc/05/fish_14102-idle_42.png",
-        "/assets/images/npc/05/fish_14102-idle_43.png",
-        "/assets/images/npc/05/fish_14102-idle_44.png",
-        "/assets/images/npc/05/fish_14102-idle_45.png",
-        "/assets/images/npc/05/fish_14102-idle_46.png",
-        "/assets/images/npc/05/fish_14102-idle_47.png",
-        "/assets/images/npc/05/fish_14102-idle_48.png",
-        "/assets/images/npc/05/fish_14102-idle_49.png",
-        "/assets/images/npc/05/fish_14102-idle_50.png",
-        "/assets/images/npc/05/fish_14102-idle_51.png",
-        "/assets/images/npc/05/fish_14102-idle_52.png",
-        "/assets/images/npc/05/fish_14102-idle_53.png",
-        "/assets/images/npc/05/fish_14102-idle_54.png",
-        "/assets/images/npc/05/fish_14102-idle_55.png",
-        "/assets/images/npc/05/fish_14102-idle_56.png",
-        "/assets/images/npc/05/fish_14102-idle_57.png",
-        "/assets/images/npc/05/fish_14102-idle_58.png",
-        "/assets/images/npc/05/fish_14102-idle_59.png"
+        "assets/images/npc/05/fish_14102-idle_00.png",
+        "assets/images/npc/05/fish_14102-idle_01.png",
+        "assets/images/npc/05/fish_14102-idle_02.png",
+        "assets/images/npc/05/fish_14102-idle_03.png",
+        "assets/images/npc/05/fish_14102-idle_04.png",
+        "assets/images/npc/05/fish_14102-idle_05.png",
+        "assets/images/npc/05/fish_14102-idle_06.png",
+        "assets/images/npc/05/fish_14102-idle_07.png",
+        "assets/images/npc/05/fish_14102-idle_08.png",
+        "assets/images/npc/05/fish_14102-idle_09.png",
+        "assets/images/npc/05/fish_14102-idle_10.png",
+        "assets/images/npc/05/fish_14102-idle_11.png",
+        "assets/images/npc/05/fish_14102-idle_12.png",
+        "assets/images/npc/05/fish_14102-idle_13.png",
+        "assets/images/npc/05/fish_14102-idle_14.png",
+        "assets/images/npc/05/fish_14102-idle_15.png",
+        "assets/images/npc/05/fish_14102-idle_16.png",
+        "assets/images/npc/05/fish_14102-idle_17.png",
+        "assets/images/npc/05/fish_14102-idle_18.png",
+        "assets/images/npc/05/fish_14102-idle_19.png",
+        "assets/images/npc/05/fish_14102-idle_20.png",
+        "assets/images/npc/05/fish_14102-idle_21.png",
+        "assets/images/npc/05/fish_14102-idle_22.png",
+        "assets/images/npc/05/fish_14102-idle_23.png",
+        "assets/images/npc/05/fish_14102-idle_24.png",
+        "assets/images/npc/05/fish_14102-idle_25.png",
+        "assets/images/npc/05/fish_14102-idle_26.png",
+        "assets/images/npc/05/fish_14102-idle_27.png",
+        "assets/images/npc/05/fish_14102-idle_28.png",
+        "assets/images/npc/05/fish_14102-idle_29.png",
+        "assets/images/npc/05/fish_14102-idle_30.png",
+        "assets/images/npc/05/fish_14102-idle_31.png",
+        "assets/images/npc/05/fish_14102-idle_32.png",
+        "assets/images/npc/05/fish_14102-idle_33.png",
+        "assets/images/npc/05/fish_14102-idle_34.png",
+        "assets/images/npc/05/fish_14102-idle_35.png",
+        "assets/images/npc/05/fish_14102-idle_36.png",
+        "assets/images/npc/05/fish_14102-idle_37.png",
+        "assets/images/npc/05/fish_14102-idle_38.png",
+        "assets/images/npc/05/fish_14102-idle_39.png",
+        "assets/images/npc/05/fish_14102-idle_40.png",
+        "assets/images/npc/05/fish_14102-idle_41.png",
+        "assets/images/npc/05/fish_14102-idle_42.png",
+        "assets/images/npc/05/fish_14102-idle_43.png",
+        "assets/images/npc/05/fish_14102-idle_44.png",
+        "assets/images/npc/05/fish_14102-idle_45.png",
+        "assets/images/npc/05/fish_14102-idle_46.png",
+        "assets/images/npc/05/fish_14102-idle_47.png",
+        "assets/images/npc/05/fish_14102-idle_48.png",
+        "assets/images/npc/05/fish_14102-idle_49.png",
+        "assets/images/npc/05/fish_14102-idle_50.png",
+        "assets/images/npc/05/fish_14102-idle_51.png",
+        "assets/images/npc/05/fish_14102-idle_52.png",
+        "assets/images/npc/05/fish_14102-idle_53.png",
+        "assets/images/npc/05/fish_14102-idle_54.png",
+        "assets/images/npc/05/fish_14102-idle_55.png",
+        "assets/images/npc/05/fish_14102-idle_56.png",
+        "assets/images/npc/05/fish_14102-idle_57.png",
+        "assets/images/npc/05/fish_14102-idle_58.png",
+        "assets/images/npc/05/fish_14102-idle_59.png"
       ]
     }
   },
   "boss": {
     "frames": [
-      "/assets/images/boss/01.png",
-      "/assets/images/boss/02.png",
-      "/assets/images/boss/03.png",
-      "/assets/images/boss/04.png",
-      "/assets/images/boss/05.png",
-      "/assets/images/boss/06.png",
-      "/assets/images/boss/07.png",
-      "/assets/images/boss/08.png",
-      "/assets/images/boss/09.png",
-      "/assets/images/boss/10.png",
-      "/assets/images/boss/11.png",
-      "/assets/images/boss/12.png",
-      "/assets/images/boss/13.png",
-      "/assets/images/boss/14.png",
-      "/assets/images/boss/15.png",
-      "/assets/images/boss/16.png"
+      "assets/images/boss/01.png",
+      "assets/images/boss/02.png",
+      "assets/images/boss/03.png",
+      "assets/images/boss/04.png",
+      "assets/images/boss/05.png",
+      "assets/images/boss/06.png",
+      "assets/images/boss/07.png",
+      "assets/images/boss/08.png",
+      "assets/images/boss/09.png",
+      "assets/images/boss/10.png",
+      "assets/images/boss/11.png",
+      "assets/images/boss/12.png",
+      "assets/images/boss/13.png",
+      "assets/images/boss/14.png",
+      "assets/images/boss/15.png",
+      "assets/images/boss/16.png"
     ]
   },
   "trimData": {
-    "/assets/images/hero/lv0/fish_12102-atk_00.png": {
+    "assets/images/hero/lv0/fish_12102-atk_00.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -533,7 +533,7 @@
         "y": 0.4766666666666666
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_01.png": {
+    "assets/images/hero/lv0/fish_12102-atk_01.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -555,7 +555,7 @@
         "y": 0.46781481481481485
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_02.png": {
+    "assets/images/hero/lv0/fish_12102-atk_02.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -577,7 +577,7 @@
         "y": 0.4632962962962963
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_03.png": {
+    "assets/images/hero/lv0/fish_12102-atk_03.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -599,7 +599,7 @@
         "y": 0.45685185185185184
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_04.png": {
+    "assets/images/hero/lv0/fish_12102-atk_04.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -621,7 +621,7 @@
         "y": 0.4482222222222222
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_05.png": {
+    "assets/images/hero/lv0/fish_12102-atk_05.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -643,7 +643,7 @@
         "y": 0.44585185185185183
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_06.png": {
+    "assets/images/hero/lv0/fish_12102-atk_06.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -665,7 +665,7 @@
         "y": 0.44303703703703706
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_07.png": {
+    "assets/images/hero/lv0/fish_12102-atk_07.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -687,7 +687,7 @@
         "y": 0.44022222222222224
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_08.png": {
+    "assets/images/hero/lv0/fish_12102-atk_08.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -709,7 +709,7 @@
         "y": 0.4374074074074074
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_09.png": {
+    "assets/images/hero/lv0/fish_12102-atk_09.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -731,7 +731,7 @@
         "y": 0.4351111111111111
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_10.png": {
+    "assets/images/hero/lv0/fish_12102-atk_10.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -753,7 +753,7 @@
         "y": 0.4438888888888889
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_11.png": {
+    "assets/images/hero/lv0/fish_12102-atk_11.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -775,7 +775,7 @@
         "y": 0.4555185185185185
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_12.png": {
+    "assets/images/hero/lv0/fish_12102-atk_12.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -797,7 +797,7 @@
         "y": 0.4741481481481482
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_13.png": {
+    "assets/images/hero/lv0/fish_12102-atk_13.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -819,7 +819,7 @@
         "y": 0.47803703703703704
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_14.png": {
+    "assets/images/hero/lv0/fish_12102-atk_14.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -841,7 +841,7 @@
         "y": 0.4771111111111111
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_15.png": {
+    "assets/images/hero/lv0/fish_12102-atk_15.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -863,7 +863,7 @@
         "y": 0.47622222222222216
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_16.png": {
+    "assets/images/hero/lv0/fish_12102-atk_16.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -885,7 +885,7 @@
         "y": 0.4752962962962962
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_17.png": {
+    "assets/images/hero/lv0/fish_12102-atk_17.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -907,7 +907,7 @@
         "y": 0.47751851851851856
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_18.png": {
+    "assets/images/hero/lv0/fish_12102-atk_18.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -929,7 +929,7 @@
         "y": 0.48059259259259257
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_19.png": {
+    "assets/images/hero/lv0/fish_12102-atk_19.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -951,7 +951,7 @@
         "y": 0.47840740740740734
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_20.png": {
+    "assets/images/hero/lv0/fish_12102-atk_20.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -973,7 +973,7 @@
         "y": 0.47485185185185186
       }
     },
-    "/assets/images/hero/lv0/fish_12102-atk_21.png": {
+    "assets/images/hero/lv0/fish_12102-atk_21.png": {
       "sourceWidth": 1642,
       "sourceHeight": 1080,
       "bounds": {
@@ -995,7 +995,7 @@
         "y": 0.4757407407407407
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_00.png": {
+    "assets/images/hero/lv30/fish_14104-atk_00.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1017,7 +1017,7 @@
         "y": 0.5503030303030303
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_01.png": {
+    "assets/images/hero/lv30/fish_14104-atk_01.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1039,7 +1039,7 @@
         "y": 0.5452121212121213
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_02.png": {
+    "assets/images/hero/lv30/fish_14104-atk_02.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1061,7 +1061,7 @@
         "y": 0.5446060606060606
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_03.png": {
+    "assets/images/hero/lv30/fish_14104-atk_03.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1083,7 +1083,7 @@
         "y": 0.504
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_04.png": {
+    "assets/images/hero/lv30/fish_14104-atk_04.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1105,7 +1105,7 @@
         "y": 0.479030303030303
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_05.png": {
+    "assets/images/hero/lv30/fish_14104-atk_05.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1127,7 +1127,7 @@
         "y": 0.4681212121212121
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_06.png": {
+    "assets/images/hero/lv30/fish_14104-atk_06.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1149,7 +1149,7 @@
         "y": 0.4566060606060606
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_07.png": {
+    "assets/images/hero/lv30/fish_14104-atk_07.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1171,7 +1171,7 @@
         "y": 0.4552727272727273
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_08.png": {
+    "assets/images/hero/lv30/fish_14104-atk_08.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1193,7 +1193,7 @@
         "y": 0.4552727272727273
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_09.png": {
+    "assets/images/hero/lv30/fish_14104-atk_09.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1215,7 +1215,7 @@
         "y": 0.43999999999999995
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_10.png": {
+    "assets/images/hero/lv30/fish_14104-atk_10.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1237,7 +1237,7 @@
         "y": 0.5334545454545454
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_11.png": {
+    "assets/images/hero/lv30/fish_14104-atk_11.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1259,7 +1259,7 @@
         "y": 0.5490909090909091
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_12.png": {
+    "assets/images/hero/lv30/fish_14104-atk_12.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1281,7 +1281,7 @@
         "y": 0.5581818181818181
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_13.png": {
+    "assets/images/hero/lv30/fish_14104-atk_13.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1303,7 +1303,7 @@
         "y": 0.5672727272727273
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_14.png": {
+    "assets/images/hero/lv30/fish_14104-atk_14.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1325,7 +1325,7 @@
         "y": 0.5763636363636363
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_15.png": {
+    "assets/images/hero/lv30/fish_14104-atk_15.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1347,7 +1347,7 @@
         "y": 0.5749090909090909
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_16.png": {
+    "assets/images/hero/lv30/fish_14104-atk_16.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1369,7 +1369,7 @@
         "y": 0.5535757575757576
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_17.png": {
+    "assets/images/hero/lv30/fish_14104-atk_17.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1391,7 +1391,7 @@
         "y": 0.5534545454545454
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_18.png": {
+    "assets/images/hero/lv30/fish_14104-atk_18.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1413,7 +1413,7 @@
         "y": 0.5562424242424242
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_19.png": {
+    "assets/images/hero/lv30/fish_14104-atk_19.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1435,7 +1435,7 @@
         "y": 0.5547878787878787
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_20.png": {
+    "assets/images/hero/lv30/fish_14104-atk_20.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1457,7 +1457,7 @@
         "y": 0.5533333333333333
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_21.png": {
+    "assets/images/hero/lv30/fish_14104-atk_21.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1479,7 +1479,7 @@
         "y": 0.5503030303030303
       }
     },
-    "/assets/images/hero/lv30/fish_14104-atk_22.png": {
+    "assets/images/hero/lv30/fish_14104-atk_22.png": {
       "sourceWidth": 696,
       "sourceHeight": 330,
       "bounds": {
@@ -1501,7 +1501,7 @@
         "y": 0.5488484848484848
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_00.png": {
+    "assets/images/hero/lv60/fish_15102-atk_00.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1523,7 +1523,7 @@
         "y": 0.5371084337349398
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_01.png": {
+    "assets/images/hero/lv60/fish_15102-atk_01.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1545,7 +1545,7 @@
         "y": 0.5081927710843374
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_02.png": {
+    "assets/images/hero/lv60/fish_15102-atk_02.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1567,7 +1567,7 @@
         "y": 0.49481927710843376
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_03.png": {
+    "assets/images/hero/lv60/fish_15102-atk_03.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1589,7 +1589,7 @@
         "y": 0.47
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_04.png": {
+    "assets/images/hero/lv60/fish_15102-atk_04.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1611,7 +1611,7 @@
         "y": 0.44240963855421683
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_05.png": {
+    "assets/images/hero/lv60/fish_15102-atk_05.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1633,7 +1633,7 @@
         "y": 0.4360240963855421
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_06.png": {
+    "assets/images/hero/lv60/fish_15102-atk_06.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1655,7 +1655,7 @@
         "y": 0.43397590361445776
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_07.png": {
+    "assets/images/hero/lv60/fish_15102-atk_07.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1677,7 +1677,7 @@
         "y": 0.4333734939759036
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_08.png": {
+    "assets/images/hero/lv60/fish_15102-atk_08.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1699,7 +1699,7 @@
         "y": 0.43132530120481927
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_09.png": {
+    "assets/images/hero/lv60/fish_15102-atk_09.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1721,7 +1721,7 @@
         "y": 0.4308433734939759
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_10.png": {
+    "assets/images/hero/lv60/fish_15102-atk_10.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1743,7 +1743,7 @@
         "y": 0.4289156626506023
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_11.png": {
+    "assets/images/hero/lv60/fish_15102-atk_11.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1765,7 +1765,7 @@
         "y": 0.37831325301204816
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_12.png": {
+    "assets/images/hero/lv60/fish_15102-atk_12.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1787,7 +1787,7 @@
         "y": 0.3483132530120482
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_13.png": {
+    "assets/images/hero/lv60/fish_15102-atk_13.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1809,7 +1809,7 @@
         "y": 0.33518072289156625
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_14.png": {
+    "assets/images/hero/lv60/fish_15102-atk_14.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1831,7 +1831,7 @@
         "y": 0.3265060240963855
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_15.png": {
+    "assets/images/hero/lv60/fish_15102-atk_15.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1853,7 +1853,7 @@
         "y": 0.33855421686746984
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_16.png": {
+    "assets/images/hero/lv60/fish_15102-atk_16.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1875,7 +1875,7 @@
         "y": 0.35204819277108435
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_17.png": {
+    "assets/images/hero/lv60/fish_15102-atk_17.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1897,7 +1897,7 @@
         "y": 0.36710843373493973
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_18.png": {
+    "assets/images/hero/lv60/fish_15102-atk_18.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1919,7 +1919,7 @@
         "y": 0.3569879518072289
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_19.png": {
+    "assets/images/hero/lv60/fish_15102-atk_19.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1941,7 +1941,7 @@
         "y": 0.4242168674698795
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_20.png": {
+    "assets/images/hero/lv60/fish_15102-atk_20.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1963,7 +1963,7 @@
         "y": 0.4809638554216868
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_21.png": {
+    "assets/images/hero/lv60/fish_15102-atk_21.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -1985,7 +1985,7 @@
         "y": 0.5257831325301204
       }
     },
-    "/assets/images/hero/lv60/fish_15102-atk_22.png": {
+    "assets/images/hero/lv60/fish_15102-atk_22.png": {
       "sourceWidth": 604,
       "sourceHeight": 332,
       "bounds": {
@@ -2007,7 +2007,7 @@
         "y": 0.5444578313253011
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_00.png": {
+    "assets/images/hero/lv90/fish_15101-atk_00.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2029,7 +2029,7 @@
         "y": 0.5749397590361446
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_01.png": {
+    "assets/images/hero/lv90/fish_15101-atk_01.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2051,7 +2051,7 @@
         "y": 0.5700000000000001
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_02.png": {
+    "assets/images/hero/lv90/fish_15101-atk_02.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2073,7 +2073,7 @@
         "y": 0.5528915662650602
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_03.png": {
+    "assets/images/hero/lv90/fish_15101-atk_03.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2095,7 +2095,7 @@
         "y": 0.5163855421686747
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_04.png": {
+    "assets/images/hero/lv90/fish_15101-atk_04.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2117,7 +2117,7 @@
         "y": 0.460722891566265
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_05.png": {
+    "assets/images/hero/lv90/fish_15101-atk_05.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2139,7 +2139,7 @@
         "y": 0.44698795180722883
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_06.png": {
+    "assets/images/hero/lv90/fish_15101-atk_06.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2161,7 +2161,7 @@
         "y": 0.5271084337349398
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_07.png": {
+    "assets/images/hero/lv90/fish_15101-atk_07.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2183,7 +2183,7 @@
         "y": 0.5366265060240963
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_08.png": {
+    "assets/images/hero/lv90/fish_15101-atk_08.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2205,7 +2205,7 @@
         "y": 0.5273493975903614
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_09.png": {
+    "assets/images/hero/lv90/fish_15101-atk_09.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2227,7 +2227,7 @@
         "y": 0.5165060240963855
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_10.png": {
+    "assets/images/hero/lv90/fish_15101-atk_10.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2249,7 +2249,7 @@
         "y": 0.5214457831325301
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_11.png": {
+    "assets/images/hero/lv90/fish_15101-atk_11.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2271,7 +2271,7 @@
         "y": 0.5051807228915662
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_12.png": {
+    "assets/images/hero/lv90/fish_15101-atk_12.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2293,7 +2293,7 @@
         "y": 0.49024096385542165
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_13.png": {
+    "assets/images/hero/lv90/fish_15101-atk_13.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2315,7 +2315,7 @@
         "y": 0.4006024096385542
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_14.png": {
+    "assets/images/hero/lv90/fish_15101-atk_14.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2337,7 +2337,7 @@
         "y": 0.36457831325301204
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_15.png": {
+    "assets/images/hero/lv90/fish_15101-atk_15.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2359,7 +2359,7 @@
         "y": 0.34722891566265063
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_16.png": {
+    "assets/images/hero/lv90/fish_15101-atk_16.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2381,7 +2381,7 @@
         "y": 0.34409638554216865
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_17.png": {
+    "assets/images/hero/lv90/fish_15101-atk_17.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2403,7 +2403,7 @@
         "y": 0.3519277108433735
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_18.png": {
+    "assets/images/hero/lv90/fish_15101-atk_18.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2425,7 +2425,7 @@
         "y": 0.37819277108433735
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_19.png": {
+    "assets/images/hero/lv90/fish_15101-atk_19.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2447,7 +2447,7 @@
         "y": 0.4243373493975903
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_20.png": {
+    "assets/images/hero/lv90/fish_15101-atk_20.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2469,7 +2469,7 @@
         "y": 0.47819277108433733
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_21.png": {
+    "assets/images/hero/lv90/fish_15101-atk_21.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2491,7 +2491,7 @@
         "y": 0.5351807228915663
       }
     },
-    "/assets/images/hero/lv90/fish_15101-atk_22.png": {
+    "assets/images/hero/lv90/fish_15101-atk_22.png": {
       "sourceWidth": 1656,
       "sourceHeight": 332,
       "bounds": {
@@ -2513,7 +2513,7 @@
         "y": 0.5544578313253011
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_00.png": {
+    "assets/images/hero/lv120/fish_151011-atk_00.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2535,7 +2535,7 @@
         "y": 0.5282539682539683
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_01.png": {
+    "assets/images/hero/lv120/fish_151011-atk_01.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2557,7 +2557,7 @@
         "y": 0.5077248677248678
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_02.png": {
+    "assets/images/hero/lv120/fish_151011-atk_02.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2579,7 +2579,7 @@
         "y": 0.5284656084656084
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_03.png": {
+    "assets/images/hero/lv120/fish_151011-atk_03.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2601,7 +2601,7 @@
         "y": 0.49640211640211634
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_04.png": {
+    "assets/images/hero/lv120/fish_151011-atk_04.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2623,7 +2623,7 @@
         "y": 0.424021164021164
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_05.png": {
+    "assets/images/hero/lv120/fish_151011-atk_05.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2645,7 +2645,7 @@
         "y": 0.4243386243386243
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_06.png": {
+    "assets/images/hero/lv120/fish_151011-atk_06.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2667,7 +2667,7 @@
         "y": 0.5165079365079365
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_07.png": {
+    "assets/images/hero/lv120/fish_151011-atk_07.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2689,7 +2689,7 @@
         "y": 0.5028571428571428
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_08.png": {
+    "assets/images/hero/lv120/fish_151011-atk_08.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2711,7 +2711,7 @@
         "y": 0.491957671957672
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_09.png": {
+    "assets/images/hero/lv120/fish_151011-atk_09.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2733,7 +2733,7 @@
         "y": 0.4810582010582011
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_10.png": {
+    "assets/images/hero/lv120/fish_151011-atk_10.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2755,7 +2755,7 @@
         "y": 0.5043386243386243
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_11.png": {
+    "assets/images/hero/lv120/fish_151011-atk_11.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2777,7 +2777,7 @@
         "y": 0.5154497354497355
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_12.png": {
+    "assets/images/hero/lv120/fish_151011-atk_12.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2799,7 +2799,7 @@
         "y": 0.4547089947089947
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_13.png": {
+    "assets/images/hero/lv120/fish_151011-atk_13.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2821,7 +2821,7 @@
         "y": 0.43343915343915346
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_14.png": {
+    "assets/images/hero/lv120/fish_151011-atk_14.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2843,7 +2843,7 @@
         "y": 0.38105820105820104
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_15.png": {
+    "assets/images/hero/lv120/fish_151011-atk_15.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2865,7 +2865,7 @@
         "y": 0.37280423280423286
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_16.png": {
+    "assets/images/hero/lv120/fish_151011-atk_16.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2887,7 +2887,7 @@
         "y": 0.3796825396825396
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_17.png": {
+    "assets/images/hero/lv120/fish_151011-atk_17.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2909,7 +2909,7 @@
         "y": 0.3947089947089947
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_18.png": {
+    "assets/images/hero/lv120/fish_151011-atk_18.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2931,7 +2931,7 @@
         "y": 0.41767195767195764
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_19.png": {
+    "assets/images/hero/lv120/fish_151011-atk_19.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2953,7 +2953,7 @@
         "y": 0.44878306878306873
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_20.png": {
+    "assets/images/hero/lv120/fish_151011-atk_20.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2975,7 +2975,7 @@
         "y": 0.4865608465608466
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_21.png": {
+    "assets/images/hero/lv120/fish_151011-atk_21.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -2997,7 +2997,7 @@
         "y": 0.49111111111111105
       }
     },
-    "/assets/images/hero/lv120/fish_151011-atk_22.png": {
+    "assets/images/hero/lv120/fish_151011-atk_22.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3019,7 +3019,7 @@
         "y": 0.54
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_00.png": {
+    "assets/images/hero/end/fish_151011-idle_00.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3041,7 +3041,7 @@
         "y": 0.5282539682539683
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_01.png": {
+    "assets/images/hero/end/fish_151011-idle_01.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3063,7 +3063,7 @@
         "y": 0.5118518518518518
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_02.png": {
+    "assets/images/hero/end/fish_151011-idle_02.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3085,7 +3085,7 @@
         "y": 0.5476190476190477
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_03.png": {
+    "assets/images/hero/end/fish_151011-idle_03.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3107,7 +3107,7 @@
         "y": 0.5504761904761905
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_04.png": {
+    "assets/images/hero/end/fish_151011-idle_04.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3129,7 +3129,7 @@
         "y": 0.5312169312169313
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_05.png": {
+    "assets/images/hero/end/fish_151011-idle_05.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3151,7 +3151,7 @@
         "y": 0.5174603174603174
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_06.png": {
+    "assets/images/hero/end/fish_151011-idle_06.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3173,7 +3173,7 @@
         "y": 0.5517460317460318
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_07.png": {
+    "assets/images/hero/end/fish_151011-idle_07.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3195,7 +3195,7 @@
         "y": 0.5543915343915344
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_08.png": {
+    "assets/images/hero/end/fish_151011-idle_08.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3217,7 +3217,7 @@
         "y": 0.5432804232804234
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_09.png": {
+    "assets/images/hero/end/fish_151011-idle_09.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3239,7 +3239,7 @@
         "y": 0.5334391534391534
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_10.png": {
+    "assets/images/hero/end/fish_151011-idle_10.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3261,7 +3261,7 @@
         "y": 0.564973544973545
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_11.png": {
+    "assets/images/hero/end/fish_151011-idle_11.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3283,7 +3283,7 @@
         "y": 0.5689947089947089
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_12.png": {
+    "assets/images/hero/end/fish_151011-idle_12.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3305,7 +3305,7 @@
         "y": 0.5591534391534392
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_13.png": {
+    "assets/images/hero/end/fish_151011-idle_13.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3327,7 +3327,7 @@
         "y": 0.5479365079365079
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_14.png": {
+    "assets/images/hero/end/fish_151011-idle_14.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3349,7 +3349,7 @@
         "y": 0.5951322751322751
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_15.png": {
+    "assets/images/hero/end/fish_151011-idle_15.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3371,7 +3371,7 @@
         "y": 0.6183068783068782
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_16.png": {
+    "assets/images/hero/end/fish_151011-idle_16.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3393,7 +3393,7 @@
         "y": 0.6114285714285714
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_17.png": {
+    "assets/images/hero/end/fish_151011-idle_17.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3415,7 +3415,7 @@
         "y": 0.6076190476190476
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_18.png": {
+    "assets/images/hero/end/fish_151011-idle_18.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3437,7 +3437,7 @@
         "y": 0.6482539682539682
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_19.png": {
+    "assets/images/hero/end/fish_151011-idle_19.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3459,7 +3459,7 @@
         "y": 0.6645502645502646
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_20.png": {
+    "assets/images/hero/end/fish_151011-idle_20.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3481,7 +3481,7 @@
         "y": 0.6261375661375661
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_21.png": {
+    "assets/images/hero/end/fish_151011-idle_21.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3503,7 +3503,7 @@
         "y": 0.5994708994708995
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_22.png": {
+    "assets/images/hero/end/fish_151011-idle_22.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3525,7 +3525,7 @@
         "y": 0.6171428571428571
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_23.png": {
+    "assets/images/hero/end/fish_151011-idle_23.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3547,7 +3547,7 @@
         "y": 0.6226455026455027
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_24.png": {
+    "assets/images/hero/end/fish_151011-idle_24.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3569,7 +3569,7 @@
         "y": 0.5582010582010583
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_25.png": {
+    "assets/images/hero/end/fish_151011-idle_25.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3591,7 +3591,7 @@
         "y": 0.5276190476190477
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_26.png": {
+    "assets/images/hero/end/fish_151011-idle_26.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3613,7 +3613,7 @@
         "y": 0.5580952380952381
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_27.png": {
+    "assets/images/hero/end/fish_151011-idle_27.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3635,7 +3635,7 @@
         "y": 0.5719576719576719
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_28.png": {
+    "assets/images/hero/end/fish_151011-idle_28.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3657,7 +3657,7 @@
         "y": 0.5321693121693122
       }
     },
-    "/assets/images/hero/end/fish_151011-idle_29.png": {
+    "assets/images/hero/end/fish_151011-idle_29.png": {
       "sourceWidth": 1996,
       "sourceHeight": 378,
       "bounds": {
@@ -3679,7 +3679,7 @@
         "y": 0.5131216931216931
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_00.png": {
+    "assets/images/npc/01/fish_13203-idle_00.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3701,7 +3701,7 @@
         "y": 0.5550340136054422
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_01.png": {
+    "assets/images/npc/01/fish_13203-idle_01.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3723,7 +3723,7 @@
         "y": 0.5546598639455782
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_02.png": {
+    "assets/images/npc/01/fish_13203-idle_02.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3745,7 +3745,7 @@
         "y": 0.5551020408163265
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_03.png": {
+    "assets/images/npc/01/fish_13203-idle_03.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3767,7 +3767,7 @@
         "y": 0.5559863945578232
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_04.png": {
+    "assets/images/npc/01/fish_13203-idle_04.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3789,7 +3789,7 @@
         "y": 0.5564285714285715
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_05.png": {
+    "assets/images/npc/01/fish_13203-idle_05.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3811,7 +3811,7 @@
         "y": 0.5577551020408162
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_06.png": {
+    "assets/images/npc/01/fish_13203-idle_06.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3833,7 +3833,7 @@
         "y": 0.5582312925170069
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_07.png": {
+    "assets/images/npc/01/fish_13203-idle_07.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3855,7 +3855,7 @@
         "y": 0.5590816326530612
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_08.png": {
+    "assets/images/npc/01/fish_13203-idle_08.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3877,7 +3877,7 @@
         "y": 0.5607823129251701
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_09.png": {
+    "assets/images/npc/01/fish_13203-idle_09.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3899,7 +3899,7 @@
         "y": 0.5620408163265307
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_10.png": {
+    "assets/images/npc/01/fish_13203-idle_10.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3921,7 +3921,7 @@
         "y": 0.5649659863945578
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_11.png": {
+    "assets/images/npc/01/fish_13203-idle_11.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3943,7 +3943,7 @@
         "y": 0.5653401360544218
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_12.png": {
+    "assets/images/npc/01/fish_13203-idle_12.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3965,7 +3965,7 @@
         "y": 0.5661564625850339
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_13.png": {
+    "assets/images/npc/01/fish_13203-idle_13.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -3987,7 +3987,7 @@
         "y": 0.5669387755102041
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_14.png": {
+    "assets/images/npc/01/fish_13203-idle_14.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4009,7 +4009,7 @@
         "y": 0.5669047619047619
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_15.png": {
+    "assets/images/npc/01/fish_13203-idle_15.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4031,7 +4031,7 @@
         "y": 0.565578231292517
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_16.png": {
+    "assets/images/npc/01/fish_13203-idle_16.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4053,7 +4053,7 @@
         "y": 0.5642857142857143
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_17.png": {
+    "assets/images/npc/01/fish_13203-idle_17.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4075,7 +4075,7 @@
         "y": 0.5621768707482994
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_18.png": {
+    "assets/images/npc/01/fish_13203-idle_18.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4097,7 +4097,7 @@
         "y": 0.5604761904761905
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_19.png": {
+    "assets/images/npc/01/fish_13203-idle_19.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4119,7 +4119,7 @@
         "y": 0.5575510204081632
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_20.png": {
+    "assets/images/npc/01/fish_13203-idle_20.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4141,7 +4141,7 @@
         "y": 0.5550340136054422
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_21.png": {
+    "assets/images/npc/01/fish_13203-idle_21.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4163,7 +4163,7 @@
         "y": 0.5546598639455782
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_22.png": {
+    "assets/images/npc/01/fish_13203-idle_22.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4185,7 +4185,7 @@
         "y": 0.5551020408163265
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_23.png": {
+    "assets/images/npc/01/fish_13203-idle_23.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4207,7 +4207,7 @@
         "y": 0.5559863945578232
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_24.png": {
+    "assets/images/npc/01/fish_13203-idle_24.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4229,7 +4229,7 @@
         "y": 0.5564285714285715
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_25.png": {
+    "assets/images/npc/01/fish_13203-idle_25.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4251,7 +4251,7 @@
         "y": 0.5577551020408162
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_26.png": {
+    "assets/images/npc/01/fish_13203-idle_26.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4273,7 +4273,7 @@
         "y": 0.5582312925170069
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_27.png": {
+    "assets/images/npc/01/fish_13203-idle_27.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4295,7 +4295,7 @@
         "y": 0.5590816326530612
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_28.png": {
+    "assets/images/npc/01/fish_13203-idle_28.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4317,7 +4317,7 @@
         "y": 0.5607823129251701
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_29.png": {
+    "assets/images/npc/01/fish_13203-idle_29.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4339,7 +4339,7 @@
         "y": 0.5620408163265307
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_30.png": {
+    "assets/images/npc/01/fish_13203-idle_30.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4361,7 +4361,7 @@
         "y": 0.5649659863945578
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_31.png": {
+    "assets/images/npc/01/fish_13203-idle_31.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4383,7 +4383,7 @@
         "y": 0.5653401360544218
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_32.png": {
+    "assets/images/npc/01/fish_13203-idle_32.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4405,7 +4405,7 @@
         "y": 0.5661564625850339
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_33.png": {
+    "assets/images/npc/01/fish_13203-idle_33.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4427,7 +4427,7 @@
         "y": 0.5669387755102041
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_34.png": {
+    "assets/images/npc/01/fish_13203-idle_34.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4449,7 +4449,7 @@
         "y": 0.5669047619047619
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_35.png": {
+    "assets/images/npc/01/fish_13203-idle_35.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4471,7 +4471,7 @@
         "y": 0.565578231292517
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_36.png": {
+    "assets/images/npc/01/fish_13203-idle_36.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4493,7 +4493,7 @@
         "y": 0.5642857142857143
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_37.png": {
+    "assets/images/npc/01/fish_13203-idle_37.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4515,7 +4515,7 @@
         "y": 0.5621768707482994
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_38.png": {
+    "assets/images/npc/01/fish_13203-idle_38.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4537,7 +4537,7 @@
         "y": 0.5604761904761905
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_39.png": {
+    "assets/images/npc/01/fish_13203-idle_39.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4559,7 +4559,7 @@
         "y": 0.5575510204081632
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_40.png": {
+    "assets/images/npc/01/fish_13203-idle_40.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4581,7 +4581,7 @@
         "y": 0.5550340136054422
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_41.png": {
+    "assets/images/npc/01/fish_13203-idle_41.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4603,7 +4603,7 @@
         "y": 0.5546598639455782
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_42.png": {
+    "assets/images/npc/01/fish_13203-idle_42.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4625,7 +4625,7 @@
         "y": 0.5551020408163265
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_43.png": {
+    "assets/images/npc/01/fish_13203-idle_43.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4647,7 +4647,7 @@
         "y": 0.5559863945578232
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_44.png": {
+    "assets/images/npc/01/fish_13203-idle_44.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4669,7 +4669,7 @@
         "y": 0.5564285714285715
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_45.png": {
+    "assets/images/npc/01/fish_13203-idle_45.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4691,7 +4691,7 @@
         "y": 0.5577551020408162
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_46.png": {
+    "assets/images/npc/01/fish_13203-idle_46.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4713,7 +4713,7 @@
         "y": 0.5582312925170069
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_47.png": {
+    "assets/images/npc/01/fish_13203-idle_47.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4735,7 +4735,7 @@
         "y": 0.5590816326530612
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_48.png": {
+    "assets/images/npc/01/fish_13203-idle_48.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4757,7 +4757,7 @@
         "y": 0.5607823129251701
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_49.png": {
+    "assets/images/npc/01/fish_13203-idle_49.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4779,7 +4779,7 @@
         "y": 0.5620408163265307
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_50.png": {
+    "assets/images/npc/01/fish_13203-idle_50.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4801,7 +4801,7 @@
         "y": 0.5649659863945578
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_51.png": {
+    "assets/images/npc/01/fish_13203-idle_51.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4823,7 +4823,7 @@
         "y": 0.5653401360544218
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_52.png": {
+    "assets/images/npc/01/fish_13203-idle_52.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4845,7 +4845,7 @@
         "y": 0.5661564625850339
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_53.png": {
+    "assets/images/npc/01/fish_13203-idle_53.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4867,7 +4867,7 @@
         "y": 0.5669387755102041
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_54.png": {
+    "assets/images/npc/01/fish_13203-idle_54.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4889,7 +4889,7 @@
         "y": 0.5669047619047619
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_55.png": {
+    "assets/images/npc/01/fish_13203-idle_55.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4911,7 +4911,7 @@
         "y": 0.565578231292517
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_56.png": {
+    "assets/images/npc/01/fish_13203-idle_56.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4933,7 +4933,7 @@
         "y": 0.5642857142857143
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_57.png": {
+    "assets/images/npc/01/fish_13203-idle_57.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4955,7 +4955,7 @@
         "y": 0.5621768707482994
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_58.png": {
+    "assets/images/npc/01/fish_13203-idle_58.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4977,7 +4977,7 @@
         "y": 0.5604761904761905
       }
     },
-    "/assets/images/npc/01/fish_13203-idle_59.png": {
+    "assets/images/npc/01/fish_13203-idle_59.png": {
       "sourceWidth": 1096,
       "sourceHeight": 1176,
       "bounds": {
@@ -4999,7 +4999,7 @@
         "y": 0.5575510204081632
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_00.png": {
+    "assets/images/npc/02/fish_11002-idle_00.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5021,7 +5021,7 @@
         "y": 0.5313419913419913
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_01.png": {
+    "assets/images/npc/02/fish_11002-idle_01.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5043,7 +5043,7 @@
         "y": 0.5334199134199135
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_02.png": {
+    "assets/images/npc/02/fish_11002-idle_02.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5065,7 +5065,7 @@
         "y": 0.5366233766233766
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_03.png": {
+    "assets/images/npc/02/fish_11002-idle_03.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5087,7 +5087,7 @@
         "y": 0.5387012987012987
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_04.png": {
+    "assets/images/npc/02/fish_11002-idle_04.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5109,7 +5109,7 @@
         "y": 0.543030303030303
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_05.png": {
+    "assets/images/npc/02/fish_11002-idle_05.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5131,7 +5131,7 @@
         "y": 0.5473593073593074
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_06.png": {
+    "assets/images/npc/02/fish_11002-idle_06.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5153,7 +5153,7 @@
         "y": 0.5516883116883117
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_07.png": {
+    "assets/images/npc/02/fish_11002-idle_07.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5175,7 +5175,7 @@
         "y": 0.556017316017316
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_08.png": {
+    "assets/images/npc/02/fish_11002-idle_08.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5197,7 +5197,7 @@
         "y": 0.5593073593073593
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_09.png": {
+    "assets/images/npc/02/fish_11002-idle_09.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5219,7 +5219,7 @@
         "y": 0.5636363636363636
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_10.png": {
+    "assets/images/npc/02/fish_11002-idle_10.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5241,7 +5241,7 @@
         "y": 0.5679653679653679
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_11.png": {
+    "assets/images/npc/02/fish_11002-idle_11.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5263,7 +5263,7 @@
         "y": 0.5658874458874459
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_12.png": {
+    "assets/images/npc/02/fish_11002-idle_12.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5285,7 +5285,7 @@
         "y": 0.5626839826839827
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_13.png": {
+    "assets/images/npc/02/fish_11002-idle_13.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5307,7 +5307,7 @@
         "y": 0.5616450216450217
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_14.png": {
+    "assets/images/npc/02/fish_11002-idle_14.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5329,7 +5329,7 @@
         "y": 0.5573160173160173
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_15.png": {
+    "assets/images/npc/02/fish_11002-idle_15.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5351,7 +5351,7 @@
         "y": 0.5529870129870129
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_16.png": {
+    "assets/images/npc/02/fish_11002-idle_16.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5373,7 +5373,7 @@
         "y": 0.5486580086580086
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_17.png": {
+    "assets/images/npc/02/fish_11002-idle_17.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5395,7 +5395,7 @@
         "y": 0.5443290043290043
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_18.png": {
+    "assets/images/npc/02/fish_11002-idle_18.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5417,7 +5417,7 @@
         "y": 0.5399999999999999
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_19.png": {
+    "assets/images/npc/02/fish_11002-idle_19.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5439,7 +5439,7 @@
         "y": 0.5356709956709956
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_20.png": {
+    "assets/images/npc/02/fish_11002-idle_20.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5461,7 +5461,7 @@
         "y": 0.5313419913419913
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_21.png": {
+    "assets/images/npc/02/fish_11002-idle_21.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5483,7 +5483,7 @@
         "y": 0.5334199134199135
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_22.png": {
+    "assets/images/npc/02/fish_11002-idle_22.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5505,7 +5505,7 @@
         "y": 0.5366233766233766
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_23.png": {
+    "assets/images/npc/02/fish_11002-idle_23.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5527,7 +5527,7 @@
         "y": 0.5387012987012987
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_24.png": {
+    "assets/images/npc/02/fish_11002-idle_24.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5549,7 +5549,7 @@
         "y": 0.543030303030303
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_25.png": {
+    "assets/images/npc/02/fish_11002-idle_25.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5571,7 +5571,7 @@
         "y": 0.5473593073593074
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_26.png": {
+    "assets/images/npc/02/fish_11002-idle_26.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5593,7 +5593,7 @@
         "y": 0.5516883116883117
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_27.png": {
+    "assets/images/npc/02/fish_11002-idle_27.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5615,7 +5615,7 @@
         "y": 0.556017316017316
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_28.png": {
+    "assets/images/npc/02/fish_11002-idle_28.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5637,7 +5637,7 @@
         "y": 0.5593073593073593
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_29.png": {
+    "assets/images/npc/02/fish_11002-idle_29.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5659,7 +5659,7 @@
         "y": 0.5636363636363636
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_30.png": {
+    "assets/images/npc/02/fish_11002-idle_30.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5681,7 +5681,7 @@
         "y": 0.5679653679653679
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_31.png": {
+    "assets/images/npc/02/fish_11002-idle_31.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5703,7 +5703,7 @@
         "y": 0.5658874458874459
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_32.png": {
+    "assets/images/npc/02/fish_11002-idle_32.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5725,7 +5725,7 @@
         "y": 0.5626839826839827
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_33.png": {
+    "assets/images/npc/02/fish_11002-idle_33.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5747,7 +5747,7 @@
         "y": 0.5616450216450217
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_34.png": {
+    "assets/images/npc/02/fish_11002-idle_34.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5769,7 +5769,7 @@
         "y": 0.5573160173160173
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_35.png": {
+    "assets/images/npc/02/fish_11002-idle_35.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5791,7 +5791,7 @@
         "y": 0.5529870129870129
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_36.png": {
+    "assets/images/npc/02/fish_11002-idle_36.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5813,7 +5813,7 @@
         "y": 0.5486580086580086
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_37.png": {
+    "assets/images/npc/02/fish_11002-idle_37.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5835,7 +5835,7 @@
         "y": 0.5443290043290043
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_38.png": {
+    "assets/images/npc/02/fish_11002-idle_38.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5857,7 +5857,7 @@
         "y": 0.5399999999999999
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_39.png": {
+    "assets/images/npc/02/fish_11002-idle_39.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5879,7 +5879,7 @@
         "y": 0.5356709956709956
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_40.png": {
+    "assets/images/npc/02/fish_11002-idle_40.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5901,7 +5901,7 @@
         "y": 0.5313419913419913
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_41.png": {
+    "assets/images/npc/02/fish_11002-idle_41.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5923,7 +5923,7 @@
         "y": 0.5334199134199135
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_42.png": {
+    "assets/images/npc/02/fish_11002-idle_42.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5945,7 +5945,7 @@
         "y": 0.5366233766233766
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_43.png": {
+    "assets/images/npc/02/fish_11002-idle_43.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5967,7 +5967,7 @@
         "y": 0.5387012987012987
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_44.png": {
+    "assets/images/npc/02/fish_11002-idle_44.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -5989,7 +5989,7 @@
         "y": 0.543030303030303
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_45.png": {
+    "assets/images/npc/02/fish_11002-idle_45.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6011,7 +6011,7 @@
         "y": 0.5473593073593074
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_46.png": {
+    "assets/images/npc/02/fish_11002-idle_46.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6033,7 +6033,7 @@
         "y": 0.5516883116883117
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_47.png": {
+    "assets/images/npc/02/fish_11002-idle_47.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6055,7 +6055,7 @@
         "y": 0.556017316017316
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_48.png": {
+    "assets/images/npc/02/fish_11002-idle_48.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6077,7 +6077,7 @@
         "y": 0.5593073593073593
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_49.png": {
+    "assets/images/npc/02/fish_11002-idle_49.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6099,7 +6099,7 @@
         "y": 0.5636363636363636
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_50.png": {
+    "assets/images/npc/02/fish_11002-idle_50.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6121,7 +6121,7 @@
         "y": 0.5679653679653679
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_51.png": {
+    "assets/images/npc/02/fish_11002-idle_51.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6143,7 +6143,7 @@
         "y": 0.5658874458874459
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_52.png": {
+    "assets/images/npc/02/fish_11002-idle_52.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6165,7 +6165,7 @@
         "y": 0.5626839826839827
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_53.png": {
+    "assets/images/npc/02/fish_11002-idle_53.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6187,7 +6187,7 @@
         "y": 0.5616450216450217
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_54.png": {
+    "assets/images/npc/02/fish_11002-idle_54.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6209,7 +6209,7 @@
         "y": 0.5573160173160173
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_55.png": {
+    "assets/images/npc/02/fish_11002-idle_55.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6231,7 +6231,7 @@
         "y": 0.5529870129870129
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_56.png": {
+    "assets/images/npc/02/fish_11002-idle_56.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6253,7 +6253,7 @@
         "y": 0.5486580086580086
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_57.png": {
+    "assets/images/npc/02/fish_11002-idle_57.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6275,7 +6275,7 @@
         "y": 0.5443290043290043
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_58.png": {
+    "assets/images/npc/02/fish_11002-idle_58.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6297,7 +6297,7 @@
         "y": 0.5399999999999999
       }
     },
-    "/assets/images/npc/02/fish_11002-idle_59.png": {
+    "assets/images/npc/02/fish_11002-idle_59.png": {
       "sourceWidth": 1628,
       "sourceHeight": 462,
       "bounds": {
@@ -6319,7 +6319,7 @@
         "y": 0.5356709956709956
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_00.png": {
+    "assets/images/npc/03/fish_11003-idle_00.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6341,7 +6341,7 @@
         "y": 0.6760550458715596
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_01.png": {
+    "assets/images/npc/03/fish_11003-idle_01.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6363,7 +6363,7 @@
         "y": 0.6795412844036697
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_02.png": {
+    "assets/images/npc/03/fish_11003-idle_02.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6385,7 +6385,7 @@
         "y": 0.681834862385321
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_03.png": {
+    "assets/images/npc/03/fish_11003-idle_03.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6407,7 +6407,7 @@
         "y": 0.6864220183486238
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_04.png": {
+    "assets/images/npc/03/fish_11003-idle_04.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6429,7 +6429,7 @@
         "y": 0.6887155963302751
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_05.png": {
+    "assets/images/npc/03/fish_11003-idle_05.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6451,7 +6451,7 @@
         "y": 0.6910091743119265
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_06.png": {
+    "assets/images/npc/03/fish_11003-idle_06.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6473,7 +6473,7 @@
         "y": 0.693302752293578
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_07.png": {
+    "assets/images/npc/03/fish_11003-idle_07.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6495,7 +6495,7 @@
         "y": 0.696697247706422
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_08.png": {
+    "assets/images/npc/03/fish_11003-idle_08.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6517,7 +6517,7 @@
         "y": 0.6989908256880734
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_09.png": {
+    "assets/images/npc/03/fish_11003-idle_09.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6539,7 +6539,7 @@
         "y": 0.7024770642201834
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_10.png": {
+    "assets/images/npc/03/fish_11003-idle_10.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6561,7 +6561,7 @@
         "y": 0.7047706422018348
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_11.png": {
+    "assets/images/npc/03/fish_11003-idle_11.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6583,7 +6583,7 @@
         "y": 0.7024770642201834
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_12.png": {
+    "assets/images/npc/03/fish_11003-idle_12.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6605,7 +6605,7 @@
         "y": 0.700183486238532
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_13.png": {
+    "assets/images/npc/03/fish_11003-idle_13.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6627,7 +6627,7 @@
         "y": 0.6955963302752293
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_14.png": {
+    "assets/images/npc/03/fish_11003-idle_14.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6649,7 +6649,7 @@
         "y": 0.693302752293578
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_15.png": {
+    "assets/images/npc/03/fish_11003-idle_15.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6671,7 +6671,7 @@
         "y": 0.6910091743119265
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_16.png": {
+    "assets/images/npc/03/fish_11003-idle_16.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6693,7 +6693,7 @@
         "y": 0.6875229357798165
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_17.png": {
+    "assets/images/npc/03/fish_11003-idle_17.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6715,7 +6715,7 @@
         "y": 0.6841284403669724
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_18.png": {
+    "assets/images/npc/03/fish_11003-idle_18.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6737,7 +6737,7 @@
         "y": 0.681834862385321
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_19.png": {
+    "assets/images/npc/03/fish_11003-idle_19.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6759,7 +6759,7 @@
         "y": 0.678348623853211
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_20.png": {
+    "assets/images/npc/03/fish_11003-idle_20.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6781,7 +6781,7 @@
         "y": 0.6760550458715596
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_21.png": {
+    "assets/images/npc/03/fish_11003-idle_21.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6803,7 +6803,7 @@
         "y": 0.6795412844036697
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_22.png": {
+    "assets/images/npc/03/fish_11003-idle_22.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6825,7 +6825,7 @@
         "y": 0.681834862385321
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_23.png": {
+    "assets/images/npc/03/fish_11003-idle_23.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6847,7 +6847,7 @@
         "y": 0.6864220183486238
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_24.png": {
+    "assets/images/npc/03/fish_11003-idle_24.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6869,7 +6869,7 @@
         "y": 0.6887155963302751
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_25.png": {
+    "assets/images/npc/03/fish_11003-idle_25.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6891,7 +6891,7 @@
         "y": 0.6910091743119265
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_26.png": {
+    "assets/images/npc/03/fish_11003-idle_26.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6913,7 +6913,7 @@
         "y": 0.693302752293578
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_27.png": {
+    "assets/images/npc/03/fish_11003-idle_27.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6935,7 +6935,7 @@
         "y": 0.696697247706422
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_28.png": {
+    "assets/images/npc/03/fish_11003-idle_28.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6957,7 +6957,7 @@
         "y": 0.6989908256880734
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_29.png": {
+    "assets/images/npc/03/fish_11003-idle_29.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -6979,7 +6979,7 @@
         "y": 0.7024770642201834
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_30.png": {
+    "assets/images/npc/03/fish_11003-idle_30.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7001,7 +7001,7 @@
         "y": 0.7047706422018348
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_31.png": {
+    "assets/images/npc/03/fish_11003-idle_31.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7023,7 +7023,7 @@
         "y": 0.7024770642201834
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_32.png": {
+    "assets/images/npc/03/fish_11003-idle_32.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7045,7 +7045,7 @@
         "y": 0.700183486238532
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_33.png": {
+    "assets/images/npc/03/fish_11003-idle_33.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7067,7 +7067,7 @@
         "y": 0.6955963302752293
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_34.png": {
+    "assets/images/npc/03/fish_11003-idle_34.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7089,7 +7089,7 @@
         "y": 0.693302752293578
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_35.png": {
+    "assets/images/npc/03/fish_11003-idle_35.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7111,7 +7111,7 @@
         "y": 0.6910091743119265
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_36.png": {
+    "assets/images/npc/03/fish_11003-idle_36.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7133,7 +7133,7 @@
         "y": 0.6875229357798165
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_37.png": {
+    "assets/images/npc/03/fish_11003-idle_37.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7155,7 +7155,7 @@
         "y": 0.6841284403669724
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_38.png": {
+    "assets/images/npc/03/fish_11003-idle_38.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7177,7 +7177,7 @@
         "y": 0.681834862385321
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_39.png": {
+    "assets/images/npc/03/fish_11003-idle_39.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7199,7 +7199,7 @@
         "y": 0.678348623853211
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_40.png": {
+    "assets/images/npc/03/fish_11003-idle_40.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7221,7 +7221,7 @@
         "y": 0.6760550458715596
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_41.png": {
+    "assets/images/npc/03/fish_11003-idle_41.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7243,7 +7243,7 @@
         "y": 0.6795412844036697
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_42.png": {
+    "assets/images/npc/03/fish_11003-idle_42.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7265,7 +7265,7 @@
         "y": 0.681834862385321
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_43.png": {
+    "assets/images/npc/03/fish_11003-idle_43.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7287,7 +7287,7 @@
         "y": 0.6864220183486238
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_44.png": {
+    "assets/images/npc/03/fish_11003-idle_44.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7309,7 +7309,7 @@
         "y": 0.6887155963302751
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_45.png": {
+    "assets/images/npc/03/fish_11003-idle_45.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7331,7 +7331,7 @@
         "y": 0.6910091743119265
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_46.png": {
+    "assets/images/npc/03/fish_11003-idle_46.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7353,7 +7353,7 @@
         "y": 0.693302752293578
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_47.png": {
+    "assets/images/npc/03/fish_11003-idle_47.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7375,7 +7375,7 @@
         "y": 0.696697247706422
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_48.png": {
+    "assets/images/npc/03/fish_11003-idle_48.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7397,7 +7397,7 @@
         "y": 0.6989908256880734
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_49.png": {
+    "assets/images/npc/03/fish_11003-idle_49.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7419,7 +7419,7 @@
         "y": 0.7024770642201834
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_50.png": {
+    "assets/images/npc/03/fish_11003-idle_50.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7441,7 +7441,7 @@
         "y": 0.7047706422018348
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_51.png": {
+    "assets/images/npc/03/fish_11003-idle_51.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7463,7 +7463,7 @@
         "y": 0.7024770642201834
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_52.png": {
+    "assets/images/npc/03/fish_11003-idle_52.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7485,7 +7485,7 @@
         "y": 0.700183486238532
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_53.png": {
+    "assets/images/npc/03/fish_11003-idle_53.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7507,7 +7507,7 @@
         "y": 0.6955963302752293
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_54.png": {
+    "assets/images/npc/03/fish_11003-idle_54.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7529,7 +7529,7 @@
         "y": 0.693302752293578
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_55.png": {
+    "assets/images/npc/03/fish_11003-idle_55.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7551,7 +7551,7 @@
         "y": 0.6910091743119265
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_56.png": {
+    "assets/images/npc/03/fish_11003-idle_56.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7573,7 +7573,7 @@
         "y": 0.6875229357798165
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_57.png": {
+    "assets/images/npc/03/fish_11003-idle_57.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7595,7 +7595,7 @@
         "y": 0.6841284403669724
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_58.png": {
+    "assets/images/npc/03/fish_11003-idle_58.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7617,7 +7617,7 @@
         "y": 0.681834862385321
       }
     },
-    "/assets/images/npc/03/fish_11003-idle_59.png": {
+    "assets/images/npc/03/fish_11003-idle_59.png": {
       "sourceWidth": 1628,
       "sourceHeight": 436,
       "bounds": {
@@ -7639,7 +7639,7 @@
         "y": 0.678348623853211
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_00.png": {
+    "assets/images/npc/04/fish_13201-idle_00.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7661,7 +7661,7 @@
         "y": 0.4857106274007682
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_01.png": {
+    "assets/images/npc/04/fish_13201-idle_01.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7683,7 +7683,7 @@
         "y": 0.4866581306017925
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_02.png": {
+    "assets/images/npc/04/fish_13201-idle_02.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7705,7 +7705,7 @@
         "y": 0.48791293213828424
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_03.png": {
+    "assets/images/npc/04/fish_13201-idle_03.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7727,7 +7727,7 @@
         "y": 0.4888604353393086
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_04.png": {
+    "assets/images/npc/04/fish_13201-idle_04.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7749,7 +7749,7 @@
         "y": 0.49047375160051215
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_05.png": {
+    "assets/images/npc/04/fish_13201-idle_05.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7771,7 +7771,7 @@
         "y": 0.49177976952624836
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_06.png": {
+    "assets/images/npc/04/fish_13201-idle_06.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7793,7 +7793,7 @@
         "y": 0.49275288092189495
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_07.png": {
+    "assets/images/npc/04/fish_13201-idle_07.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7815,7 +7815,7 @@
         "y": 0.49405889884763127
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_08.png": {
+    "assets/images/npc/04/fish_13201-idle_08.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7837,7 +7837,7 @@
         "y": 0.49567221510883486
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_09.png": {
+    "assets/images/npc/04/fish_13201-idle_09.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7859,7 +7859,7 @@
         "y": 0.4972855313700384
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_10.png": {
+    "assets/images/npc/04/fish_13201-idle_10.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7881,7 +7881,7 @@
         "y": 0.4985915492957746
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_11.png": {
+    "assets/images/npc/04/fish_13201-idle_11.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7903,7 +7903,7 @@
         "y": 0.4998719590268886
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_12.png": {
+    "assets/images/npc/04/fish_13201-idle_12.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7925,7 +7925,7 @@
         "y": 0.5014852752880922
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_13.png": {
+    "assets/images/npc/04/fish_13201-idle_13.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7947,7 +7947,7 @@
         "y": 0.5027912932138284
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_14.png": {
+    "assets/images/npc/04/fish_13201-idle_14.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7969,7 +7969,7 @@
         "y": 0.504404609475032
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_15.png": {
+    "assets/images/npc/04/fish_13201-idle_15.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -7991,7 +7991,7 @@
         "y": 0.5057106274007682
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_16.png": {
+    "assets/images/npc/04/fish_13201-idle_16.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8013,7 +8013,7 @@
         "y": 0.504763124199744
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_17.png": {
+    "assets/images/npc/04/fish_13201-idle_17.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8035,7 +8035,7 @@
         "y": 0.5038156209987196
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_18.png": {
+    "assets/images/npc/04/fish_13201-idle_18.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8057,7 +8057,7 @@
         "y": 0.5028681177976952
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_19.png": {
+    "assets/images/npc/04/fish_13201-idle_19.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8079,7 +8079,7 @@
         "y": 0.5012548015364917
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_20.png": {
+    "assets/images/npc/04/fish_13201-idle_20.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8101,7 +8101,7 @@
         "y": 0.4996414852752881
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_21.png": {
+    "assets/images/npc/04/fish_13201-idle_21.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8123,7 +8123,7 @@
         "y": 0.49866837387964147
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_22.png": {
+    "assets/images/npc/04/fish_13201-idle_22.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8145,7 +8145,7 @@
         "y": 0.4970550576184379
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_23.png": {
+    "assets/images/npc/04/fish_13201-idle_23.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8167,7 +8167,7 @@
         "y": 0.4957490396927017
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_24.png": {
+    "assets/images/npc/04/fish_13201-idle_24.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8189,7 +8189,7 @@
         "y": 0.4941357234314981
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_25.png": {
+    "assets/images/npc/04/fish_13201-idle_25.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8211,7 +8211,7 @@
         "y": 0.49252240717029444
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_26.png": {
+    "assets/images/npc/04/fish_13201-idle_26.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8233,7 +8233,7 @@
         "y": 0.49121638924455824
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_27.png": {
+    "assets/images/npc/04/fish_13201-idle_27.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8255,7 +8255,7 @@
         "y": 0.4899359795134443
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_28.png": {
+    "assets/images/npc/04/fish_13201-idle_28.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8277,7 +8277,7 @@
         "y": 0.48862996158770805
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_29.png": {
+    "assets/images/npc/04/fish_13201-idle_29.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8299,7 +8299,7 @@
         "y": 0.4870166453265045
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_30.png": {
+    "assets/images/npc/04/fish_13201-idle_30.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8321,7 +8321,7 @@
         "y": 0.4857106274007682
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_31.png": {
+    "assets/images/npc/04/fish_13201-idle_31.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8343,7 +8343,7 @@
         "y": 0.4866581306017925
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_32.png": {
+    "assets/images/npc/04/fish_13201-idle_32.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8365,7 +8365,7 @@
         "y": 0.48791293213828424
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_33.png": {
+    "assets/images/npc/04/fish_13201-idle_33.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8387,7 +8387,7 @@
         "y": 0.4888604353393086
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_34.png": {
+    "assets/images/npc/04/fish_13201-idle_34.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8409,7 +8409,7 @@
         "y": 0.48983354673495516
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_35.png": {
+    "assets/images/npc/04/fish_13201-idle_35.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8431,7 +8431,7 @@
         "y": 0.4911395646606914
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_36.png": {
+    "assets/images/npc/04/fish_13201-idle_36.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8453,7 +8453,7 @@
         "y": 0.4924455825864277
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_37.png": {
+    "assets/images/npc/04/fish_13201-idle_37.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8475,7 +8475,7 @@
         "y": 0.49372599231754166
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_38.png": {
+    "assets/images/npc/04/fish_13201-idle_38.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8497,7 +8497,7 @@
         "y": 0.49503201024327786
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_39.png": {
+    "assets/images/npc/04/fish_13201-idle_39.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8519,7 +8519,7 @@
         "y": 0.49664532650448145
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_40.png": {
+    "assets/images/npc/04/fish_13201-idle_40.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8541,7 +8541,7 @@
         "y": 0.497618437900128
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_41.png": {
+    "assets/images/npc/04/fish_13201-idle_41.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8563,7 +8563,7 @@
         "y": 0.4992317541613316
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_42.png": {
+    "assets/images/npc/04/fish_13201-idle_42.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8585,7 +8585,7 @@
         "y": 0.5005377720870678
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_43.png": {
+    "assets/images/npc/04/fish_13201-idle_43.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8607,7 +8607,7 @@
         "y": 0.5018181818181818
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_44.png": {
+    "assets/images/npc/04/fish_13201-idle_44.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8629,7 +8629,7 @@
         "y": 0.5031241997439181
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_45.png": {
+    "assets/images/npc/04/fish_13201-idle_45.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8651,7 +8651,7 @@
         "y": 0.5047375160051216
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_46.png": {
+    "assets/images/npc/04/fish_13201-idle_46.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8673,7 +8673,7 @@
         "y": 0.50348271446863
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_47.png": {
+    "assets/images/npc/04/fish_13201-idle_47.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8695,7 +8695,7 @@
         "y": 0.5025352112676057
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_48.png": {
+    "assets/images/npc/04/fish_13201-idle_48.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8717,7 +8717,7 @@
         "y": 0.5019206145966709
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_49.png": {
+    "assets/images/npc/04/fish_13201-idle_49.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8739,7 +8739,7 @@
         "y": 0.5006145966709348
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_50.png": {
+    "assets/images/npc/04/fish_13201-idle_50.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8761,7 +8761,7 @@
         "y": 0.49900128040973113
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_51.png": {
+    "assets/images/npc/04/fish_13201-idle_51.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8783,7 +8783,7 @@
         "y": 0.49769526248399487
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_52.png": {
+    "assets/images/npc/04/fish_13201-idle_52.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8805,7 +8805,7 @@
         "y": 0.4964148527528809
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_53.png": {
+    "assets/images/npc/04/fish_13201-idle_53.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8827,7 +8827,7 @@
         "y": 0.4951088348271447
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_54.png": {
+    "assets/images/npc/04/fish_13201-idle_54.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8849,7 +8849,7 @@
         "y": 0.49349551856594115
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_55.png": {
+    "assets/images/npc/04/fish_13201-idle_55.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8871,7 +8871,7 @@
         "y": 0.49252240717029444
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_56.png": {
+    "assets/images/npc/04/fish_13201-idle_56.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8893,7 +8893,7 @@
         "y": 0.4909090909090909
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_57.png": {
+    "assets/images/npc/04/fish_13201-idle_57.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8915,7 +8915,7 @@
         "y": 0.48960307298335465
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_58.png": {
+    "assets/images/npc/04/fish_13201-idle_58.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8937,7 +8937,7 @@
         "y": 0.4883226632522407
       }
     },
-    "/assets/images/npc/04/fish_13201-idle_59.png": {
+    "assets/images/npc/04/fish_13201-idle_59.png": {
       "sourceWidth": 1562,
       "sourceHeight": 1562,
       "bounds": {
@@ -8959,7 +8959,7 @@
         "y": 0.4870166453265045
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_00.png": {
+    "assets/images/npc/05/fish_14102-idle_00.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -8981,7 +8981,7 @@
         "y": 0.7321411764705882
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_01.png": {
+    "assets/images/npc/05/fish_14102-idle_01.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9003,7 +9003,7 @@
         "y": 0.7333176470588234
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_02.png": {
+    "assets/images/npc/05/fish_14102-idle_02.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9025,7 +9025,7 @@
         "y": 0.7344941176470587
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_03.png": {
+    "assets/images/npc/05/fish_14102-idle_03.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9047,7 +9047,7 @@
         "y": 0.7350588235294118
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_04.png": {
+    "assets/images/npc/05/fish_14102-idle_04.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9069,7 +9069,7 @@
         "y": 0.736235294117647
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_05.png": {
+    "assets/images/npc/05/fish_14102-idle_05.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9091,7 +9091,7 @@
         "y": 0.7374117647058823
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_06.png": {
+    "assets/images/npc/05/fish_14102-idle_06.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9113,7 +9113,7 @@
         "y": 0.7392
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_07.png": {
+    "assets/images/npc/05/fish_14102-idle_07.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9135,7 +9135,7 @@
         "y": 0.7403764705882352
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_08.png": {
+    "assets/images/npc/05/fish_14102-idle_08.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9157,7 +9157,7 @@
         "y": 0.7415529411764705
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_09.png": {
+    "assets/images/npc/05/fish_14102-idle_09.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9179,7 +9179,7 @@
         "y": 0.7433411764705883
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_10.png": {
+    "assets/images/npc/05/fish_14102-idle_10.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9201,7 +9201,7 @@
         "y": 0.7445176470588236
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_11.png": {
+    "assets/images/npc/05/fish_14102-idle_11.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9223,7 +9223,7 @@
         "y": 0.7427764705882353
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_12.png": {
+    "assets/images/npc/05/fish_14102-idle_12.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9245,7 +9245,7 @@
         "y": 0.7416
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_13.png": {
+    "assets/images/npc/05/fish_14102-idle_13.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9267,7 +9267,7 @@
         "y": 0.741035294117647
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_14.png": {
+    "assets/images/npc/05/fish_14102-idle_14.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9289,7 +9289,7 @@
         "y": 0.7398588235294118
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_15.png": {
+    "assets/images/npc/05/fish_14102-idle_15.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9311,7 +9311,7 @@
         "y": 0.7392941176470588
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_16.png": {
+    "assets/images/npc/05/fish_14102-idle_16.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9333,7 +9333,7 @@
         "y": 0.7386823529411765
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_17.png": {
+    "assets/images/npc/05/fish_14102-idle_17.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9355,7 +9355,7 @@
         "y": 0.7381176470588235
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_18.png": {
+    "assets/images/npc/05/fish_14102-idle_18.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9377,7 +9377,7 @@
         "y": 0.7369411764705882
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_19.png": {
+    "assets/images/npc/05/fish_14102-idle_19.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9399,7 +9399,7 @@
         "y": 0.7363764705882353
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_20.png": {
+    "assets/images/npc/05/fish_14102-idle_20.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9421,7 +9421,7 @@
         "y": 0.7345882352941177
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_21.png": {
+    "assets/images/npc/05/fish_14102-idle_21.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9443,7 +9443,7 @@
         "y": 0.7357647058823529
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_22.png": {
+    "assets/images/npc/05/fish_14102-idle_22.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9465,7 +9465,7 @@
         "y": 0.7363294117647059
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_23.png": {
+    "assets/images/npc/05/fish_14102-idle_23.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9487,7 +9487,7 @@
         "y": 0.7375058823529411
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_24.png": {
+    "assets/images/npc/05/fish_14102-idle_24.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9509,7 +9509,7 @@
         "y": 0.7380705882352941
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_25.png": {
+    "assets/images/npc/05/fish_14102-idle_25.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9531,7 +9531,7 @@
         "y": 0.7392470588235295
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_26.png": {
+    "assets/images/npc/05/fish_14102-idle_26.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9553,7 +9553,7 @@
         "y": 0.7404235294117647
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_27.png": {
+    "assets/images/npc/05/fish_14102-idle_27.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9575,7 +9575,7 @@
         "y": 0.7409882352941177
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_28.png": {
+    "assets/images/npc/05/fish_14102-idle_28.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9597,7 +9597,7 @@
         "y": 0.742164705882353
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_29.png": {
+    "assets/images/npc/05/fish_14102-idle_29.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9619,7 +9619,7 @@
         "y": 0.7433411764705883
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_30.png": {
+    "assets/images/npc/05/fish_14102-idle_30.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9641,7 +9641,7 @@
         "y": 0.7439058823529411
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_31.png": {
+    "assets/images/npc/05/fish_14102-idle_31.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9663,7 +9663,7 @@
         "y": 0.742164705882353
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_32.png": {
+    "assets/images/npc/05/fish_14102-idle_32.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9685,7 +9685,7 @@
         "y": 0.7409882352941177
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_33.png": {
+    "assets/images/npc/05/fish_14102-idle_33.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9707,7 +9707,7 @@
         "y": 0.7392
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_34.png": {
+    "assets/images/npc/05/fish_14102-idle_34.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9729,7 +9729,7 @@
         "y": 0.7380235294117646
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_35.png": {
+    "assets/images/npc/05/fish_14102-idle_35.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9751,7 +9751,7 @@
         "y": 0.7368470588235293
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_36.png": {
+    "assets/images/npc/05/fish_14102-idle_36.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9773,7 +9773,7 @@
         "y": 0.7368470588235293
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_37.png": {
+    "assets/images/npc/05/fish_14102-idle_37.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9795,7 +9795,7 @@
         "y": 0.7356705882352941
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_38.png": {
+    "assets/images/npc/05/fish_14102-idle_38.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9817,7 +9817,7 @@
         "y": 0.7344941176470587
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_39.png": {
+    "assets/images/npc/05/fish_14102-idle_39.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9839,7 +9839,7 @@
         "y": 0.7339294117647059
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_40.png": {
+    "assets/images/npc/05/fish_14102-idle_40.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9861,7 +9861,7 @@
         "y": 0.7327529411764706
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_41.png": {
+    "assets/images/npc/05/fish_14102-idle_41.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9883,7 +9883,7 @@
         "y": 0.7339294117647059
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_42.png": {
+    "assets/images/npc/05/fish_14102-idle_42.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9905,7 +9905,7 @@
         "y": 0.7357176470588236
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_43.png": {
+    "assets/images/npc/05/fish_14102-idle_43.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9927,7 +9927,7 @@
         "y": 0.7368941176470588
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_44.png": {
+    "assets/images/npc/05/fish_14102-idle_44.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9949,7 +9949,7 @@
         "y": 0.7380705882352941
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_45.png": {
+    "assets/images/npc/05/fish_14102-idle_45.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9971,7 +9971,7 @@
         "y": 0.7398588235294118
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_46.png": {
+    "assets/images/npc/05/fish_14102-idle_46.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -9993,7 +9993,7 @@
         "y": 0.741035294117647
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_47.png": {
+    "assets/images/npc/05/fish_14102-idle_47.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10015,7 +10015,7 @@
         "y": 0.7428235294117647
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_48.png": {
+    "assets/images/npc/05/fish_14102-idle_48.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10037,7 +10037,7 @@
         "y": 0.744
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_49.png": {
+    "assets/images/npc/05/fish_14102-idle_49.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10059,7 +10059,7 @@
         "y": 0.7451764705882352
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_50.png": {
+    "assets/images/npc/05/fish_14102-idle_50.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10081,7 +10081,7 @@
         "y": 0.7463529411764706
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_51.png": {
+    "assets/images/npc/05/fish_14102-idle_51.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10103,7 +10103,7 @@
         "y": 0.744
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_52.png": {
+    "assets/images/npc/05/fish_14102-idle_52.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10125,7 +10125,7 @@
         "y": 0.7428235294117647
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_53.png": {
+    "assets/images/npc/05/fish_14102-idle_53.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10147,7 +10147,7 @@
         "y": 0.7416470588235294
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_54.png": {
+    "assets/images/npc/05/fish_14102-idle_54.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10169,7 +10169,7 @@
         "y": 0.7398588235294118
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_55.png": {
+    "assets/images/npc/05/fish_14102-idle_55.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10191,7 +10191,7 @@
         "y": 0.7386823529411765
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_56.png": {
+    "assets/images/npc/05/fish_14102-idle_56.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10213,7 +10213,7 @@
         "y": 0.7380705882352941
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_57.png": {
+    "assets/images/npc/05/fish_14102-idle_57.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10235,7 +10235,7 @@
         "y": 0.7362823529411765
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_58.png": {
+    "assets/images/npc/05/fish_14102-idle_58.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10257,7 +10257,7 @@
         "y": 0.7351058823529412
       }
     },
-    "/assets/images/npc/05/fish_14102-idle_59.png": {
+    "assets/images/npc/05/fish_14102-idle_59.png": {
       "sourceWidth": 742,
       "sourceHeight": 850,
       "bounds": {
@@ -10279,7 +10279,7 @@
         "y": 0.7339294117647059
       }
     },
-    "/assets/images/boss/01.png": {
+    "assets/images/boss/01.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10301,7 +10301,7 @@
         "y": 0.48705632306057384
       }
     },
-    "/assets/images/boss/02.png": {
+    "assets/images/boss/02.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10323,7 +10323,7 @@
         "y": 0.4936875664187035
       }
     },
-    "/assets/images/boss/03.png": {
+    "assets/images/boss/03.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10345,7 +10345,7 @@
         "y": 0.49236981934112645
       }
     },
-    "/assets/images/boss/04.png": {
+    "assets/images/boss/04.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10367,7 +10367,7 @@
         "y": 0.4993411264612115
       }
     },
-    "/assets/images/boss/05.png": {
+    "assets/images/boss/05.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10389,7 +10389,7 @@
         "y": 0.4865887353878852
       }
     },
-    "/assets/images/boss/06.png": {
+    "assets/images/boss/06.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10411,7 +10411,7 @@
         "y": 0.4862061636556854
       }
     },
-    "/assets/images/boss/07.png": {
+    "assets/images/boss/07.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10433,7 +10433,7 @@
         "y": 0.49657810839532407
       }
     },
-    "/assets/images/boss/08.png": {
+    "assets/images/boss/08.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10455,7 +10455,7 @@
         "y": 0.4820828905419766
       }
     },
-    "/assets/images/boss/09.png": {
+    "assets/images/boss/09.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10477,7 +10477,7 @@
         "y": 0.4600212539851222
       }
     },
-    "/assets/images/boss/10.png": {
+    "assets/images/boss/10.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10499,7 +10499,7 @@
         "y": 0.4671625929861849
       }
     },
-    "/assets/images/boss/11.png": {
+    "assets/images/boss/11.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10521,7 +10521,7 @@
         "y": 0.4667375132837407
       }
     },
-    "/assets/images/boss/12.png": {
+    "assets/images/boss/12.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10543,7 +10543,7 @@
         "y": 0.46435706695005313
       }
     },
-    "/assets/images/boss/13.png": {
+    "assets/images/boss/13.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10565,7 +10565,7 @@
         "y": 0.45572794899043567
       }
     },
-    "/assets/images/boss/14.png": {
+    "assets/images/boss/14.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10587,7 +10587,7 @@
         "y": 0.5028267800212539
       }
     },
-    "/assets/images/boss/15.png": {
+    "assets/images/boss/15.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10609,7 +10609,7 @@
         "y": 0.47307120085015936
       }
     },
-    "/assets/images/boss/16.png": {
+    "assets/images/boss/16.png": {
       "sourceWidth": 1672,
       "sourceHeight": 941,
       "bounds": {
@@ -10633,10 +10633,10 @@
     }
   },
   "ui": {
-    "as1": "/assets/images/as1.png",
-    "as2": "/assets/images/as2.png",
-    "bg": "/assets/images/bg.png",
-    "boss": "/assets/images/boss.png",
-    "modal_win": "/assets/images/modal_win.png"
+    "as1": "assets/images/as1.png",
+    "as2": "assets/images/as2.png",
+    "bg": "assets/images/bg.png",
+    "boss": "assets/images/boss.png",
+    "modal_win": "assets/images/modal_win.png"
   }
 }
