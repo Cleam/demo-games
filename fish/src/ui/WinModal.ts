@@ -5,7 +5,9 @@ import { ManifestLoader } from '@/utils/ManifestLoader'
 import { applyTextureToImage } from '@/utils/DynamicTexture'
 
 const MODAL_SCALE = 0.61
-const BUTTON_Y = 1216
+// `BUTTON_Y` 控制 win 结算页“立即领取”按钮的垂直位置。
+// 数值越小，按钮越往上，越贴近弹窗图。
+const BUTTON_Y = 1100
 
 export class WinModal {
   private scene: Phaser.Scene

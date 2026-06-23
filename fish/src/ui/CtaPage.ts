@@ -23,13 +23,6 @@ export class CtaPage {
     bg.fillGradientStyle(0x30005f, 0x30005f, 0xe500b9, 0x8a00d7, 1)
     bg.fillRect(-GAME_WIDTH / 2, 0, GAME_WIDTH, GAME_HEIGHT)
 
-    const rails = scene.add.graphics()
-    rails.fillStyle(0xffffff, 0.95)
-    rails.fillRect(-GAME_WIDTH / 2, 260, GAME_WIDTH, 24)
-    rails.fillRect(-GAME_WIDTH / 2, 332, GAME_WIDTH, 18)
-    rails.fillStyle(0xffffff, 0.32)
-    rails.fillRect(-GAME_WIDTH / 2, 942, GAME_WIDTH, 20)
-
     const title = scene.add.text(0, 126, '你能吞噬多少鱼了', {
       fontSize: '48px',
       color: '#ffe42f',
@@ -65,7 +58,7 @@ export class CtaPage {
       ease: 'Sine.easeInOut',
     })
 
-    this.root.add([bg, rails, title, subTitle, heroGlow, hero])
+    this.root.add([bg, title, subTitle, heroGlow, hero])
     layer.add(this.root)
   }
 

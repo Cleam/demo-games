@@ -8,6 +8,10 @@ import { ManifestLoader } from '@/utils/ManifestLoader'
 
 export type CardState = 'locked' | 'current' | 'unlocked'
 
+const PROGRESS_BAR_X = 52
+// 进度条宽度需要控制在卡片背景内，避免超过右侧边界。
+const PROGRESS_BAR_WIDTH = 246
+
 export class EvolutionCard {
   private scene: Phaser.Scene
   private mode: GameMode
@@ -95,8 +99,8 @@ export class EvolutionCard {
       fontStyle: 'bold',
     }).setOrigin(0.5)
 
-    this.progressBg = scene.add.rectangle(52, 36, 290, 8, 0x21345a, 0.92).setOrigin(0, 0.5)
-    this.progressFill = scene.add.rectangle(52, 36, 0, 8, 0xeb4e52, 1).setOrigin(0, 0.5)
+    this.progressBg = scene.add.rectangle(PROGRESS_BAR_X, 36, PROGRESS_BAR_WIDTH, 8, 0x21345a, 0.92).setOrigin(0, 0.5)
+    this.progressFill = scene.add.rectangle(PROGRESS_BAR_X, 36, 0, 8, 0xeb4e52, 1).setOrigin(0, 0.5)
 
     this.root.add([
       this.bg,
@@ -143,14 +147,14 @@ export class EvolutionCard {
       this.progressBg.setVisible(true)
       this.progressFill.setVisible(true)
       this.progressFill.setFillStyle(state === 'current' ? 0x2fca6a : 0x4cbcf6)
-      this.progressFill.width = 290
+      this.progressFill.width = PROGRESS_BAR_WIDTH
     }
   }
 
   setProgress(progress: number): void {
     if (this.destroyed || !this.root.scene || !this.root.active || !this.progressFill.scene) return
     if (!this.progressFill.visible) return
-    const width = 290 * Phaser.Math.Clamp(progress, 0, 1)
+    const width = PROGRESS_BAR_WIDTH * Phaser.Math.Clamp(progress, 0, 1)
     this.scene.tweens.add({
       targets: this.progressFill,
       width,
