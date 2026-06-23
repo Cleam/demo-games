@@ -46,11 +46,12 @@ export class Actor {
     this.player.play(this.frames, { frameRate, loop })
   }
 
-  play(loop: boolean, frameRate: number, onComplete?: () => void): void {
+  play(loop: boolean, frameRate: number, onComplete?: () => void, stopFrameIndex?: number): void {
     this.player.play(this.frames, {
       frameRate,
       loop,
       onComplete,
+      stopFrameIndex,
     })
   }
 
@@ -139,7 +140,8 @@ export class Actor {
   }
 
   getMouthWorldPoint(): { x: number; y: number } {
-    const trim = ManifestLoader.getTrimmedFrame(this.representativeFrame)
+    const currentFrame = this.player.getCurrentFrameUrl() ?? this.representativeFrame
+    const trim = ManifestLoader.getTrimmedFrame(currentFrame)
     const img = this.player.gameObject
     if (!trim || !img.texture) {
       return { x: img.x, y: img.y }

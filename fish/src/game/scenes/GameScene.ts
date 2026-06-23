@@ -18,6 +18,27 @@ import { WinModal } from '@/ui/WinModal'
 
 const HERO_CARD_LEVELS: HeroLevel[] = ['lv30', 'lv60', 'lv90', 'lv120']
 
+const HERO_SUCTION_CONFIG: Record<HeroLevel, {
+  holdFrameIndex: number
+  holdFrameRate: number
+  funnelOffsetX: number
+  funnelOffsetY: number
+  mouthOffsetX: number
+  mouthOffsetY: number
+  spreadX: number
+  spreadY: number
+}> = {
+  lv0: { holdFrameIndex: 9, holdFrameRate: 24, funnelOffsetX: 22, funnelOffsetY: 6, mouthOffsetX: 4, mouthOffsetY: 2, spreadX: 12, spreadY: 10 },
+  lv30: { holdFrameIndex: 9, holdFrameRate: 24, funnelOffsetX: 30, funnelOffsetY: 4, mouthOffsetX: 8, mouthOffsetY: 0, spreadX: 15, spreadY: 12 },
+  lv60: { holdFrameIndex: 9, holdFrameRate: 24, funnelOffsetX: 38, funnelOffsetY: -4, mouthOffsetX: 12, mouthOffsetY: -4, spreadX: 18, spreadY: 14 },
+  lv90: { holdFrameIndex: 9, holdFrameRate: 26, funnelOffsetX: 48, funnelOffsetY: -16, mouthOffsetX: 18, mouthOffsetY: -10, spreadX: 22, spreadY: 16 },
+  lv120: { holdFrameIndex: 9, holdFrameRate: 26, funnelOffsetX: 58, funnelOffsetY: -14, mouthOffsetX: 22, mouthOffsetY: -8, spreadX: 24, spreadY: 18 },
+}
+
+function indexAngle(seed: number): number {
+  return (seed / 60) * 0.7 + Math.PI * 0.2
+}
+
 interface ScrollItem {
   object: Phaser.GameObjects.GameObject & { x: number }
   speed: number
@@ -284,7 +305,8 @@ export class GameScene extends Phaser.Scene {
     const heroMouth = this.heroActor?.getMouthWorldPoint() ?? { x: 300, y: 590 }
     const npcs = this.npcController?.spawnWave(wave, heroMouth) ?? []
     this.refreshEvolutionCards(0.12)
-    this.heroActor?.play(false, 16, () => this.heroActor?.play(true, 14))
+    const suctionConfig = HERO_SUCTION_CONFIG[this.currentHeroLevel]
+    this.heroActor?.play(false, suctionConfig.holdFrameRate, undefined, suctionConfig.holdFrameIndex)
     this.followBossBehindHero()
 
     for (const npc of npcs) {
@@ -298,26 +320,31 @@ export class GameScene extends Phaser.Scene {
 
     await this.delay(120)
     if (!this.isFlowValid(token)) return
-    const mouth = this.heroActor?.getMouthWorldPoint() ?? { x: 250, y: 580 }
+    const mouth = this.getHeroSuctionMouthPoint()
     this.suctionEffect?.play(mouth.x, mouth.y, wave === '05' ? 92 : 72, 720)
-    await this.consumeWave(npcs, mouth)
+    await this.consumeWave(npcs)
     if (!this.isFlowValid(token)) return
 
+    this.heroActor?.play(true, 14)
     this.npcController?.destroy()
     await new Promise<void>((resolve) => this.heroActor?.tweenPose(this.getHeroPose(this.currentHeroLevel), 260, resolve))
   }
 
-  private async consumeWave(npcs: Actor[], mouth: { x: number; y: number }): Promise<void> {
-    await Promise.all(npcs.map((npc, index) => this.consumeNpc(npc, mouth, index * 60)))
+  private async consumeWave(npcs: Actor[]): Promise<void> {
+    await Promise.all(npcs.map((npc, index) => this.consumeNpc(npc, index)))
   }
 
-  private consumeNpc(npc: Actor, mouth: { x: number; y: number }, delayMs: number): Promise<void> {
+  private consumeNpc(npc: Actor, index: number): Promise<void> {
     return new Promise((resolve) => {
       const target = npc.player.gameObject
       const startX = target.x
       const startY = target.y
       const startScale = Math.abs(target.scaleX)
       const spiral = { t: 0 }
+      const delayMs = index * 60
+      const config = HERO_SUCTION_CONFIG[this.currentHeroLevel]
+      const laneX = (index % 3) - 1
+      const laneY = Math.floor(index / 3) - 0.5
 
       this.time.delayedCall(delayMs, () => {
         this.tweens.add({
@@ -328,11 +355,31 @@ export class GameScene extends Phaser.Scene {
           onUpdate: () => {
             const t = spiral.t
             const angle = indexAngle(delayMs) + t * 5.6
-            const radius = (1 - t) * (48 + (delayMs / 60) * 3)
-            target.x = Phaser.Math.Linear(startX, mouth.x, t) + Math.cos(angle) * radius
-            target.y = Phaser.Math.Linear(startY, mouth.y, t) + Math.sin(angle) * radius * 0.55
-            target.setScale(startScale * (1 - t * 0.78))
-            target.setAlpha(1 - t * 0.92)
+            const radius = (1 - t) * (44 + index * 6)
+            const mouth = this.getHeroSuctionMouthPoint()
+            const funnelTarget = {
+              x: mouth.x + config.funnelOffsetX + laneX * config.spreadX,
+              y: mouth.y + config.funnelOffsetY + laneY * config.spreadY,
+            }
+            const finalTarget = {
+              x: mouth.x + config.mouthOffsetX,
+              y: mouth.y + config.mouthOffsetY,
+            }
+
+            if (t < 0.76) {
+              const p = t / 0.76
+              target.x = Phaser.Math.Linear(startX, funnelTarget.x, p) + Math.cos(angle) * radius
+              target.y = Phaser.Math.Linear(startY, funnelTarget.y, p) + Math.sin(angle) * radius * 0.48
+              target.setScale(startScale * (1 - p * 0.52))
+              target.setAlpha(1 - p * 0.38)
+              return
+            }
+
+            const p = (t - 0.76) / 0.24
+            target.x = Phaser.Math.Linear(funnelTarget.x, finalTarget.x, p)
+            target.y = Phaser.Math.Linear(funnelTarget.y, finalTarget.y, p)
+            target.setScale(startScale * (0.48 - p * 0.4))
+            target.setAlpha(0.62 - p * 0.58)
           },
           onComplete: () => {
             npc.destroy()
@@ -341,6 +388,13 @@ export class GameScene extends Phaser.Scene {
         })
       })
     })
+  }
+
+  /**
+   * 吸食过程要跟随 hero 当前停住的攻击帧计算口部位置，避免大体型阶段出现明显穿模。
+   */
+  private getHeroSuctionMouthPoint(): { x: number; y: number } {
+    return this.heroActor?.getMouthWorldPoint() ?? { x: 250, y: 580 }
   }
 
   private async upgradeHero(nextLevel: HeroLevel, token: number): Promise<void> {
@@ -556,8 +610,4 @@ export class GameScene extends Phaser.Scene {
     this.evolutionLayer.setVisible(false)
     this.ctaPage?.show()
   }
-}
-
-function indexAngle(delayMs: number): number {
-  return (delayMs / 60) * 0.7
 }

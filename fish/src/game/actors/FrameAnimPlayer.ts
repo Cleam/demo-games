@@ -21,6 +21,7 @@ export interface PlayOptions {
   frameRate: number
   loop: boolean
   onComplete?: () => void
+  stopFrameIndex?: number
 }
 
 export class FrameAnimPlayer {
@@ -30,6 +31,8 @@ export class FrameAnimPlayer {
   private frameTimer: Phaser.Time.TimerEvent | null = null
   /** 每次调用 play() 自增，异步加载回调用此值判断是否已被中断 */
   private playGen = 0
+  private currentUrls: string[] = []
+  private currentFrameIndex = 0
 
   constructor(scene: Phaser.Scene) {
     this.scene      = scene
@@ -44,6 +47,8 @@ export class FrameAnimPlayer {
   play(urls: string[], options: PlayOptions): void {
     const gen = ++this.playGen
     this.stopFrameTimer()
+    this.currentUrls = urls
+    this.currentFrameIndex = 0
 
     if (urls.length === 0) return
 
@@ -95,6 +100,10 @@ export class FrameAnimPlayer {
     }
   }
 
+  getCurrentFrameUrl(): string | null {
+    return this.currentUrls[this.currentFrameIndex] ?? null
+  }
+
   // ──────────────────────────────────────────────────────────────────
 
   private startAnim(urls: string[], options: PlayOptions, gen: number): void {
@@ -108,9 +117,11 @@ export class FrameAnimPlayer {
     if (!firstKey) return
     this.gameObject.setTexture(firstKey)
     this.gameObject.setVisible(true)
+    this.currentFrameIndex = keys.indexOf(firstKey)
 
     let ticks = 0
     const delay = 1000 / options.frameRate
+    const stopFrameIndex = Phaser.Math.Clamp(options.stopFrameIndex ?? total - 1, 0, total - 1)
 
     this.frameTimer = this.scene.time.addEvent({
       delay,
@@ -123,10 +134,11 @@ export class FrameAnimPlayer {
         const key = keys[idx]
         if (this.scene.textures.exists(key)) {
           this.gameObject.setTexture(key)
+          this.currentFrameIndex = idx
         }
 
-        // once 模式：播完最后一帧后停止
-        if (!options.loop && ticks >= total - 1) {
+        // once 模式：播到目标帧后停住当前帧，形成可维持的关键姿态。
+        if (!options.loop && ticks >= stopFrameIndex) {
           this.stopFrameTimer()
           options.onComplete?.()
         }
