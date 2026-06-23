@@ -51,6 +51,8 @@ export class GameScene extends Phaser.Scene {
   private ctaPage?: CtaPage
   private evolutionCards: EvolutionCard[] = []
   private scrollingObjects: ScrollItem[] = []
+  private flowToken = 0
+  private isSceneAlive = false
 
   constructor() { super({ key: 'GameScene' }) }
 
@@ -60,6 +62,8 @@ export class GameScene extends Phaser.Scene {
     this.currentNpcWaveIndex = 0
     this.isUpgrading = false
     this.isFinalLoseSequence = false
+    this.flowToken++
+    this.isSceneAlive = true
     stateManager.enter('playing')
   }
 
@@ -71,23 +75,31 @@ export class GameScene extends Phaser.Scene {
     this.createOverlayUi()
     this.npcController = new NpcWaveController(this, this.battleLayer)
     this.suctionEffect = new SuctionEffectPlayer(this, this.effectLayer)
-    void this.bootstrapFlow()
+    const token = this.flowToken
+    void this.bootstrapFlow(token)
 
     this.events.once('shutdown', () => {
+      this.isSceneAlive = false
+      this.flowToken++
       this.npcController?.destroy()
       this.heroActor?.destroy()
       this.bossActor?.destroy()
+      for (const card of this.evolutionCards) card.destroy()
+      this.evolutionCards = []
     })
   }
 
-  private async bootstrapFlow(): Promise<void> {
+  private async bootstrapFlow(token: number): Promise<void> {
     await this.ensureFramesReady([
       ...ManifestLoader.getHeroFrames('lv0'),
       ...(this.mode === 'lose' ? ManifestLoader.getBossFrames() : []),
     ])
+    if (!this.isFlowValid(token)) return
     this.spawnHero('lv0')
+    if (!this.isFlowValid(token)) return
     if (this.mode === 'lose') this.spawnLoseBoss()
-    await this.startFlow()
+    if (!this.isFlowValid(token)) return
+    await this.startFlow(token)
   }
 
   update(_time: number, delta: number): void {
@@ -244,27 +256,33 @@ export class GameScene extends Phaser.Scene {
     })
   }
 
-  private async startFlow(): Promise<void> {
+  private async startFlow(token: number): Promise<void> {
     await this.delay(500)
+    if (!this.isFlowValid(token)) return
     for (const wave of NPC_WAVES) {
+      if (!this.isFlowValid(token)) return
       this.currentNpcWaveIndex = NPC_WAVES.indexOf(wave)
-      await this.playWave(wave)
+      await this.playWave(wave, token)
+      if (!this.isFlowValid(token)) return
 
       const nextLevel = getNextHeroLevel(this.currentHeroLevel)
       if (wave !== '05' && nextLevel) {
-        await this.upgradeHero(nextLevel)
+        await this.upgradeHero(nextLevel, token)
+        if (!this.isFlowValid(token)) return
       }
     }
 
-    if (this.mode === 'lose') await this.playLoseEnding()
-    else await this.playWinEnding()
+    if (!this.isFlowValid(token)) return
+    if (this.mode === 'lose') await this.playLoseEnding(token)
+    else await this.playWinEnding(token)
   }
 
-  private async playWave(wave: NpcWaveId): Promise<void> {
+  private async playWave(wave: NpcWaveId, token: number): Promise<void> {
     await this.ensureFramesReady([
       ...ManifestLoader.getNpcFrames(wave),
       ...ManifestLoader.getHeroFrames(this.currentHeroLevel),
     ])
+    if (!this.isFlowValid(token)) return
     const heroMouth = this.heroActor?.getMouthWorldPoint() ?? { x: 300, y: 590 }
     const npcs = this.npcController?.spawnWave(wave, heroMouth) ?? []
     this.refreshEvolutionCards(0.12)
@@ -276,13 +294,16 @@ export class GameScene extends Phaser.Scene {
     }
 
     await this.delay(480)
+    if (!this.isFlowValid(token)) return
     const chasePose = this.getHeroChasePose()
     await new Promise<void>((resolve) => this.heroActor?.tweenPose(chasePose, 420, resolve))
 
     await this.delay(120)
+    if (!this.isFlowValid(token)) return
     const mouth = this.heroActor?.getMouthWorldPoint() ?? { x: 250, y: 580 }
     this.suctionEffect?.play(mouth.x, mouth.y, wave === '05' ? 92 : 72, 720)
     await this.consumeWave(npcs, mouth)
+    if (!this.isFlowValid(token)) return
 
     this.npcController?.destroy()
     await new Promise<void>((resolve) => this.heroActor?.tweenPose(this.getHeroPose(this.currentHeroLevel), 260, resolve))
@@ -324,9 +345,10 @@ export class GameScene extends Phaser.Scene {
     })
   }
 
-  private async upgradeHero(nextLevel: HeroLevel): Promise<void> {
+  private async upgradeHero(nextLevel: HeroLevel, token: number): Promise<void> {
     this.isUpgrading = true
     await this.ensureFramesReady(ManifestLoader.getHeroFrames(nextLevel))
+    if (!this.isFlowValid(token)) return
     const mouth = this.heroActor?.getMouthWorldPoint() ?? { x: 250, y: 580 }
     this.suctionEffect?.playBurst(mouth.x - 32, mouth.y + 8)
     await this.delay(260)
@@ -347,6 +369,7 @@ export class GameScene extends Phaser.Scene {
     }, true, 15)
 
     await new Promise<void>((resolve) => this.heroActor?.tweenPose({ ...nextPose, alpha: 1 }, 320, resolve))
+    if (!this.isFlowValid(token)) return
     prevActor?.destroy()
     this.currentHeroLevel = nextLevel
     this.refreshEvolutionCards(1)
@@ -355,13 +378,16 @@ export class GameScene extends Phaser.Scene {
     await this.delay(280)
   }
 
-  private async playWinEnding(): Promise<void> {
+  private async playWinEnding(token: number): Promise<void> {
+    if (!this.isFlowValid(token)) return
     stateManager.enter('resultWin')
     await this.delay(650)
+    if (!this.isFlowValid(token)) return
     this.winModal?.show()
   }
 
-  private async playLoseEnding(): Promise<void> {
+  private async playLoseEnding(token: number): Promise<void> {
+    if (!this.isFlowValid(token)) return
     this.isFinalLoseSequence = true
     stateManager.enter('finalBattle')
 
@@ -375,8 +401,10 @@ export class GameScene extends Phaser.Scene {
 
     const mouth = hero.getMouthWorldPoint()
     await new Promise<void>((resolve) => boss.tweenPose({ x: hero.x - 384, y: hero.y + 2 }, 900, resolve))
+    if (!this.isFlowValid(token)) return
 
     for (const value of [0.82, 0.58, 0.34, 0.12, 0]) {
+      if (!this.isFlowValid(token)) return
       this.staminaBar?.setPercent(value)
       this.timerDisplay?.setValue(10 * value)
       this.suctionEffect?.play(mouth.x - 188, mouth.y - 18, 102, 600)
@@ -408,6 +436,7 @@ export class GameScene extends Phaser.Scene {
         onComplete: () => resolve(),
       })
     })
+    if (!this.isFlowValid(token)) return
 
     hero.destroy()
     this.heroActor = undefined
@@ -417,6 +446,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   private refreshEvolutionCards(currentProgress: number): void {
+    if (!this.isSceneAlive || this.evolutionCards.length === 0) return
     const currentIndex = HERO_LEVELS.indexOf(this.currentHeroLevel)
     this.evolutionCards.forEach((card, index) => {
       const levelIndex = HERO_LEVELS.indexOf(HERO_CARD_LEVELS[index])
@@ -498,6 +528,10 @@ export class GameScene extends Phaser.Scene {
     } catch {
       // 维持容错，避免单帧失败直接阻断整段流程。
     }
+  }
+
+  private isFlowValid(token: number): boolean {
+    return this.isSceneAlive && token === this.flowToken && !!this.scene?.isActive()
   }
 
   private onClaimReward(): void {

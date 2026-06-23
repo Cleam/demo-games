@@ -23,6 +23,7 @@ export class EvolutionCard {
   private progressBg: Phaser.GameObjects.Rectangle
   private progressFill: Phaser.GameObjects.Rectangle
   private levelTxt: Phaser.GameObjects.Text
+  private destroyed = false
 
   private static readonly PORTRAIT_VISIBLE_WIDTH: Partial<Record<CharacterSlot, number>> = {
     evolution_1: 82,
@@ -113,6 +114,8 @@ export class EvolutionCard {
   }
 
   setState(state: CardState): void {
+    if (this.destroyed || !this.root.scene || !this.root.active || !this.actionTxt.scene) return
+
     if (state === 'locked') {
       this.bg.setFillStyle(0xf8f2de)
       this.bg.setStrokeStyle(2, 0xd1c8b0)
@@ -145,6 +148,7 @@ export class EvolutionCard {
   }
 
   setProgress(progress: number): void {
+    if (this.destroyed || !this.root.scene || !this.root.active || !this.progressFill.scene) return
     if (!this.progressFill.visible) return
     const width = 290 * Phaser.Math.Clamp(progress, 0, 1)
     this.scene.tweens.add({
@@ -156,6 +160,8 @@ export class EvolutionCard {
   }
 
   destroy(): void {
+    this.destroyed = true
+    this.scene.tweens.killTweensOf(this.progressFill)
     this.root.destroy(true)
   }
 }
