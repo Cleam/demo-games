@@ -18,6 +18,19 @@ import { WinModal } from '@/ui/WinModal'
 
 const HERO_CARD_LEVELS: HeroLevel[] = ['lv30', 'lv60', 'lv90', 'lv120']
 
+const NPC_SUCTION_LIFT_RATIO: Record<NpcWaveId, number> = {
+  // 控制不同 NPC 在吸入时“先抬起来再收口”的高度比例。
+  // 数值会乘以该 NPC 当前显示高度：
+  // - 更大：上拱更明显
+  // - 更小：轨迹更平
+  // 这里就是后续手动微调不同 NPC 吸入高度的主入口。
+  '01': 0.22,
+  '02': 0.25,
+  '03': 0.2,
+  '04': 0.1,
+  '05': 0.12,
+}
+
 const HERO_SUCTION_CONFIG: Record<HeroLevel, {
   holdFrameIndex: number
   holdFrameRate: number
@@ -28,6 +41,11 @@ const HERO_SUCTION_CONFIG: Record<HeroLevel, {
   spreadX: number
   spreadY: number
 }> = {
+  // 普通吸食微调说明：
+  // 1. `funnelOffsetX / funnelOffsetY` 控制 NPC 被吸到 hero 嘴前时的汇聚中心。
+  // 2. `mouthOffsetX / mouthOffsetY` 控制最终吸入口落点，相当于 hero 嘴巴附近的精修偏移。
+  // 3. `spreadX / spreadY` 控制多只 NPC 在汇聚阶段彼此拉开的距离。
+  // 4. `holdFrameIndex / holdFrameRate` 控制 hero 吸食时停在哪一帧、张嘴动作推进得有多快。
   lv0: { holdFrameIndex: 9, holdFrameRate: 24, funnelOffsetX: 22, funnelOffsetY: 6, mouthOffsetX: 4, mouthOffsetY: 2, spreadX: 12, spreadY: 10 },
   lv30: { holdFrameIndex: 9, holdFrameRate: 24, funnelOffsetX: 30, funnelOffsetY: 4, mouthOffsetX: 8, mouthOffsetY: 0, spreadX: 15, spreadY: 12 },
   lv60: { holdFrameIndex: 9, holdFrameRate: 24, funnelOffsetX: 38, funnelOffsetY: -4, mouthOffsetX: 12, mouthOffsetY: -4, spreadX: 18, spreadY: 14 },
@@ -345,6 +363,10 @@ export class GameScene extends Phaser.Scene {
       const config = HERO_SUCTION_CONFIG[this.currentHeroLevel]
       const laneX = (index % 3) - 1
       const laneY = Math.floor(index / 3) - 0.5
+      const currentWave = NPC_WAVES[this.currentNpcWaveIndex] ?? '01'
+      // 不同 NPC 的上抬高度从 `NPC_SUCTION_LIFT_RATIO` 读取。
+      // 如果你觉得某一波次太高或太低，直接改上面的配置表即可。
+      const verticalLift = target.displayHeight * NPC_SUCTION_LIFT_RATIO[currentWave]
 
       this.time.delayedCall(delayMs, () => {
         this.tweens.add({
@@ -359,7 +381,7 @@ export class GameScene extends Phaser.Scene {
             const mouth = this.getHeroSuctionMouthPoint()
             const funnelTarget = {
               x: mouth.x + config.funnelOffsetX + laneX * config.spreadX,
-              y: mouth.y + config.funnelOffsetY + laneY * config.spreadY,
+              y: mouth.y + config.funnelOffsetY + laneY * config.spreadY - verticalLift,
             }
             const finalTarget = {
               x: mouth.x + config.mouthOffsetX,
@@ -451,6 +473,21 @@ export class GameScene extends Phaser.Scene {
     const boss = this.bossActor
     if (!hero || !boss) return
 
+    // lose 结算里 hero 逃跑动画的摆尾速度。
+    // 数值越大，帧切换越快，逃跑感越强。
+    hero.playFrames(this.getLv120MoveFrames(), true, 52)
+    this.tweens.add({
+      targets: hero.player.gameObject,
+      // lose 结算里 hero 往前冲的幅度。
+      // 数值越大，视觉上越像在拼命往前逃。
+      x: hero.x + 96,
+      // lose 结算里 hero 前冲往复的节奏。
+      // 数值越小，前冲越急促。
+      duration: 90,
+      yoyo: true,
+      repeat: -1,
+      ease: 'Sine.easeInOut',
+    })
     const mouth = hero.getMouthWorldPoint()
     await new Promise<void>((resolve) => boss.tweenPose({ x: hero.x - 384, y: hero.y + 2 }, 900, resolve))
     if (!this.isFlowValid(token)) return
@@ -467,6 +504,7 @@ export class GameScene extends Phaser.Scene {
     const bossMouth = boss.getMouthWorldPoint()
     await new Promise<void>((resolve) => {
       const target = hero.player.gameObject
+      this.tweens.killTweensOf(target)
       const startX = target.x
       const startY = target.y
       const startScale = Math.abs(target.scaleX)
@@ -568,6 +606,14 @@ export class GameScene extends Phaser.Scene {
     const trim = ManifestLoader.getTrimmedFrame(frameUrl)
     if (!trim || trim.bounds.width === 0) return 0.5
     return visibleWidth / trim.bounds.width
+  }
+
+  private getLv120MoveFrames(): string[] {
+    // lose 结算里 hero 逃跑动作使用的帧资源。
+    // 如果以后更换资源目录或文件名，直接改这里。
+    return Array.from({ length: 20 }, (_, index) =>
+      `assets/images/hero/move/fish_151011-move_${String(index).padStart(2, '0')}.png`,
+    )
   }
 
   private delay(ms: number): Promise<void> {

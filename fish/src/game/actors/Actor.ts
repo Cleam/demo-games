@@ -55,6 +55,19 @@ export class Actor {
     })
   }
 
+  /**
+   * 用于临时切换到其他动作资源，例如失败结算里的 lv120 move 逃跑动画。
+   * 不覆盖代表帧，避免影响当前场景里基于 atk trim 的既有定位逻辑。
+   */
+  playFrames(urls: string[], loop: boolean, frameRate: number, onComplete?: () => void, stopFrameIndex?: number): void {
+    this.player.play(urls, {
+      frameRate,
+      loop,
+      onComplete,
+      stopFrameIndex,
+    })
+  }
+
   applyPose(pose: ActorPose): void {
     const img = this.player.gameObject
     img.setPosition(pose.x, pose.y)
@@ -141,7 +154,7 @@ export class Actor {
 
   getMouthWorldPoint(): { x: number; y: number } {
     const currentFrame = this.player.getCurrentFrameUrl() ?? this.representativeFrame
-    const trim = ManifestLoader.getTrimmedFrame(currentFrame)
+    const trim = ManifestLoader.getTrimmedFrame(currentFrame) ?? ManifestLoader.getTrimmedFrame(this.representativeFrame)
     const img = this.player.gameObject
     if (!trim || !img.texture) {
       return { x: img.x, y: img.y }

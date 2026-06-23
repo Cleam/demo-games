@@ -10,7 +10,8 @@ const NPC_WAVE_LAYOUT: Record<NpcWaveId, { visibleWidth: number; gapX: number; g
   '02': { visibleWidth: 108, gapX: 58, gapY: 54, mouthGap: 162, baseY: 586 },
   '03': { visibleWidth: 122, gapX: 62, gapY: 56, mouthGap: 176, baseY: 590 },
   '04': { visibleWidth: 138, gapX: 66, gapY: 60, mouthGap: 190, baseY: 596 },
-  '05': { visibleWidth: 496, gapX: 0, gapY: 0, mouthGap: 238, baseY: 644 },
+  // `visibleWidth` 直接控制各波次 NPC 的出场尺寸；05 号这里已缩小为原来的一半。
+  '05': { visibleWidth: 248, gapX: 0, gapY: 0, mouthGap: 238, baseY: 644 },
 }
 
 export class NpcWaveController {
@@ -92,8 +93,15 @@ export class NpcWaveController {
   ): number {
     const visibleRightExtent = (trim.bounds.x + trim.bounds.width - trim.centerAnchor.x * trim.sourceWidth) * scale
     const visibleLeftExtent = (trim.centerAnchor.x * trim.sourceWidth - trim.bounds.x) * scale
-    const desiredX = GAME_WIDTH - 24 - visibleRightExtent
-    const minSafeX = heroMouthX + visibleLeftExtent + 140
-    return Math.max(desiredX, minSafeX)
+    // 05 号大体型 NPC 的出生点需要先保证“完整显示在屏幕内”。
+    // `screenSafeMinX / screenSafeMaxX` 控制可见区域左右留白；
+    // 如果后续还想继续往左或往右挪，优先改这里的 24。
+    const screenSafeMinX = visibleLeftExtent + 24
+    const screenSafeMaxX = GAME_WIDTH - visibleRightExtent - 24
+    // `desiredX` 是视觉上更靠右、但仍完整显示在屏内的位置。
+    const desiredX = GAME_WIDTH - visibleRightExtent - 64
+    // `minSafeX` 控制它与 hero 嘴巴的最小安全距离，避免出生时和 hero 贴得太近。
+    const minSafeX = heroMouthX + visibleLeftExtent + 80
+    return Phaser.Math.Clamp(Math.max(desiredX, minSafeX), screenSafeMinX, screenSafeMaxX)
   }
 }
