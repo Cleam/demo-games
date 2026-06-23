@@ -3,7 +3,7 @@
  * 扫描新资源结构，生成 public/manifest.json。
  * - hero/lv* 目录仅收录 atk 帧
  * - npc/0* 目录仅收录 idle 帧
- * - boss.png 单独收录
+ * - boss/ 目录按序收录帧图
  * - 所有引用帧生成 trim / anchor 元数据
  * - 忽略 assets/images/_tmp
  */
@@ -22,7 +22,7 @@ const OUTPUT_PATH = join(PUBLIC_DIR, 'manifest.json')
 const HERO_DIR = join(IMAGES_DIR, 'hero')
 const HERO_END_DIR = join(HERO_DIR, 'end')
 const NPC_DIR = join(IMAGES_DIR, 'npc')
-const BOSS_PATH = join(IMAGES_DIR, 'boss.png')
+const BOSS_DIR = join(IMAGES_DIR, 'boss')
 
 const HERO_LEVELS = ['lv0', 'lv30', 'lv60', 'lv90', 'lv120']
 const NPC_WAVES = ['01', '02', '03', '04', '05']
@@ -79,6 +79,8 @@ function parsePngTrim(filePath) {
   let bitDepth = 8
   let colorType = 6
   const idatParts = []
+  let palette = null
+  let transparency = null
 
   while (offset < buf.length) {
     const length = buf.readUInt32BE(offset)
@@ -91,6 +93,10 @@ function parsePngTrim(filePath) {
       height = data.readUInt32BE(4)
       bitDepth = data.readUInt8(8)
       colorType = data.readUInt8(9)
+    } else if (type === 'PLTE') {
+      palette = data
+    } else if (type === 'tRNS') {
+      transparency = data
     } else if (type === 'IDAT') {
       idatParts.push(data)
     } else if (type === 'IEND') {
@@ -98,12 +104,16 @@ function parsePngTrim(filePath) {
     }
   }
 
-  if (bitDepth !== 8) {
+  if (colorType === 3 && bitDepth !== 8) {
+    throw new Error(`暂不支持非 8-bit 索引 PNG: ${filePath}`)
+  }
+  if (colorType !== 3 && bitDepth !== 8) {
     throw new Error(`暂不支持非 8-bit PNG: ${filePath}`)
   }
 
   let bpp = 4
   if (colorType === 2) bpp = 3
+  else if (colorType === 3) bpp = 1
   else if (colorType !== 6) throw new Error(`暂不支持 colorType=${colorType}: ${filePath}`)
 
   const compressed = Buffer.concat(idatParts)
@@ -141,7 +151,14 @@ function parsePngTrim(filePath) {
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       const idx = (y * width + x) * bpp
-      const alpha = bpp === 4 ? pixels[idx + 3] : 255
+      let alpha = 255
+      if (colorType === 6) alpha = pixels[idx + 3]
+      else if (colorType === 3) {
+        const paletteIndex = pixels[idx]
+        alpha = transparency && paletteIndex < transparency.length
+          ? transparency[paletteIndex]
+          : 255
+      }
       if (alpha > 0) {
         if (x < minX) minX = x
         if (x > maxX) maxX = x
@@ -194,7 +211,7 @@ const manifest = {
   heroesByLevel: {},
   heroEnd: [],
   npcWaves: {},
-  boss: { url: toUrlPath(BOSS_PATH) },
+  boss: { frames: [] },
   trimData: {},
   ui: {},
 }
@@ -202,7 +219,6 @@ const manifest = {
 for (const f of safeReadDir(IMAGES_DIR)) {
   const full = join(IMAGES_DIR, f)
   if (!isFile(full) || extname(f).toLowerCase() !== '.png') continue
-  if (f === 'boss.png') continue
   manifest.ui[basename(f, '.png')] = toUrlPath(full)
 }
 
@@ -250,8 +266,16 @@ for (const wave of NPC_WAVES) {
   }
 }
 
-if (isFile(BOSS_PATH)) {
-  manifest.trimData[manifest.boss.url] = parsePngTrim(BOSS_PATH)
+if (isDirectory(BOSS_DIR)) {
+  const bossFrames = naturalSort(
+    safeReadDir(BOSS_DIR)
+      .filter(name => extname(name).toLowerCase() === '.png')
+      .map(name => join(BOSS_DIR, name)),
+  )
+  manifest.boss.frames = bossFrames.map(toUrlPath)
+  for (const framePath of bossFrames) {
+    manifest.trimData[toUrlPath(framePath)] = parsePngTrim(framePath)
+  }
 }
 
 try { mkdirSync(PUBLIC_DIR, { recursive: true }) } catch {}

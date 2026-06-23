@@ -108,8 +108,8 @@ export class GameScene extends Phaser.Scene {
     bg2.setScale(bgScale)
     this.backgroundLayer.add([bg1, bg2])
     this.scrollingObjects.push(
-      { object: bg1, speed: 0.024, wrapX: -bgDisplayWidth / 2, resetX: bgDisplayWidth * 1.5 },
-      { object: bg2, speed: 0.024, wrapX: -bgDisplayWidth / 2, resetX: bgDisplayWidth * 1.5 },
+      { object: bg1, speed: 0.048, wrapX: -bgDisplayWidth / 2, resetX: bgDisplayWidth * 1.5 },
+      { object: bg2, speed: 0.048, wrapX: -bgDisplayWidth / 2, resetX: bgDisplayWidth * 1.5 },
     )
 
     const as2 = this.add.image(GAME_WIDTH / 2, 128, 'as2')
@@ -131,15 +131,15 @@ export class GameScene extends Phaser.Scene {
     for (const x of seaweedPositions) {
       const weed = this.add.rectangle(x, 822, 12, 108, 0x57c09f, 0.72)
       this.backgroundLayer.add(weed)
-      this.scrollingObjects.push({ object: weed, speed: 0.056, wrapX: -80, resetX: GAME_WIDTH + 80 })
+      this.scrollingObjects.push({ object: weed, speed: 0.112, wrapX: -80, resetX: GAME_WIDTH + 80 })
     }
 
     const bubble1 = this.add.circle(348, 836, 18, 0xffffff, 0.28)
     const bubble2 = this.add.circle(626, 732, 14, 0xffffff, 0.24)
     this.backgroundLayer.add([reef1, reef2, bubble1, bubble2])
     this.scrollingObjects.push(
-      { object: reef1, speed: 0.04, wrapX: -180, resetX: GAME_WIDTH + 220 },
-      { object: reef2, speed: 0.048, wrapX: -180, resetX: GAME_WIDTH + 220 },
+      { object: reef1, speed: 0.08, wrapX: -180, resetX: GAME_WIDTH + 220 },
+      { object: reef2, speed: 0.096, wrapX: -180, resetX: GAME_WIDTH + 220 },
     )
 
     for (const bubble of [bubble1, bubble2]) {
@@ -223,9 +223,9 @@ export class GameScene extends Phaser.Scene {
   }
 
   private spawnLoseBoss(): void {
-    const bossUrl = ManifestLoader.getBossFrame()
-    this.bossActor = new Actor(this, this.battleLayer, [bossUrl], bossUrl)
-    this.bossActor.spawn(this.getBossPose(), true, 1)
+    const bossFrames = ManifestLoader.getBossFrames()
+    this.bossActor = new Actor(this, this.battleLayer, bossFrames, bossFrames[0])
+    this.bossActor.spawn(this.getBossPose(), true, 12)
     this.tweens.add({
       targets: this.bossActor.player.gameObject,
       y: this.bossActor.y - 12,
@@ -361,7 +361,7 @@ export class GameScene extends Phaser.Scene {
     if (!hero || !boss) return
 
     const mouth = hero.getMouthWorldPoint()
-    await new Promise<void>((resolve) => boss.tweenPose({ x: hero.x - 274, y: hero.y - 8 }, 900, resolve))
+    await new Promise<void>((resolve) => boss.tweenPose({ x: hero.x - 384, y: hero.y + 2 }, 900, resolve))
 
     for (const value of [0.82, 0.58, 0.34, 0.12, 0]) {
       this.staminaBar?.setPercent(value)
@@ -428,8 +428,8 @@ export class GameScene extends Phaser.Scene {
       flipX: false,
     }
     const targetVisibleWidth: Record<HeroLevel, number> = {
-      lv0: 236,
-      lv30: 300,
+      lv0: 154,
+      lv30: 198,
       lv60: 382,
       lv90: 500,
       lv120: 620,
@@ -437,7 +437,7 @@ export class GameScene extends Phaser.Scene {
     const frame = ManifestLoader.getHeroFrames(level)[0] ?? ''
     return {
       ...base,
-      y: level === 'lv0' ? 658 : level === 'lv60' ? 648 : level === 'lv90' ? 666 : level === 'lv120' ? 694 : 640,
+      y: level === 'lv0' ? 626 : level === 'lv30' ? 636 : level === 'lv60' ? 648 : level === 'lv90' ? 666 : 694,
       scale: this.scaleForVisibleWidth(frame, targetVisibleWidth[level]),
     }
   }
@@ -454,18 +454,18 @@ export class GameScene extends Phaser.Scene {
   private getBossPose(): { x: number; y: number; scale: number; flipX: boolean } {
     const bossFrame = ManifestLoader.getBossFrame()
     return {
-      x: -228,
-      y: 640,
+      x: -412,
+      y: 660,
       scale: this.scaleForVisibleWidth(bossFrame, 920),
-      flipX: true,
+      flipX: false,
     }
   }
 
   private followBossBehindHero(): void {
     if (this.mode !== 'lose' || !this.heroActor || !this.bossActor || this.isFinalLoseSequence) return
     this.bossActor.tweenPose({
-      x: this.heroActor.x - 492,
-      y: this.heroActor.y - 18,
+      x: this.heroActor.x - 648,
+      y: this.heroActor.y + 6,
     }, 420)
   }
 

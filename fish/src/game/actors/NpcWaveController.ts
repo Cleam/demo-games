@@ -10,7 +10,7 @@ const NPC_WAVE_LAYOUT: Record<NpcWaveId, { visibleWidth: number; gapX: number; g
   '02': { visibleWidth: 108, gapX: 58, gapY: 54, mouthGap: 162, baseY: 586 },
   '03': { visibleWidth: 122, gapX: 62, gapY: 56, mouthGap: 176, baseY: 590 },
   '04': { visibleWidth: 138, gapX: 66, gapY: 60, mouthGap: 190, baseY: 596 },
-  '05': { visibleWidth: 248, gapX: 0, gapY: 0, mouthGap: 228, baseY: 606 },
+  '05': { visibleWidth: 496, gapX: 0, gapY: 0, mouthGap: 238, baseY: 644 },
 }
 
 export class NpcWaveController {
@@ -30,16 +30,20 @@ export class NpcWaveController {
     const actors: Actor[] = []
     const layout = NPC_WAVE_LAYOUT[wave]
     const frame = frames[0] ?? ''
+    const trim = ManifestLoader.getTrimmedFrame(frame)
     const visibleSize = ManifestLoader.getVisibleBoundsSize(frame)
     const scale = visibleSize && visibleSize.width > 0
       ? layout.visibleWidth / visibleSize.width
       : 0.5
     const formationWidth = count === 1 ? layout.visibleWidth : (layout.gapX * 2 + layout.visibleWidth)
-    const baseX = Phaser.Math.Clamp(
+    const defaultBaseX = Phaser.Math.Clamp(
       heroMouth.x + layout.mouthGap,
       layout.visibleWidth * 0.6 + 24,
       GAME_WIDTH - formationWidth - 30,
     )
+    const baseX = wave === '05' && trim
+      ? this.getRightAnchoredSpawnX(trim, scale, heroMouth.x)
+      : defaultBaseX
     const baseY = Math.max(layout.baseY, heroMouth.y + 34)
 
     for (let i = 0; i < count; i++) {
@@ -79,5 +83,17 @@ export class NpcWaveController {
   destroy(): void {
     for (const npc of this.activeNpcs) npc.destroy()
     this.activeNpcs = []
+  }
+
+  private getRightAnchoredSpawnX(
+    trim: NonNullable<ReturnType<typeof ManifestLoader.getTrimmedFrame>>,
+    scale: number,
+    heroMouthX: number,
+  ): number {
+    const visibleRightExtent = (trim.bounds.x + trim.bounds.width - trim.centerAnchor.x * trim.sourceWidth) * scale
+    const visibleLeftExtent = (trim.centerAnchor.x * trim.sourceWidth - trim.bounds.x) * scale
+    const desiredX = GAME_WIDTH - 24 - visibleRightExtent
+    const minSafeX = heroMouthX + visibleLeftExtent + 140
+    return Math.max(desiredX, minSafeX)
   }
 }

@@ -14,7 +14,7 @@ interface ManifestData {
   heroesByLevel: Record<string, { atk: string[] }>
   heroEnd: string[]
   npcWaves: Record<string, { idle: string[] }>
-  boss: { url: string }
+  boss: { frames: string[] }
   trimData: Record<string, TrimmedFrame>
   ui: Record<string, string>
 }
@@ -42,8 +42,12 @@ export const ManifestLoader = {
     return _data?.heroEnd ?? []
   },
 
+  getBossFrames(): string[] {
+    return _data?.boss.frames ?? []
+  },
+
   getBossFrame(): string {
-    return _data?.boss.url ?? ''
+    return _data?.boss.frames?.[0] ?? ''
   },
 
   /**
