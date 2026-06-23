@@ -1,71 +1,64 @@
 import Phaser from 'phaser'
-import { GAME_WIDTH, GAME_HEIGHT, LAYER_DEPTH } from '@/config/constants'
+import { GAME_HEIGHT, GAME_WIDTH, LAYER_DEPTH } from '@/config/constants'
 import { type GameMode } from '@/config/modeConfig'
-import { stateManager, type GameState } from '@/core/StateManager'
-import { TimelineRunner, type TimelineEvent } from '@/systems/TimelineRunner'
-import { winTimeline } from '@/config/timeline.win'
-import { loseTimeline } from '@/config/timeline.lose'
-import { type CharacterSlot, PLAYER_SLOTS, slotConfig } from '@/config/assetMapping'
+import { CARD_SLOTS, type CharacterSlot } from '@/config/assetMapping'
+import { HERO_LEVEL_INFO, HERO_LEVELS, type HeroLevel, NPC_WAVES, type NpcWaveId, getNextHeroLevel } from '@/config/progression'
+import { stateManager } from '@/core/StateManager'
+import { SuctionEffectPlayer } from '@/effects/SuctionEffectPlayer'
 import { Actor } from '@/game/actors/Actor'
+import { NpcWaveController } from '@/game/actors/NpcWaveController'
+import { ManifestLoader } from '@/utils/ManifestLoader'
+import { CtaPage } from '@/ui/CtaPage'
 import { EvolutionCard } from '@/ui/EvolutionCard'
-import { BossHpBar } from '@/ui/BossHpBar'
+import { LoseModal } from '@/ui/LoseModal'
 import { StaminaBar } from '@/ui/StaminaBar'
 import { TimerDisplay } from '@/ui/TimerDisplay'
 import { WinModal } from '@/ui/WinModal'
-import { LoseModal } from '@/ui/LoseModal'
-import { CtaPage } from '@/ui/CtaPage'
-import { EffectPlayer } from '@/effects/EffectPlayer'
-import { getFishId } from '@/config/assetMapping'
+
+const HERO_CARD_LEVELS: HeroLevel[] = ['lv30', 'lv60', 'lv90', 'lv120']
+
+interface ScrollItem {
+  object: Phaser.GameObjects.GameObject & { x: number }
+  speed: number
+  wrapX: number
+  resetX: number
+}
 
 export class GameScene extends Phaser.Scene {
-  // ── 7 层级容器 ──────────────────────────────────────────────────
   backgroundLayer!: Phaser.GameObjects.Container
-  battleLayer!:     Phaser.GameObjects.Container
-  effectLayer!:     Phaser.GameObjects.Container
-  hudLayer!:        Phaser.GameObjects.Container
-  evolutionLayer!:  Phaser.GameObjects.Container
-  modalLayer!:      Phaser.GameObjects.Container
-  ctaLayer!:        Phaser.GameObjects.Container
+  battleLayer!: Phaser.GameObjects.Container
+  effectLayer!: Phaser.GameObjects.Container
+  hudLayer!: Phaser.GameObjects.Container
+  evolutionLayer!: Phaser.GameObjects.Container
+  modalLayer!: Phaser.GameObjects.Container
+  ctaLayer!: Phaser.GameObjects.Container
 
-  // ── 核心系统 ─────────────────────────────────────────────────────
-  runner!: TimelineRunner
   private mode!: GameMode
+  private currentHeroLevel: HeroLevel = 'lv0'
+  private currentNpcWaveIndex = 0
+  private isUpgrading = false
+  private isFinalLoseSequence = false
 
-  // ── 角色管理 ─────────────────────────────────────────────────────
-  /** slot 名称 → Actor 实例（支持玩家角色与 Boss/敌方角色并存） */
-  private actors = new Map<string, Actor>()
-  /** 当前显示的玩家角色槽位名（用于进化替换逻辑） */
-  private playerSlot?: string
-  /** 普通敌鱼群占位容器（进入 Boss 战后移除） */
-  private enemyGroup?: Phaser.GameObjects.Container
-  /** 处于背景位置的 slot 集合（enemy_lose 初始背景态追踪） */
-  private backgroundActors = new Set<string>()
-
-  // ── UI 组件 ──────────────────────────────────────────────────────
-  private evolutionCards: EvolutionCard[] = []
-  // win mode
-  private bossHpBar?: BossHpBar
-  private winModal?:  WinModal
-  // lose mode
-  private staminaBar?:   StaminaBar
+  private heroActor?: Actor
+  private bossActor?: Actor
+  private npcController?: NpcWaveController
+  private suctionEffect?: SuctionEffectPlayer
+  private staminaBar?: StaminaBar
   private timerDisplay?: TimerDisplay
-  private loseModal?:    LoseModal
-  // shared
+  private loseModal?: LoseModal
+  private winModal?: WinModal
   private ctaPage?: CtaPage
-
-  // ── 特效 ─────────────────────────────────────────────────────────
-  private effectPlayer?: EffectPlayer
-
-  // ── 调试 ─────────────────────────────────────────────────────────
-  private debugTxt?: Phaser.GameObjects.Text
+  private evolutionCards: EvolutionCard[] = []
+  private scrollingObjects: ScrollItem[] = []
 
   constructor() { super({ key: 'GameScene' }) }
 
   init(): void {
     this.mode = this.registry.get('mode') as GameMode
-    this.actors.clear()
-    this.playerSlot = undefined
-    this.backgroundActors.clear()
+    this.currentHeroLevel = 'lv0'
+    this.currentNpcWaveIndex = 0
+    this.isUpgrading = false
+    this.isFinalLoseSequence = false
     stateManager.enter('playing')
   }
 
@@ -74,429 +67,444 @@ export class GameScene extends Phaser.Scene {
     this.createBackground()
     this.createTopHud()
     this.createEvolutionPanel()
-    this.createBattleUi()
-    this.setupTimeline()
+    this.createOverlayUi()
+    this.spawnHero('lv0')
+    if (this.mode === 'lose') this.spawnLoseBoss()
+    this.npcController = new NpcWaveController(this, this.battleLayer)
+    this.suctionEffect = new SuctionEffectPlayer(this, this.effectLayer)
+
+    void this.startFlow()
 
     this.events.once('shutdown', () => {
-      this.runner?.stop()
-      this.effectPlayer?.destroyAll()
-      for (const actor of this.actors.values()) actor.destroy()
-      this.actors.clear()
+      this.npcController?.destroy()
+      this.heroActor?.destroy()
+      this.bossActor?.destroy()
     })
   }
 
-  // ── 层级初始化 ────────────────────────────────────────────────────
+  update(_time: number, delta: number): void {
+    for (const item of this.scrollingObjects) {
+      item.object.x -= delta * item.speed
+      if (item.object.x <= item.wrapX) item.object.x = item.resetX
+    }
+  }
 
   private createLayers(): void {
     this.backgroundLayer = this.add.container(0, 0).setDepth(LAYER_DEPTH.background)
-    this.battleLayer     = this.add.container(0, 0).setDepth(LAYER_DEPTH.battle)
-    this.effectLayer     = this.add.container(0, 0).setDepth(LAYER_DEPTH.effect)
-    this.hudLayer        = this.add.container(0, 0).setDepth(LAYER_DEPTH.hud)
-    this.evolutionLayer  = this.add.container(0, 0).setDepth(LAYER_DEPTH.evolution)
-    this.modalLayer      = this.add.container(0, 0).setDepth(LAYER_DEPTH.modal)
-    this.ctaLayer        = this.add.container(0, 0).setDepth(LAYER_DEPTH.cta)
+    this.battleLayer = this.add.container(0, 0).setDepth(LAYER_DEPTH.battle)
+    this.effectLayer = this.add.container(0, 0).setDepth(LAYER_DEPTH.effect)
+    this.hudLayer = this.add.container(0, 0).setDepth(LAYER_DEPTH.hud)
+    this.evolutionLayer = this.add.container(0, 0).setDepth(LAYER_DEPTH.evolution)
+    this.modalLayer = this.add.container(0, 0).setDepth(LAYER_DEPTH.modal)
+    this.ctaLayer = this.add.container(0, 0).setDepth(LAYER_DEPTH.cta)
   }
-
-  // ── 背景 ─────────────────────────────────────────────────────────
 
   private createBackground(): void {
-    const bg = this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'bg')
-    const bgScale = Math.max(GAME_WIDTH / bg.width, GAME_HEIGHT / bg.height)
-    bg.setScale(bgScale)
-    this.backgroundLayer.add(bg)
+    const bgScale = Math.max(GAME_WIDTH / this.textures.get('bg').getSourceImage().width, GAME_HEIGHT / this.textures.get('bg').getSourceImage().height)
+    const bgDisplayWidth = this.textures.get('bg').getSourceImage().width * bgScale
+    const bg1 = this.add.image(bgDisplayWidth / 2, GAME_HEIGHT / 2, 'bg')
+    const bg2 = this.add.image(bgDisplayWidth * 1.5, GAME_HEIGHT / 2, 'bg')
+    bg1.setScale(bgScale)
+    bg2.setScale(bgScale)
+    this.backgroundLayer.add([bg1, bg2])
+    this.scrollingObjects.push(
+      { object: bg1, speed: 0.012, wrapX: -bgDisplayWidth / 2, resetX: bgDisplayWidth * 1.5 },
+      { object: bg2, speed: 0.012, wrapX: -bgDisplayWidth / 2, resetX: bgDisplayWidth * 1.5 },
+    )
 
-    // sk.png 叠加层（光效/氛围图）
-    const skTex = this.textures.get('sk')
-    if (skTex.key !== '__MISSING') {
-      const sk = this.add.image(GAME_WIDTH / 2, GAME_HEIGHT / 2, 'sk')
-      const skScale = Math.max(GAME_WIDTH / sk.width, GAME_HEIGHT / sk.height)
-      sk.setScale(skScale)
-      sk.setAlpha(0.45)
-      this.backgroundLayer.add(sk)
-    }
-  }
+    const as2 = this.add.image(GAME_WIDTH / 2, 128, 'as2')
+    as2.setScale(GAME_WIDTH / as2.width)
+    this.hudLayer.add(as2)
 
-  // ── 顶部 HUD ─────────────────────────────────────────────────────
-
-  private createTopHud(): void {
-    // 深蓝紫底色（120px 高，对齐截图横幅风格）
-    const hudBg = this.add.rectangle(GAME_WIDTH / 2, 60, GAME_WIDTH, 120, 0x060a1e, 0.92)
-
-    // 顶部紫蓝色装饰线
-    const topLine = this.add.rectangle(GAME_WIDTH / 2, 1.5, GAME_WIDTH, 3, 0x6644cc)
-
-    // 游戏标题（仿"海底幽灵"横幅样式）
-    const titleTxt = this.add.text(GAME_WIDTH / 2, 34, '≪ 海底幽灵 ≫', {
-      fontSize: '26px',
-      color: '#c8a0ff',
+    const levelBg = this.add.rectangle(GAME_WIDTH / 2, 112, 188, 44, 0x000000, 0.42)
+    const levelTxt = this.add.text(GAME_WIDTH / 2, 112, '第185关', {
+      fontSize: '18px',
+      color: '#ffd95d',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
     }).setOrigin(0.5)
+    this.hudLayer.add([levelBg, levelTxt])
 
-    // 关卡文字（居中）
-    const levelTxt = this.add.text(GAME_WIDTH / 2, 76, '第 185 天', {
-      fontSize: '18px',
-      color: '#aabbdd',
-      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-    }).setOrigin(0.5)
+    const reef1 = this.add.rectangle(552, 802, 228, 64, 0xd1f1ff, 0.9)
+    const reef2 = this.add.rectangle(112, 852, 152, 48, 0xc0ecff, 0.85)
+    const seaweedPositions = [150, 188, 512, 550, 590]
+    for (const x of seaweedPositions) {
+      const weed = this.add.rectangle(x, 822, 12, 108, 0x57c09f, 0.72)
+      this.backgroundLayer.add(weed)
+      this.scrollingObjects.push({ object: weed, speed: 0.028, wrapX: -80, resetX: GAME_WIDTH + 80 })
+    }
 
-    // 模式标签（右侧）
-    const modeTxt = this.add.text(GAME_WIDTH - 14, 76,
-      this.mode === 'win' ? '胜利模式' : '挑战模式', {
-        fontSize: '13px',
-        color: this.mode === 'win' ? '#ffd700' : '#ff8888',
-        fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-      }).setOrigin(1, 0.5)
+    const bubble1 = this.add.circle(348, 836, 18, 0xffffff, 0.28)
+    const bubble2 = this.add.circle(626, 732, 14, 0xffffff, 0.24)
+    this.backgroundLayer.add([reef1, reef2, bubble1, bubble2])
+    this.scrollingObjects.push(
+      { object: reef1, speed: 0.02, wrapX: -180, resetX: GAME_WIDTH + 220 },
+      { object: reef2, speed: 0.024, wrapX: -180, resetX: GAME_WIDTH + 220 },
+    )
 
-    // 右下角小型调试文字（状态机当前状态）
-    this.debugTxt = this.add.text(GAME_WIDTH - 8, GAME_HEIGHT - 86, '', {
-      fontSize: '10px',
-      color: '#334455',
-      fontFamily: 'monospace',
-    }).setOrigin(1, 1).setDepth(201)
+    for (const bubble of [bubble1, bubble2]) {
+      this.tweens.add({
+        targets: bubble,
+        y: bubble.y - 36,
+        alpha: 0.08,
+        duration: 1900,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+      })
+    }
 
-    this.time.addEvent({
-      delay: 500,
-      loop: true,
-      callback: () => this.debugTxt?.setText(`state:${stateManager.state}`),
-    })
-
-    this.hudLayer.add([hudBg, topLine, titleTxt, levelTxt, modeTxt])
+    const vignette = this.add.graphics()
+    vignette.fillGradientStyle(0x042445, 0x042445, 0x071c35, 0x071c35, 0.22)
+    vignette.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT)
+    this.backgroundLayer.add(vignette)
   }
 
-  // ── 底部进化卡面板 ────────────────────────────────────────────────
+  private createTopHud(): void {
+    const titleTxt = this.add.text(GAME_WIDTH / 2, 50, '海底幽牢', {
+      fontSize: '34px',
+      color: '#ffffff',
+      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+      fontStyle: 'bold',
+      stroke: '#1b215f',
+      strokeThickness: 8,
+    }).setOrigin(0.5)
+    this.hudLayer.add(titleTxt)
+  }
 
   private createEvolutionPanel(): void {
-    const panelBg = this.add.rectangle(GAME_WIDTH / 2, 1214, GAME_WIDTH, 132, 0x040818, 0.88)
-    const titleTxt = this.add.text(GAME_WIDTH / 2, 1157, '生物进化', {
+    const panel = this.add.image(GAME_WIDTH / 2, 1128, 'as1')
+    panel.setScale(GAME_WIDTH / panel.width)
+    panel.setCrop(0, 735, 750, 500)
+
+    const legendBadge = this.add.image(98, 984, 'as1')
+    legendBadge.setCrop(0, 0, 220, 260)
+    legendBadge.setScale(0.54)
+
+    const titleTxt = this.add.text(GAME_WIDTH / 2, 1118, '生物进化', {
       fontSize: '16px',
-      color: '#8899bb',
+      color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-      letterSpacing: 3,
+      fontStyle: 'bold',
+      stroke: '#4e61b5',
+      strokeThickness: 4,
     }).setOrigin(0.5)
 
-    this.evolutionLayer.add([panelBg, titleTxt])
+    this.evolutionLayer.add([panel, legendBadge, titleTxt])
 
-    // 4 张进化卡均分 720px 宽度
-    const cardCY = 1222
-    const cardCXList = [104, 275, 446, 617]
-    for (let i = 0; i < 4; i++) {
-      const card = new EvolutionCard(this, cardCXList[i], cardCY, i, this.evolutionLayer)
+    const positions = [882, 988, 1094, 1200]
+    CARD_SLOTS.forEach((slot, index) => {
+      const card = new EvolutionCard(this, GAME_WIDTH / 2, positions[index], slot, this.mode, this.evolutionLayer)
       this.evolutionCards.push(card)
-    }
+    })
+    this.refreshEvolutionCards(0)
   }
 
-  // ── 战斗相关 UI ──────────────────────────────────────────────────
-
-  private createBattleUi(): void {
-    if (this.mode === 'win') {
-      // y=140：HUD 横幅扩大到 120px 后下移避免重叠
-      this.bossHpBar = new BossHpBar(this, GAME_WIDTH / 2, 140, this.hudLayer)
-      this.winModal  = new WinModal(this, this.modalLayer, () => this.onClaimReward())
+  private createOverlayUi(): void {
+    if (this.mode === 'lose') {
+      this.timerDisplay = new TimerDisplay(this, 112, 276, this.hudLayer)
+      this.staminaBar = new StaminaBar(this, GAME_WIDTH / 2, 154, this.hudLayer)
+      this.loseModal = new LoseModal(this, this.modalLayer, 'final_actor', () => this.onRetry(), () => this.onExitChallenge())
     } else {
-      // lose mode：倒计时 y=132，体力条 y=168（均在新 HUD 120px 下方）
-      this.timerDisplay = new TimerDisplay(this, GAME_WIDTH / 2, 132, this.hudLayer)
-      this.staminaBar   = new StaminaBar(this, GAME_WIDTH / 2, 168, this.hudLayer)
-      this.loseModal    = new LoseModal(this, this.modalLayer,
-        () => this.onRetry(),
-        () => this.onExitChallenge(),
-      )
+      this.winModal = new WinModal(this, this.modalLayer, 'final_actor', () => this.onClaimReward())
     }
-    this.ctaPage = new CtaPage(this, this.ctaLayer, () => {
+    this.ctaPage = new CtaPage(this, this.ctaLayer, 'final_actor', () => {
       console.log('[CTA] clickthrough — 宿主注入跳链')
     })
-
-    // 特效播放器（共用 effectLayer）
-    this.effectPlayer = new EffectPlayer(this, this.effectLayer)
   }
 
-  // ── 时间轴初始化 ─────────────────────────────────────────────────
-
-  private setupTimeline(): void {
-    this.runner = new TimelineRunner(this)
-    this.runner.load(this.mode === 'win' ? winTimeline : loseTimeline)
-
-    this.runner.on('spawnActor',              e => this.handleSpawnActor(e))
-    this.runner.on('spawnEnemyGroup',         e => this.handleSpawnEnemyGroup(e))
-    this.runner.on('removeEnemyGroup',        e => this.handleRemoveEnemyGroup(e))
-    this.runner.on('setActorState',           e => this.handleSetActorState(e))
-    this.runner.on('actorAttack',             e => this.handleActorAttack(e))
-    this.runner.on('actorHit',                e => this.handleActorHit(e))
-    this.runner.on('actorExit',               e => this.handleActorExit(e))
-    this.runner.on('unlockEvolution',         e => this.handleUnlockEvolution(e))
-    this.runner.on('updateEvolutionProgress', e => this.handleUpdateEvolutionProgress(e))
-    this.runner.on('showBoss',                e => this.handleShowBoss(e))
-    this.runner.on('removeBoss',              e => this.handleRemoveBoss(e))
-    this.runner.on('updateBossHp',            e => this.handleUpdateBossHp(e))
-    this.runner.on('showStamina',             _e => this.handleShowStamina())
-    this.runner.on('updateStamina',           e => this.handleUpdateStamina(e))
-    this.runner.on('showTimer',               e => this.handleShowTimer(e))
-    this.runner.on('updateTimer',             e => this.handleUpdateTimer(e))
-    this.runner.on('showResult',              e => this.handleShowResult(e))
-    this.runner.on('changeState',             e => {
-      const state = (e.payload as { state: string }).state
-      stateManager.enter(state as GameState)
-    })
-
-    this.runner.start()
+  private spawnHero(level: HeroLevel): void {
+    this.heroActor?.destroy()
+    const frames = ManifestLoader.getHeroFrames(level)
+    const pose = this.getHeroPose(level)
+    this.heroActor = new Actor(this, this.battleLayer, frames, frames[0])
+    this.heroActor.spawn(pose, true, 15)
+    this.currentHeroLevel = level
   }
 
-  // ── 时间轴事件处理 ───────────────────────────────────────────────
-
-  /**
-   * 角色生成。
-   * - 玩家槽位替换：新进化出现时淡出旧角色。
-   * - background: true → enemy_lose 在背景位置生成（较小、偏右、半透明），
-   *   后续 setActorState.move 时从背景过渡到前景。
-   */
-  private handleSpawnActor(event: TimelineEvent): void {
-    const slot       = event.target as CharacterSlot
-    const background = (event.payload as { background?: boolean }).background === true
-
-    if (PLAYER_SLOTS.includes(slot) && this.playerSlot && this.playerSlot !== slot) {
-      const prev = this.actors.get(this.playerSlot)
-      if (prev) {
-        prev.exit()
-        this.actors.delete(this.playerSlot)
-      }
-    }
-    if (PLAYER_SLOTS.includes(slot)) this.playerSlot = slot
-
-    const actor = new Actor(this, slot, this.battleLayer)
-    actor.spawn()
-
-    if (background) {
-      // 背景态：远景位置（偏右），缩小，半透明；scale 约为前景 0.42 的 45%
-      actor.setTransform({ x: 650, y: 730, scale: 0.19, alpha: 0.45 })
-      this.backgroundActors.add(slot)
-    }
-
-    this.actors.set(slot, actor)
-  }
-
-  /** 生成普通敌鱼群占位（3 条程序绘制的彩色小鱼，对齐截图中的粉红/橙色敌鱼） */
-  private handleSpawnEnemyGroup(_event: TimelineEvent): void {
-    if (this.enemyGroup) return
-    const grp = this.add.container(0, 0)
-    const fishData: [number, number, number][] = [
-      [548, 575, 0xff8899],
-      [628, 648, 0xff6644],
-      [568, 725, 0xffaacc],
-    ]
-    for (const [x, y, color] of fishData) {
-      // 鱼体（椭圆）
-      const body = this.add.ellipse(x, y, 56, 32, color, 0.85)
-      // 尾巴（小椭圆，偏右）
-      const tail = this.add.ellipse(x + 36, y, 18, 12, color, 0.62)
-      // 眼睛（小白圆）
-      const eye  = this.add.arc(x - 12, y - 5, 4, 0, 360, false, 0xffffff, 0.90)
-      grp.add([body, tail, eye])
-    }
-    this.battleLayer.add(grp)
-    this.enemyGroup = grp
-  }
-
-  /** 移除普通敌鱼群（进入 Boss 战 / 最终对抗时调用） */
-  private handleRemoveEnemyGroup(_event: TimelineEvent): void {
-    if (!this.enemyGroup) return
-    const grp = this.enemyGroup
+  private spawnLoseBoss(): void {
+    const bossUrl = ManifestLoader.getBossFrame()
+    this.bossActor = new Actor(this, this.battleLayer, [bossUrl], bossUrl)
+    this.bossActor.spawn(this.getBossPose(), true, 1)
     this.tweens.add({
-      targets: grp,
-      alpha: 0,
-      duration: 400,
-      ease: 'Sine.easeIn',
-      onComplete: () => { grp.destroy(true); this.enemyGroup = undefined },
+      targets: this.bossActor.player.gameObject,
+      y: this.bossActor.y - 12,
+      duration: 1200,
+      yoyo: true,
+      repeat: -1,
+      ease: 'Sine.easeInOut',
     })
   }
 
-  /**
-   * 设置角色动作（idle / move / attack / die）。
-   * 若 slot 处于背景态且触发 move，则同步恢复至前景缩放和透明度。
-   */
-  private handleSetActorState(event: TimelineEvent): void {
-    const slot   = event.target!
-    const action = (event.payload as { action: string }).action
-    const actor  = this.actors.get(slot)
-    if (!actor) return
+  private async startFlow(): Promise<void> {
+    await this.delay(500)
+    for (const wave of NPC_WAVES) {
+      this.currentNpcWaveIndex = NPC_WAVES.indexOf(wave)
+      await this.playWave(wave)
 
-    switch (action) {
-      case 'idle':   actor.idle(); break
-      case 'attack': actor.attack(); break
-      case 'die':    actor.die(); break
-      case 'move': {
-        const toX = (event.payload as { toX?: number }).toX ?? actor.x
-        if (this.backgroundActors.has(slot)) {
-          // enemy_lose 从背景过渡到前景，同时恢复缩放和透明度
-          this.backgroundActors.delete(slot)
-          const cfg = slotConfig[slot as CharacterSlot]
-          actor.moveToForeground(toX, 1200, cfg.scale)
-        } else {
-          actor.move(toX, 800)
-        }
-        break
+      const nextLevel = getNextHeroLevel(this.currentHeroLevel)
+      if (wave !== '05' && nextLevel) {
+        await this.upgradeHero(nextLevel)
       }
     }
+
+    if (this.mode === 'lose') await this.playLoseEnding()
+    else await this.playWinEnding()
   }
 
-  private handleActorAttack(event: TimelineEvent): void {
-    const slot  = event.target!
-    const actor = this.actors.get(slot)
-    if (!actor) return
-    actor.attack()
+  private async playWave(wave: NpcWaveId): Promise<void> {
+    const heroMouth = this.heroActor?.getMouthWorldPoint() ?? { x: 300, y: 590 }
+    const npcs = this.npcController?.spawnWave(wave, heroMouth) ?? []
+    this.refreshEvolutionCards(0.12)
+    this.heroActor?.play(false, 16, () => this.heroActor?.play(true, 14))
+    this.followBossBehindHero()
 
-    // 攻击特效叠加在角色位置
-    if (this.effectPlayer) {
-      const fishId = getFishId(slot as CharacterSlot)
-      this.effectPlayer.play(fishId, 'eff_atk', actor.x, actor.y)
+    for (const npc of npcs) {
+      npc.moveTo(npc.x - 92, npc.y, 1800)
     }
+
+    await this.delay(480)
+    const chasePose = this.getHeroChasePose()
+    await new Promise<void>((resolve) => this.heroActor?.tweenPose(chasePose, 420, resolve))
+
+    await this.delay(120)
+    const mouth = this.heroActor?.getMouthWorldPoint() ?? { x: 250, y: 580 }
+    this.suctionEffect?.play(mouth.x, mouth.y, wave === '05' ? 92 : 72, 720)
+    await this.consumeWave(npcs, mouth)
+
+    this.npcController?.destroy()
+    await new Promise<void>((resolve) => this.heroActor?.tweenPose(this.getHeroPose(this.currentHeroLevel), 260, resolve))
   }
 
-  private handleActorHit(event: TimelineEvent): void {
-    const slot  = event.target!
-    const actor = this.actors.get(slot)
-    if (!actor) return
-    actor.hit()
-
-    // 命中特效 + 屏幕震动
-    if (this.effectPlayer) {
-      const fishId = getFishId(slot as CharacterSlot)
-      this.effectPlayer.play(fishId, 'eff_hit', actor.x, actor.y)
-    }
-    this.cameras.main.shake(90, 0.006)
+  private async consumeWave(npcs: Actor[], mouth: { x: number; y: number }): Promise<void> {
+    await Promise.all(npcs.map((npc, index) => this.consumeNpc(npc, mouth, index * 60)))
   }
 
-  /** 角色退场：die 动画 → 淡出 → 销毁 */
-  private handleActorExit(event: TimelineEvent): void {
-    const slot  = event.target!
-    const actor = this.actors.get(slot)
-    if (!actor) return
+  private consumeNpc(npc: Actor, mouth: { x: number; y: number }, delayMs: number): Promise<void> {
+    return new Promise((resolve) => {
+      const target = npc.player.gameObject
+      const startX = target.x
+      const startY = target.y
+      const startScale = Math.abs(target.scaleX)
+      const spiral = { t: 0 }
 
-    const action = (event.payload as { action?: string }).action
-    const cleanup = () => {
-      actor.exit(() => { actor.destroy(); this.actors.delete(slot) })
-    }
-    if (action === 'die') {
-      actor.die(cleanup)
-    } else {
-      cleanup()
-    }
+      this.time.delayedCall(delayMs, () => {
+        this.tweens.add({
+          targets: spiral,
+          t: 1,
+          duration: 650,
+          ease: 'Sine.easeIn',
+          onUpdate: () => {
+            const t = spiral.t
+            const angle = indexAngle(delayMs) + t * 5.6
+            const radius = (1 - t) * (48 + (delayMs / 60) * 3)
+            target.x = Phaser.Math.Linear(startX, mouth.x, t) + Math.cos(angle) * radius
+            target.y = Phaser.Math.Linear(startY, mouth.y, t) + Math.sin(angle) * radius * 0.55
+            target.setScale(startScale * (1 - t * 0.78))
+            target.setAlpha(1 - t * 0.92)
+          },
+          onComplete: () => {
+            npc.destroy()
+            resolve()
+          },
+        })
+      })
+    })
   }
 
-  /** 更新进化卡状态（locked / unlocking / unlocked） */
-  private handleUnlockEvolution(event: TimelineEvent): void {
-    const p    = event.payload as { index: number; state: string }
-    const card = this.evolutionCards[p.index]
-    card?.setState(p.state as 'locked' | 'unlocking' | 'unlocked')
+  private async upgradeHero(nextLevel: HeroLevel): Promise<void> {
+    this.isUpgrading = true
+    const mouth = this.heroActor?.getMouthWorldPoint() ?? { x: 250, y: 580 }
+    this.suctionEffect?.playBurst(mouth.x - 32, mouth.y + 8)
+    await this.delay(260)
 
-    // 解锁时在当前玩家角色位置播放 eff_ult 庆典特效
-    if (p.state === 'unlocked' && this.effectPlayer && this.playerSlot) {
-      const actor = this.actors.get(this.playerSlot)
-      if (actor) {
-        const fishId = getFishId(this.playerSlot as CharacterSlot)
-        this.effectPlayer.play(fishId, 'eff_ult', actor.x, actor.y)
-      }
-    }
+    const prevActor = this.heroActor
+    const prevPose = this.getHeroPose(this.currentHeroLevel)
+    prevActor?.fadeOut(220)
+
+    const frames = ManifestLoader.getHeroFrames(nextLevel)
+    const nextPose = this.getHeroPose(nextLevel)
+    this.heroActor = new Actor(this, this.battleLayer, frames, frames[0])
+    this.heroActor.spawn({
+      ...nextPose,
+      x: mouth.x - 58,
+      y: mouth.y + 24,
+      alpha: 0.1,
+      scale: nextPose.scale * 0.86,
+    }, true, 15)
+
+    await new Promise<void>((resolve) => this.heroActor?.tweenPose({ ...nextPose, alpha: 1 }, 320, resolve))
+    prevActor?.destroy()
+    this.currentHeroLevel = nextLevel
+    this.refreshEvolutionCards(1)
+    this.followBossBehindHero()
+    this.isUpgrading = false
+    await this.delay(280)
   }
 
-  /** 更新进化卡经验进度条（0–1） */
-  private handleUpdateEvolutionProgress(event: TimelineEvent): void {
-    const p    = event.payload as { index: number; progress: number }
-    const card = this.evolutionCards[p.index]
-    card?.setProgress(p.progress)
+  private async playWinEnding(): Promise<void> {
+    stateManager.enter('resultWin')
+    await this.delay(650)
+    this.winModal?.show()
   }
 
-  // ── Win mode 处理器 ──────────────────────────────────────────────
+  private async playLoseEnding(): Promise<void> {
+    this.isFinalLoseSequence = true
+    stateManager.enter('finalBattle')
 
-  private handleShowBoss(_event: TimelineEvent): void {
-    this.bossHpBar?.show()
-  }
-
-  private handleRemoveBoss(_event: TimelineEvent): void {
-    this.bossHpBar?.hide()
-    const boss = this.actors.get('boss_win')
-    if (boss) {
-      boss.exit(() => { boss.destroy(); this.actors.delete('boss_win') })
-    }
-  }
-
-  private handleUpdateBossHp(event: TimelineEvent): void {
-    const percent = (event.payload as { percent: number }).percent
-    this.bossHpBar?.setPercent(percent)
-  }
-
-  // ── Lose mode 处理器 ─────────────────────────────────────────────
-
-  private handleShowStamina(): void {
+    this.timerDisplay?.show(10)
     this.staminaBar?.show()
+    this.staminaBar?.setPercent(1)
+
+    const hero = this.heroActor
+    const boss = this.bossActor
+    if (!hero || !boss) return
+
+    const mouth = hero.getMouthWorldPoint()
+    await new Promise<void>((resolve) => boss.tweenPose({ x: hero.x - 132, y: hero.y - 34 }, 900, resolve))
+
+    for (const value of [0.82, 0.58, 0.34, 0.12, 0]) {
+      this.staminaBar?.setPercent(value)
+      this.timerDisplay?.setValue(10 * value)
+      this.suctionEffect?.play(mouth.x - 188, mouth.y - 18, 102, 600)
+      hero.flashHit()
+      await this.delay(360)
+    }
+
+    const bossMouth = boss.getMouthWorldPoint()
+    await new Promise<void>((resolve) => {
+      const target = hero.player.gameObject
+      const startX = target.x
+      const startY = target.y
+      const startScale = Math.abs(target.scaleX)
+      const state = { t: 0 }
+      this.tweens.add({
+        targets: state,
+        t: 1,
+        duration: 880,
+        ease: 'Sine.easeIn',
+        onUpdate: () => {
+          const t = state.t
+          const angle = Math.PI + t * 6
+          const radius = (1 - t) * 66
+          target.x = Phaser.Math.Linear(startX, bossMouth.x, t) + Math.cos(angle) * radius
+          target.y = Phaser.Math.Linear(startY, bossMouth.y, t) + Math.sin(angle) * radius * 0.45
+          target.setScale(startScale * (1 - t * 0.88))
+          target.setAlpha(1 - t * 0.95)
+        },
+        onComplete: () => resolve(),
+      })
+    })
+
+    hero.destroy()
+    this.heroActor = undefined
+    stateManager.enter('resultLose')
+    await this.delay(300)
+    this.loseModal?.show()
   }
 
-  private handleUpdateStamina(event: TimelineEvent): void {
-    const percent = (event.payload as { percent: number }).percent
-    this.staminaBar?.setPercent(percent)
+  private refreshEvolutionCards(currentProgress: number): void {
+    const currentIndex = HERO_LEVELS.indexOf(this.currentHeroLevel)
+    this.evolutionCards.forEach((card, index) => {
+      const levelIndex = HERO_LEVELS.indexOf(HERO_CARD_LEVELS[index])
+      if (currentIndex > levelIndex) {
+        card.setState('unlocked')
+        card.setProgress(1)
+      } else if (currentIndex === levelIndex) {
+        card.setState('current')
+        card.setProgress(this.mode === 'win' ? currentProgress : 1)
+      } else {
+        card.setState('locked')
+        card.setProgress(0)
+      }
+    })
   }
 
-  private handleShowTimer(event: TimelineEvent): void {
-    const value = (event.payload as { value?: number }).value
-    this.timerDisplay?.show(value)
-  }
-
-  private handleUpdateTimer(event: TimelineEvent): void {
-    const value = (event.payload as { value: number }).value
-    this.timerDisplay?.setValue(value)
-  }
-
-  // ── 结果弹窗 ────────────────────────────────────────────────────
-
-  private handleShowResult(event: TimelineEvent): void {
-    if (event.target === 'win_modal') {
-      this.winModal?.show()
-    } else if (event.target === 'lose_modal') {
-      this.loseModal?.show()
+  private getHeroPose(level: HeroLevel): { x: number; y: number; scale: number; flipX: boolean } {
+    const base = {
+      x: 216,
+      y: 604,
+      scale: 1,
+      flipX: false,
+    }
+    const targetVisibleWidth: Record<HeroLevel, number> = {
+      lv0: 152,
+      lv30: 194,
+      lv60: 248,
+      lv90: 324,
+      lv120: 398,
+    }
+    const frame = ManifestLoader.getHeroFrames(level)[0] ?? ''
+    return {
+      ...base,
+      y: level === 'lv0' ? 622 : level === 'lv90' ? 620 : level === 'lv120' ? 632 : 610,
+      scale: this.scaleForVisibleWidth(frame, targetVisibleWidth[level]),
     }
   }
 
-  // ── 用户交互 ─────────────────────────────────────────────────────
+  private getHeroChasePose(): { x: number; y: number; scale: number } {
+    const pose = this.getHeroPose(this.currentHeroLevel)
+    return {
+      x: pose.x + 58,
+      y: pose.y - 6,
+      scale: pose.scale * 1.06,
+    }
+  }
 
-  /** 点击"领取"后进入 CTA，隐藏战斗层与弹窗 */
+  private getBossPose(): { x: number; y: number; scale: number; flipX: boolean } {
+    const bossFrame = ManifestLoader.getBossFrame()
+    return {
+      x: 64,
+      y: 560,
+      scale: this.scaleForVisibleWidth(bossFrame, 420),
+      flipX: true,
+    }
+  }
+
+  private followBossBehindHero(): void {
+    if (this.mode !== 'lose' || !this.heroActor || !this.bossActor || this.isFinalLoseSequence) return
+    this.bossActor.tweenPose({
+      x: this.heroActor.x - 258,
+      y: this.heroActor.y - 42,
+    }, 420)
+  }
+
+  private scaleForVisibleWidth(frameUrl: string, visibleWidth: number): number {
+    const trim = ManifestLoader.getTrimmedFrame(frameUrl)
+    if (!trim || trim.bounds.width === 0) return 0.5
+    return visibleWidth / trim.bounds.width
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise((resolve) => this.time.delayedCall(ms, () => resolve()))
+  }
+
   private onClaimReward(): void {
     stateManager.enter('cta')
-    this.runner.stop()
     this.winModal?.hide()
-
     this.battleLayer.setVisible(false)
     this.effectLayer.setVisible(false)
     this.hudLayer.setVisible(false)
     this.evolutionLayer.setVisible(false)
-
     this.ctaPage?.show()
   }
 
-  /**
-   * 点击"重新挑战"后完整重启场景。
-   * scene.restart() 触发 shutdown → init → create，全部 GameObject 由 Phaser 自动清理。
-   * init() 中 stateManager.enter('playing') 需要 restarting 状态作为前置，
-   * 因此这里先确保状态机进入合法路径再 restart。
-   */
   private onRetry(): void {
-    this.runner.stop()
-    this.effectPlayer?.destroyAll()
-    // 确保状态机路径合法：resultLose → restarting，init() 中再 → playing
-    if (stateManager.state === 'finalBattle') stateManager.enter('resultLose')
     stateManager.enter('restarting')
     this.scene.restart()
   }
 
-  /** 点击"退出挑战"后进入 CTA，隐藏战斗层与弹窗 */
   private onExitChallenge(): void {
     stateManager.enter('cta')
-    this.runner.stop()
     this.loseModal?.hide()
-
     this.battleLayer.setVisible(false)
     this.effectLayer.setVisible(false)
     this.hudLayer.setVisible(false)
     this.evolutionLayer.setVisible(false)
-
     this.ctaPage?.show()
   }
+}
+
+function indexAngle(delayMs: number): number {
+  return (delayMs / 60) * 0.7
 }

@@ -1,119 +1,98 @@
-/**
- * CtaPage.ts
- * CTA 最终页面（CtaLayer）。
- * 样式对齐截图 win07：深紫→洋红渐变背景，黄色大标题，大圆形鱼类占位，白色主按钮。
- */
-
 import Phaser from 'phaser'
-import { GAME_WIDTH, GAME_HEIGHT } from '@/config/constants'
+import { GAME_HEIGHT, GAME_WIDTH } from '@/config/constants'
+import { type CharacterSlot, getCharacterConfig, getPresentationFrame, getPresentationScale } from '@/config/assetMapping'
+import { applyTextureToImage } from '@/utils/DynamicTexture'
 
 export class CtaPage {
   private scene: Phaser.Scene
-  private root:  Phaser.GameObjects.Container
+  private root: Phaser.GameObjects.Container
 
   constructor(
     scene: Phaser.Scene,
     layer: Phaser.GameObjects.Container,
+    heroSlot: CharacterSlot,
     onClickthrough?: () => void,
   ) {
     this.scene = scene
-    this.root  = scene.add.container(GAME_WIDTH / 2, 0)
+    this.root = scene.add.container(GAME_WIDTH / 2, 0)
     this.root.setVisible(false)
 
-    const cx = 0  // 相对父容器
+    const cfg = getCharacterConfig(heroSlot)
+    const bg = scene.add.graphics()
+    bg.fillGradientStyle(0x30005f, 0x30005f, 0xe500b9, 0x8a00d7, 1)
+    bg.fillRect(-GAME_WIDTH / 2, 0, GAME_WIDTH, GAME_HEIGHT)
 
-    // 全屏背景（深色打底，避免渐变覆盖不完整时露底色）
-    const bgBase = scene.add.rectangle(cx, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x0d0020)
+    const rails = scene.add.graphics()
+    rails.fillStyle(0xffffff, 0.95)
+    rails.fillRect(-GAME_WIDTH / 2, 260, GAME_WIDTH, 24)
+    rails.fillRect(-GAME_WIDTH / 2, 332, GAME_WIDTH, 18)
+    rails.fillStyle(0xffffff, 0.32)
+    rails.fillRect(-GAME_WIDTH / 2, 942, GAME_WIDTH, 20)
 
-    // 深紫→洋红渐变（对齐 win07 截图配色）
-    const bgGrad = scene.add.graphics()
-    bgGrad.fillGradientStyle(0x1a0040, 0x1a0040, 0x880044, 0x880044, 1)
-    bgGrad.fillRect(cx - GAME_WIDTH / 2, 0, GAME_WIDTH, GAME_HEIGHT)
-
-    // 顶部标题（黄色大字）
-    const title = scene.add.text(cx, 170, '你能吞噬多少鱼了', {
-      fontSize: '36px',
-      color: '#ffdd00',
+    const title = scene.add.text(0, 126, '你能吞噬多少鱼了', {
+      fontSize: '48px',
+      color: '#ffe42f',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
-      shadow: { offsetX: 0, offsetY: 4, color: '#550022', blur: 16, fill: true },
+      stroke: '#a14d00',
+      strokeThickness: 8,
     }).setOrigin(0.5)
 
-    // Boss 名称副标题（白色）
-    const bossName = scene.add.text(cx, 230, '史前巨鳄', {
-      fontSize: '28px',
+    const subTitle = scene.add.text(0, 212, cfg.displayName, {
+      fontSize: '30px',
       color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
+      stroke: '#7f4dea',
+      strokeThickness: 5,
     }).setOrigin(0.5)
 
-    // 鱼类展示占位区域（大圆，代替缺少的3D鱼模型）
-    const fishGlow = scene.add.graphics()
-    fishGlow.fillGradientStyle(0x440066, 0x440066, 0x220033, 0x220033, 0.9)
-    fishGlow.fillCircle(cx, 560, 130)
-    fishGlow.lineStyle(3, 0xcc44aa, 0.65)
-    fishGlow.strokeCircle(cx, 560, 132)
-    // 外层发光环
-    fishGlow.lineStyle(12, 0xaa2288, 0.25)
-    fishGlow.strokeCircle(cx, 560, 148)
+    const heroGlow = scene.add.circle(0, 548, 186, 0x5300ac, 0.18)
+    heroGlow.setStrokeStyle(8, 0xdc8dff, 0.26)
+    const hero = scene.add.image(-12, 552, '__DEFAULT').setVisible(false)
+    hero.setScale(getPresentationScale(heroSlot, 'cta'))
+    applyTextureToImage(scene, hero, getPresentationFrame(heroSlot, 'cta'))
 
-    // 占位说明文字（暗示此处将展示真实鱼类模型）
-    const fishLabel = scene.add.text(cx, 560, '史前巨鳄', {
-      fontSize: '22px',
-      color: '#ffaadd',
-      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-      fontStyle: 'bold',
-    }).setOrigin(0.5)
-
-    // 副标题（游戏口号）
-    const slogan = scene.add.text(cx, 740, '无需下载  立即畅玩', {
-      fontSize: '20px',
-      color: '#ddbbff',
-      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-      letterSpacing: 2,
-    }).setOrigin(0.5)
-
-    // 主按钮（深蓝底 + 白色文字，对齐截图"无需下载 点击即玩"风格）
-    const btnY  = 860
-    const btnBg = scene.add.rectangle(cx, btnY, 400, 80, 0x112288)
-    btnBg.setStrokeStyle(3, 0x6688ff)
-    const btnTxt = scene.add.text(cx, btnY, '无需下载  点击即玩', {
-      fontSize: '28px',
+    const textA = scene.add.text(0, 934, '无需下载', {
+      fontSize: '74px',
       color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
+      stroke: '#5b4fe6',
+      strokeThickness: 8,
     }).setOrigin(0.5)
-
-    // 按钮下方小字
-    const btnNote = scene.add.text(cx, btnY + 54, '立即体验，无需安装', {
-      fontSize: '13px',
-      color: '#888888',
+    const textB = scene.add.text(0, 1024, '点击即玩', {
+      fontSize: '74px',
+      color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+      fontStyle: 'bold',
+      stroke: '#5b4fe6',
+      strokeThickness: 8,
     }).setOrigin(0.5)
 
-    // 按钮交互
-    btnBg.setInteractive({ useHandCursor: true })
-    btnBg.on('pointerover', () => btnBg.setFillStyle(0x2244cc))
-    btnBg.on('pointerout',  () => btnBg.setFillStyle(0x112288))
-    btnBg.on('pointerdown', () => {
+    const hitArea = scene.add.rectangle(0, 978, 460, 180, 0x000000, 0.001)
+    hitArea.setInteractive({ useHandCursor: true })
+    hitArea.on('pointerdown', () => {
       scene.tweens.add({
-        targets: [btnBg, btnTxt],
-        scaleX: 0.92, scaleY: 0.92,
-        duration: 80, yoyo: true,
+        targets: [textA, textB],
+        scaleX: 0.96,
+        scaleY: 0.96,
+        duration: 90,
+        yoyo: true,
         onComplete: () => onClickthrough?.(),
       })
     })
 
-    // 按钮持续脉动
     scene.tweens.add({
-      targets: btnBg,
-      scaleX: 1.03, scaleY: 1.03,
-      duration: 900,
-      yoyo: true, repeat: -1,
+      targets: hero,
+      y: 536,
+      duration: 1200,
+      yoyo: true,
+      repeat: -1,
       ease: 'Sine.easeInOut',
     })
 
-    this.root.add([bgBase, bgGrad, title, bossName, fishGlow, fishLabel, slogan, btnBg, btnTxt, btnNote])
+    this.root.add([bg, rails, title, subTitle, heroGlow, hero, textA, textB, hitArea])
     layer.add(this.root)
   }
 
@@ -123,7 +102,7 @@ export class CtaPage {
     this.scene.tweens.add({
       targets: this.root,
       alpha: 1,
-      duration: 500,
+      duration: 420,
       ease: 'Sine.easeOut',
     })
   }

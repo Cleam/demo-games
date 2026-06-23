@@ -11,7 +11,8 @@ export class LoadingScene extends Phaser.Scene {
     this.setupProgressBar()
     this.load.json('manifest', '/manifest.json')
     this.load.image('bg', '/assets/images/bg.png')
-    this.load.image('sk', '/assets/images/sk.png')
+    this.load.image('as1', '/assets/images/as1.png')
+    this.load.image('as2', '/assets/images/as2.png')
   }
 
   private setupProgressBar(): void {

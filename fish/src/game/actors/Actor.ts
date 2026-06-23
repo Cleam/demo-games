@@ -1,181 +1,158 @@
-/**
- * Actor.ts
- * 场景角色基类，封装帧动画播放、位置管理和动作降级逻辑。
- *
- * 使用方式：
- *   const actor = new Actor(scene, 'starter', battleLayer)
- *   actor.spawn()          // 显示并开始 idle 动画
- *   actor.attack(onDone)   // 播放攻击，结束后自动回到 idle
- *   actor.die(onDone)      // 播放死亡
- *   actor.exit()           // 淡出后销毁
- */
-
 import Phaser from 'phaser'
-import { type CharacterSlot, slotConfig, getEffectiveFrameRate } from '@/config/assetMapping'
+import { FrameAnimPlayer } from './FrameAnimPlayer'
 import { ManifestLoader } from '@/utils/ManifestLoader'
-import { FrameAnimPlayer, type PlayOptions } from './FrameAnimPlayer'
 
+export interface ActorPose {
+  x: number
+  y: number
+  scale: number
+  flipX?: boolean
+  alpha?: number
+  tint?: number
+}
+
+/**
+ * 通用角色实例：
+ * - hero: 使用 atk 序列循环或 once 播放
+ * - npc: 使用 idle 序列循环游动
+ * - boss: 使用单帧图
+ */
 export class Actor {
-  private scene:   Phaser.Scene
-  private slot:    CharacterSlot
-  private layer:   Phaser.GameObjects.Container
   readonly player: FrameAnimPlayer
-
-  /** 各动作帧路径缓存，spawn() 时从 ManifestLoader 填充 */
-  private heroFrames: Record<string, string[]> = {}
+  private scene: Phaser.Scene
+  private frames: string[]
+  private representativeFrame: string
   private moveTween?: Phaser.Tweens.Tween
 
   constructor(
     scene: Phaser.Scene,
-    slot:  CharacterSlot,
     layer: Phaser.GameObjects.Container,
+    frames: string[],
+    representativeFrame?: string,
   ) {
-    this.scene  = scene
-    this.slot   = slot
-    this.layer  = layer
+    this.scene = scene
+    this.frames = frames
+    this.representativeFrame = representativeFrame ?? frames[0] ?? ''
     this.player = new FrameAnimPlayer(scene)
-    // 将 FrameAnimPlayer 的 Image 移入目标层容器
-    this.layer.add(this.player.gameObject)
+    layer.add(this.player.gameObject)
   }
 
-  /**
-   * 初始化角色：应用配置的位置/缩放/翻转，缓存帧路径，播放 idle。
-   * 首次 idle 会触发动态纹理加载，加载完成后角色自动出现。
-   */
-  spawn(): void {
-    const cfg = slotConfig[this.slot]
-    const img = this.player.gameObject
-
-    img.setPosition(cfg.x, cfg.y)
-    img.setScale(cfg.scale)
-    img.setFlipX(cfg.flipX)
-    img.setAlpha(1)
-
-    // 缓存所有可用动作帧
-    const fishId = cfg.fishId
-    for (const action of ['idle', 'move', 'atk', 'ult', 'ultb', 'die']) {
-      const frames = ManifestLoader.getHeroFrames(fishId, action)
-      if (frames.length > 0) this.heroFrames[action] = frames
+  spawn(pose: ActorPose, loop = true, frameRate = 14): void {
+    this.applyPose(pose)
+    if (this.frames.length === 1) {
+      this.player.play(this.frames, { frameRate: 1, loop: true })
+      return
     }
-
-    this.idle()
+    this.player.play(this.frames, { frameRate, loop })
   }
 
-  idle(): void {
-    this.play('idle', { loop: true })
+  play(loop: boolean, frameRate: number, onComplete?: () => void): void {
+    this.player.play(this.frames, {
+      frameRate,
+      loop,
+      onComplete,
+    })
   }
 
-  /** 平移到目标 X 坐标，期间播放 move 动画，到达后自动切回 idle */
-  move(toX: number, duration: number): void {
+  applyPose(pose: ActorPose): void {
+    const img = this.player.gameObject
+    img.setPosition(pose.x, pose.y)
+    img.setScale(pose.scale)
+    img.setFlipX(pose.flipX ?? false)
+    img.setAlpha(pose.alpha ?? 1)
+    if (pose.tint !== undefined) img.setTint(pose.tint)
+    else img.clearTint()
+
+    const trim = ManifestLoader.getTrimmedFrame(this.representativeFrame)
+    if (trim) {
+      img.setOrigin(trim.centerAnchor.x, trim.centerAnchor.y)
+    } else {
+      img.setOrigin(0.5, 0.5)
+    }
+  }
+
+  moveTo(x: number, y: number, duration: number, onComplete?: () => void): void {
     this.moveTween?.stop()
-    this.play('move', { loop: true })
     this.moveTween = this.scene.tweens.add({
       targets: this.player.gameObject,
-      x: toX,
+      x,
+      y,
       duration,
       ease: 'Sine.easeInOut',
       onComplete: () => {
         this.moveTween = undefined
-        this.idle()
-      },
-    })
-  }
-
-  /** 播放攻击动画，结束后回到 idle；可选 onComplete 回调 */
-  attack(onComplete?: () => void): void {
-    this.play('atk', {
-      loop: false,
-      onComplete: () => {
-        this.idle()
         onComplete?.()
       },
     })
   }
 
-  /** 播放大招动画（ult），无 ult 时降级到 atk */
-  ultimate(onComplete?: () => void): void {
-    const action = this.heroFrames['ult'] ? 'ult' : 'atk'
-    this.play(action, {
-      loop: false,
+  tweenPose(pose: Partial<ActorPose>, duration: number, onComplete?: () => void): void {
+    this.moveTween?.stop()
+    const img = this.player.gameObject
+    if (pose.flipX !== undefined) img.setFlipX(pose.flipX)
+    if (pose.tint !== undefined) img.setTint(pose.tint)
+    this.moveTween = this.scene.tweens.add({
+      targets: img,
+      x: pose.x ?? img.x,
+      y: pose.y ?? img.y,
+      scaleX: pose.scale ?? img.scaleX,
+      scaleY: pose.scale ?? img.scaleY,
+      alpha: pose.alpha ?? img.alpha,
+      duration,
+      ease: 'Sine.easeInOut',
       onComplete: () => {
-        this.idle()
+        this.moveTween = undefined
         onComplete?.()
       },
     })
   }
 
-  /**
-   * 受击反馈：白闪 + 横向抖动（不切换动画，效果叠加在当前动作上）。
-   * Stage 7 将叠加真实的 eff_hit 帧序列特效。
-   */
-  hit(): void {
-    const img    = this.player.gameObject
-    const origX  = img.x
-
+  flashHit(): void {
+    const img = this.player.gameObject
+    const origX = img.x
     this.scene.tweens.add({
       targets: img,
-      alpha: 0.15,
-      duration: 55,
+      alpha: 0.35,
+      duration: 65,
       yoyo: true,
       ease: 'Linear',
     })
     this.scene.tweens.add({
       targets: img,
       x: origX + 10,
-      duration: 38,
+      duration: 55,
       yoyo: true,
-      repeat: 2,
+      repeat: 1,
       ease: 'Sine.easeInOut',
       onComplete: () => { img.x = origX },
     })
   }
 
-  /** 播放死亡动画，结束后停在最后一帧；可选 onComplete 回调 */
-  die(onComplete?: () => void): void {
-    this.play('die', { loop: false, onComplete })
-  }
-
-  /**
-   * 从背景位置移动到前景，同时 tween 恢复缩放和透明度。
-   * 仅供 enemy_lose 在 lose 模式最终战斗前调用。
-   */
-  moveToForeground(toX: number, duration: number, targetScale: number): void {
-    this.moveTween?.stop()
-    this.play('move', { loop: true })
-    const img = this.player.gameObject
-    this.moveTween = this.scene.tweens.add({
-      targets: img,
-      x: toX,
-      scaleX: targetScale,
-      scaleY: targetScale,
-      alpha: 1,
-      duration,
-      ease: 'Sine.easeInOut',
-      onComplete: () => {
-        this.moveTween = undefined
-        this.idle()
-      },
-    })
-  }
-
-  /** 直接设置变换属性（供外部设置初始背景/前景位置） */
-  setTransform(opts: { x?: number; y?: number; scale?: number; alpha?: number }): void {
-    const img = this.player.gameObject
-    if (opts.x     !== undefined) img.x = opts.x
-    if (opts.y     !== undefined) img.y = opts.y
-    if (opts.scale !== undefined) img.setScale(opts.scale)
-    if (opts.alpha !== undefined) img.setAlpha(opts.alpha)
-  }
-
-  /** 淡出（300ms）后执行回调；通常配合 destroy() 使用 */
-  exit(onComplete?: () => void): void {
+  fadeOut(duration: number, onComplete?: () => void): void {
     this.scene.tweens.add({
       targets: this.player.gameObject,
       alpha: 0,
-      duration: 300,
+      duration,
       ease: 'Sine.easeIn',
       onComplete: () => onComplete?.(),
     })
+  }
+
+  getMouthWorldPoint(): { x: number; y: number } {
+    const trim = ManifestLoader.getTrimmedFrame(this.representativeFrame)
+    const img = this.player.gameObject
+    if (!trim || !img.texture) {
+      return { x: img.x, y: img.y }
+    }
+
+    const width = trim.sourceWidth * img.scaleX
+    const height = trim.sourceHeight * img.scaleY
+    const originX = trim.centerAnchor.x
+    const originY = trim.centerAnchor.y
+    const dir = img.flipX ? -1 : 1
+    const mouthX = img.x + ((trim.mouthAnchor.x - originX) * width) * dir
+    const mouthY = img.y + (trim.mouthAnchor.y - originY) * height
+    return { x: mouthX, y: mouthY }
   }
 
   destroy(): void {
@@ -186,45 +163,4 @@ export class Actor {
 
   get x(): number { return this.player.gameObject.x }
   get y(): number { return this.player.gameObject.y }
-
-  // ── 内部 ──────────────────────────────────────────────────────────
-
-  private play(action: string, extras: Omit<PlayOptions, 'frameRate'>): void {
-    const frames = this.resolveFrames(action)
-    if (frames.length === 0) {
-      console.warn(`[Actor ${this.slot}] 无可用帧: ${action}，已跳过`)
-      return
-    }
-    const fps = getEffectiveFrameRate(this.slot, action)
-    this.player.play(frames, { frameRate: fps, ...extras })
-  }
-
-  /**
-   * 按 GAME_FLOW.md §3.4 降级规则解析帧列表。
-   * 优先返回目标动作帧；缺失时按规则降级，最坏情况使用 idle。
-   */
-  private resolveFrames(action: string): string[] {
-    if (this.heroFrames[action]?.length) return this.heroFrames[action]
-
-    switch (action) {
-      case 'idle': {
-        // 降级：取 atk 第一帧静止显示
-        const atk = this.heroFrames['atk']
-        return atk ? [atk[0]] : []
-      }
-      case 'move':
-        return this.heroFrames['idle'] ?? []
-      case 'atk':
-        return this.heroFrames['ult'] ?? this.heroFrames['idle'] ?? []
-      case 'ult':
-        return this.heroFrames['atk'] ?? this.heroFrames['idle'] ?? []
-      case 'die': {
-        // 降级：取 atk 最后一帧
-        const atk = this.heroFrames['atk']
-        return atk ? [atk[atk.length - 1]] : this.heroFrames['idle']?.slice(-1) ?? []
-      }
-      default:
-        return this.heroFrames['idle'] ?? []
-    }
-  }
 }

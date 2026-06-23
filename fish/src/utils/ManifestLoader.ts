@@ -1,23 +1,26 @@
-/**
- * ManifestLoader.ts
- * 全局单例，持有 public/manifest.json 解析后的数据。
- * 在 LoadingScene.create() 中调用 init() 初始化，之后各模块可同步读取。
- */
+import type { HeroLevel, NpcWaveId } from '@/config/progression'
+
+export interface TrimmedFrame {
+  sourceWidth: number
+  sourceHeight: number
+  bounds: { x: number; y: number; width: number; height: number }
+  renderOffset: { x: number; y: number }
+  centerAnchor: { x: number; y: number }
+  mouthAnchor: { x: number; y: number }
+}
 
 interface ManifestData {
   version: number
-  heroes:  Record<string, Record<string, string[]>>
-  effects: Record<string, Record<string, string[]>>
-  ui:      Record<string, string>
+  heroesByLevel: Record<string, { atk: string[] }>
+  npcWaves: Record<string, { idle: string[] }>
+  boss: { url: string }
+  trimData: Record<string, TrimmedFrame>
+  ui: Record<string, string>
 }
 
 let _data: ManifestData | null = null
 
 export const ManifestLoader = {
-  /**
-   * 注入 manifest 数据，必须在任何 getXxx() 调用之前执行。
-   * LoadingScene.create() 中从 Phaser cache 取出 JSON 后调用此方法。
-   */
   init(data: ManifestData): void {
     _data = data
   },
@@ -26,21 +29,40 @@ export const ManifestLoader = {
     return _data !== null
   },
 
-  /** 返回指定角色、指定动作的帧 URL 列表（已排序），不存在时返回空数组 */
-  getHeroFrames(fishId: string, action: string): string[] {
-    return _data?.heroes[fishId]?.[action] ?? []
+  getHeroFrames(level: HeroLevel): string[] {
+    return _data?.heroesByLevel[level]?.atk ?? []
   },
 
-  hasHeroAction(fishId: string, action: string): boolean {
-    return (_data?.heroes[fishId]?.[action]?.length ?? 0) > 0
+  getNpcFrames(wave: NpcWaveId): string[] {
+    return _data?.npcWaves[wave]?.idle ?? []
   },
 
-  /** 返回指定角色、指定特效类型的帧 URL 列表，不存在时返回空数组 */
-  getEffectFrames(fishId: string, effType: string): string[] {
-    return _data?.effects[fishId]?.[effType] ?? []
+  getBossFrame(): string {
+    return _data?.boss.url ?? ''
   },
 
-  /** 返回 ui 资源路径，如 bg、sk */
+  /**
+   * 旧战斗特效接口兼容层。
+   * 新版吸食流程不再依赖 eff_atk / eff_hit / eff_ult 帧资源，
+   * 这里统一返回空数组，让旧 EffectPlayer 自动降级为代码特效。
+   */
+  getEffectFrames(_fishId: string, _effectType: string): string[] {
+    return []
+  },
+
+  getTrimmedFrame(url: string): TrimmedFrame | null {
+    return _data?.trimData[url] ?? null
+  },
+
+  getVisibleBoundsSize(url: string): { width: number; height: number } | null {
+    const trim = _data?.trimData[url]
+    if (!trim) return null
+    return {
+      width: trim.bounds.width,
+      height: trim.bounds.height,
+    }
+  },
+
   getUiPath(key: string): string {
     return _data?.ui[key] ?? ''
   },

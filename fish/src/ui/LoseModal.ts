@@ -1,134 +1,125 @@
-/**
- * LoseModal.ts
- * 失败弹窗（ModalLayer）。
- * 样式对齐截图 lose07：标题"挑战失败"，副标题金色，绿色重试按钮。
- */
-
 import Phaser from 'phaser'
-import { GAME_WIDTH, GAME_HEIGHT } from '@/config/constants'
+import { GAME_HEIGHT, GAME_WIDTH } from '@/config/constants'
+import { type CharacterSlot, getPresentationFrame, getPresentationScale } from '@/config/assetMapping'
+import { applyTextureToImage } from '@/utils/DynamicTexture'
 
-const CARD_W = 580
-const CARD_H  = 460
-const CARD_Y  = GAME_HEIGHT / 2 - 40  // 600
+const CARD_Y = GAME_HEIGHT / 2 - 10
 
 export class LoseModal {
   private scene: Phaser.Scene
-  private root:  Phaser.GameObjects.Container
+  private root: Phaser.GameObjects.Container
 
   constructor(
-    scene:   Phaser.Scene,
-    layer:   Phaser.GameObjects.Container,
+    scene: Phaser.Scene,
+    layer: Phaser.GameObjects.Container,
+    heroSlot: CharacterSlot,
     onRetry: () => void,
-    onExit:  () => void,
+    onExit: () => void,
   ) {
     this.scene = scene
-    this.root  = scene.add.container(GAME_WIDTH / 2, 0)
+    this.root = scene.add.container(GAME_WIDTH / 2, 0)
     this.root.setVisible(false)
 
-    // 全屏遮罩
-    const overlay = scene.add.rectangle(0, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x000000, 0.88)
+    const overlay = scene.add.rectangle(0, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x02060f, 0.82)
+    const cracks = scene.add.graphics()
+    cracks.lineStyle(4, 0xdde9ff, 0.64)
+    cracks.beginPath()
+    cracks.moveTo(-24, CARD_Y - 64)
+    cracks.lineTo(18, CARD_Y - 12)
+    cracks.lineTo(52, CARD_Y + 36)
+    cracks.moveTo(96, CARD_Y - 88)
+    cracks.lineTo(74, CARD_Y - 28)
+    cracks.lineTo(26, CARD_Y + 10)
+    cracks.moveTo(-118, CARD_Y + 28)
+    cracks.lineTo(-62, CARD_Y - 14)
+    cracks.lineTo(-12, CARD_Y - 86)
+    cracks.strokePath()
 
-    // 弹窗主体（深蓝色系，对齐截图）
-    const card = scene.add.rectangle(0, CARD_Y, CARD_W, CARD_H, 0x070e28)
-    card.setStrokeStyle(2, 0x2233aa)
+    const heroPlate = scene.add.circle(0, CARD_Y - 116, 86, 0x0d1839, 0.78)
+    heroPlate.setStrokeStyle(5, 0x9cb6e8, 0.72)
+    const hero = scene.add.image(0, CARD_Y - 124, '__DEFAULT').setVisible(false)
+    hero.setScale(getPresentationScale(heroSlot, 'result') * 0.72)
+    applyTextureToImage(scene, hero, getPresentationFrame(heroSlot, 'result'))
 
-    // 顶部装饰条
-    const topBar = scene.add.rectangle(0, CARD_Y - CARD_H / 2 + 16, CARD_W, 32, 0x2233aa, 0.25)
+    const title = scene.add.text(0, CARD_Y - 12, '挑战失败', {
+      fontSize: '74px',
+      color: '#f7faff',
+      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+      fontStyle: 'bold',
+      stroke: '#5874ab',
+      strokeThickness: 10,
+    }).setOrigin(0.5)
 
-    // 标题 "挑战失败"（白色大字）
-    const titleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 62, '挑战失败', {
-      fontSize: '38px',
-      color: '#ffffff',
+    const subTitle = scene.add.text(0, CARD_Y + 58, '你的体力还需加强', {
+      fontSize: '24px',
+      color: '#ffe58d',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
     }).setOrigin(0.5)
 
-    // 副标题（金色）
-    const subtitleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 114, '你的体力需要加强', {
-      fontSize: '20px',
-      color: '#ffcc44',
-      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-    }).setOrigin(0.5)
-
-    // 灰色小鱼轮廓图标（代表玩家鱼倒下，缺少真实素材）
-    const iconY = CARD_Y - 20
-    const fishBody = scene.add.ellipse(0, iconY, 80, 44, 0x334466, 0.75)
-    fishBody.setStrokeStyle(2, 0x556688)
-    const fishTail = scene.add.triangle(
-      0, iconY,
-      -40, -10, -40, 10, -62, 0,
-      0x334466, 0.65,
-    )
-    // 小眼睛
-    const fishEye = scene.add.arc(16, iconY - 8, 4, 0, 360, false, 0x8899aa)
-
-    // 主按钮：重新挑战（绿色，对齐截图）
-    const retryBtnY = CARD_Y + CARD_H / 2 - 116
-    const retryBg   = scene.add.rectangle(0, retryBtnY, 320, 68, 0x22bb55)
-    retryBg.setStrokeStyle(2, 0x66dd88)
-    const retryTxt = scene.add.text(0, retryBtnY, '重新挑战', {
-      fontSize: '26px',
-      color: '#ffffff',
+    const retryTxt = scene.add.text(0, CARD_Y + 128, '重新挑战', {
+      fontSize: '30px',
+      color: '#26ec96',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
+      stroke: '#0d4028',
+      strokeThickness: 5,
     }).setOrigin(0.5)
 
-    retryBg.setInteractive({ useHandCursor: true })
-    retryBg.on('pointerover', () => retryBg.setFillStyle(0x33dd66))
-    retryBg.on('pointerout',  () => retryBg.setFillStyle(0x22bb55))
-    retryBg.on('pointerdown', () => {
-      retryBg.disableInteractive()
-      exitBg.disableInteractive()
-      scene.tweens.add({
-        targets: [retryBg, retryTxt],
-        scaleX: 0.93, scaleY: 0.93,
-        duration: 80, yoyo: true,
-        onComplete: () => onRetry(),
-      })
-    })
-
-    // 次按钮：退出挑战
-    const exitBtnY = CARD_Y + CARD_H / 2 - 50
-    const exitBg   = scene.add.rectangle(0, exitBtnY, 260, 52, 0x242424)
-    exitBg.setStrokeStyle(1, 0x555555)
-    const exitTxt = scene.add.text(0, exitBtnY, '退出挑战', {
-      fontSize: '20px',
-      color: '#888888',
+    const exitTxt = scene.add.text(0, CARD_Y + 182, '退出挑战', {
+      fontSize: '30px',
+      color: '#ff5f57',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+      fontStyle: 'bold',
+      stroke: '#4c1717',
+      strokeThickness: 5,
     }).setOrigin(0.5)
 
-    exitBg.setInteractive({ useHandCursor: true })
-    exitBg.on('pointerover', () => exitBg.setFillStyle(0x333333))
-    exitBg.on('pointerout',  () => exitBg.setFillStyle(0x242424))
-    exitBg.on('pointerdown', () => {
-      retryBg.disableInteractive()
-      exitBg.disableInteractive()
+    const retryHit = scene.add.rectangle(0, CARD_Y + 128, 260, 54, 0x000000, 0.001)
+    const exitHit = scene.add.rectangle(0, CARD_Y + 182, 260, 54, 0x000000, 0.001)
+    retryHit.setInteractive({ useHandCursor: true })
+    exitHit.setInteractive({ useHandCursor: true })
+
+    retryHit.on('pointerdown', () => {
+      retryHit.disableInteractive()
+      exitHit.disableInteractive()
       scene.tweens.add({
-        targets: [exitBg, exitTxt],
-        scaleX: 0.93, scaleY: 0.93,
-        duration: 80, yoyo: true,
-        onComplete: () => onExit(),
+        targets: retryTxt,
+        scaleX: 0.94,
+        scaleY: 0.94,
+        duration: 90,
+        yoyo: true,
+        onComplete: onRetry,
       })
     })
 
-    this.root.add([
-      overlay, card, topBar,
-      titleTxt, subtitleTxt,
-      fishBody, fishTail, fishEye,
-      retryBg, retryTxt,
-      exitBg, exitTxt,
-    ])
+    exitHit.on('pointerdown', () => {
+      retryHit.disableInteractive()
+      exitHit.disableInteractive()
+      scene.tweens.add({
+        targets: exitTxt,
+        scaleX: 0.94,
+        scaleY: 0.94,
+        duration: 90,
+        yoyo: true,
+        onComplete: onExit,
+      })
+    })
+
+    this.root.add([overlay, cracks, heroPlate, hero, title, subTitle, retryTxt, exitTxt, retryHit, exitHit])
     layer.add(this.root)
   }
 
   show(): void {
     this.root.setVisible(true)
     this.root.setAlpha(0)
-    this.root.setScale(0.9)
+    this.root.setScale(0.92)
     this.scene.tweens.add({
       targets: this.root,
-      alpha: 1, scaleX: 1, scaleY: 1,
-      duration: 350,
+      alpha: 1,
+      scaleX: 1,
+      scaleY: 1,
+      duration: 320,
       ease: 'Back.easeOut',
     })
   }
@@ -137,7 +128,7 @@ export class LoseModal {
     this.scene.tweens.add({
       targets: this.root,
       alpha: 0,
-      duration: 250,
+      duration: 220,
       ease: 'Sine.easeIn',
       onComplete: () => this.root.setVisible(false),
     })

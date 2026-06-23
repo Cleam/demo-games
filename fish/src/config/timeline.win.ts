@@ -20,6 +20,8 @@ export const winTimeline: TimelineEvent[] = [
 
   { at: 300,   type: 'setActorState',          target: 'starter',     payload: { action: 'idle' } },
   { at: 600,   type: 'actorAttack',            target: 'starter',     payload: {} },
+  { at: 1400,  type: 'actorAttack',            target: 'starter',     payload: {} },
+  { at: 2200,  type: 'actorAttack',            target: 'starter',     payload: {} },
 
   // ── 第 1 次进化（3.5s）──────────────────────────────────────────
   { at: 2800,  type: 'updateEvolutionProgress', target: 'card_0',     payload: { progress: 0.95, index: 0 } },
@@ -27,6 +29,7 @@ export const winTimeline: TimelineEvent[] = [
   { at: 3500,  type: 'spawnActor',             target: 'evolution_1', payload: {} },
   { at: 3600,  type: 'unlockEvolution',        target: 'card_0',      payload: { state: 'unlocked', index: 0 } },
   { at: 3800,  type: 'actorAttack',            target: 'evolution_1', payload: {} },
+  { at: 4600,  type: 'actorAttack',            target: 'evolution_1', payload: {} },
 
   // ── 第 2 次进化（5.4s）──────────────────────────────────────────
   { at: 5000,  type: 'updateEvolutionProgress', target: 'card_1',     payload: { progress: 0.95, index: 1 } },
@@ -34,6 +37,7 @@ export const winTimeline: TimelineEvent[] = [
   { at: 5400,  type: 'spawnActor',             target: 'evolution_2', payload: {} },
   { at: 5400,  type: 'unlockEvolution',        target: 'card_1',      payload: { state: 'unlocked', index: 1 } },
   { at: 5700,  type: 'actorAttack',            target: 'evolution_2', payload: {} },
+  { at: 6400,  type: 'actorAttack',            target: 'evolution_2', payload: {} },
 
   // ── 第 3 次进化（7.4s）──────────────────────────────────────────
   { at: 7000,  type: 'updateEvolutionProgress', target: 'card_2',     payload: { progress: 0.95, index: 2 } },
@@ -41,18 +45,24 @@ export const winTimeline: TimelineEvent[] = [
   { at: 7400,  type: 'spawnActor',             target: 'evolution_3', payload: {} },
   { at: 7400,  type: 'unlockEvolution',        target: 'card_2',      payload: { state: 'unlocked', index: 2 } },
   { at: 7700,  type: 'actorAttack',            target: 'evolution_3', payload: {} },
+  { at: 8400,  type: 'actorAttack',            target: 'evolution_3', payload: {} },
 
   // ── 第 4 次进化 / final_actor 登场（9.4s）──────────────────────
   { at: 9000,  type: 'updateEvolutionProgress', target: 'card_3',     payload: { progress: 0.95, index: 3 } },
   { at: 9200,  type: 'showEffect',             target: 'evolution_3', payload: { effect: 'eff_ult' } },
   { at: 9400,  type: 'spawnActor',             target: 'final_actor', payload: {} },
   { at: 9400,  type: 'unlockEvolution',        target: 'card_3',      payload: { state: 'unlocked', index: 3 } },
+  { at: 9500,  type: 'removeEnemyGroup',       target: 'enemy_group', payload: {} },
 
   // ── Boss 出场（9.6–9.8s）────────────────────────────────────────
   { at: 9600,  type: 'showBoss',               target: 'boss_win',    payload: {} },
   { at: 9700,  type: 'spawnActor',             target: 'boss_win',    payload: {} },
   { at: 9800,  type: 'changeState',                                    payload: { state: 'finalBattle' } },
   { at: 9800,  type: 'actorAttack',            target: 'final_actor', payload: {} },
+  { at: 10600, type: 'actorAttack',            target: 'final_actor', payload: {} },
+  { at: 11600, type: 'actorAttack',            target: 'final_actor', payload: {} },
+  { at: 12600, type: 'actorAttack',            target: 'final_actor', payload: {} },
+  { at: 13600, type: 'actorAttack',            target: 'final_actor', payload: {} },
 
   // ── Boss 受击 & 血条分段下降（10.0–14.2s）──────────────────────
   { at: 10000, type: 'actorHit',               target: 'boss_win',    payload: {} },

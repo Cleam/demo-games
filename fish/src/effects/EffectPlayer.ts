@@ -102,36 +102,50 @@ export class EffectPlayer {
   // ────────────────────────────────────────────────────────────────
 
   /**
-   * 程序降级特效：圆圈从原点扩散 + 快速淡出。
-   * 无需加载资源，始终可用。
+   * 程序降级特效：
+   * - eff_atk：白色射线 + 小命中环
+   * - eff_hit：红白双环 + 火花
+   * - eff_ult：大范围金色闪爆
    */
   private playFallback(x: number, y: number, effType: EffectType): void {
-    const color   = FALLBACK_COLOR[effType]
-    const isLarge = effType === 'eff_ult'
-    const r       = isLarge ? 50 : 30
-
-    const g = this.scene.add.graphics()
-    g.setPosition(x, y)
+    const color = FALLBACK_COLOR[effType]
+    const g = this.scene.add.graphics().setPosition(x, y)
     this.layer.add(g)
 
-    // 主圆
-    g.fillStyle(color, 0.75)
-    g.fillCircle(0, 0, r)
-    // 外圈
-    g.lineStyle(3, color, 0.5)
-    g.strokeCircle(0, 0, r + 8)
+    if (effType === 'eff_atk') {
+      g.lineStyle(4, 0xffffff, 0.95)
+      g.lineBetween(-38, -8, 42, -2)
+      g.lineBetween(-34, 4, 40, 12)
+      g.lineStyle(2, 0xbfefff, 0.7)
+      g.strokeCircle(44, 0, 14)
+      g.strokeCircle(44, 0, 24)
+    } else if (effType === 'eff_hit') {
+      g.lineStyle(4, 0xffffff, 0.9)
+      g.strokeCircle(0, 0, 22)
+      g.lineStyle(3, 0xff6767, 0.9)
+      g.strokeCircle(0, 0, 34)
+      for (const [sx, sy] of [[-24, -10], [18, -22], [28, 12], [-16, 24]] as const) {
+        g.lineBetween(sx, sy, sx * 1.4, sy * 1.4)
+      }
+    } else {
+      g.fillStyle(0xfff2aa, 0.42)
+      g.fillCircle(0, 0, 48)
+      g.lineStyle(4, color, 0.95)
+      g.strokeCircle(0, 0, 66)
+      g.lineStyle(3, 0xffffff, 0.7)
+      for (const [x1, y1, x2, y2] of [[-78, 0, 78, 0], [0, -78, 0, 78], [-56, -56, 56, 56], [-56, 56, 56, -56]] as const) {
+        g.lineBetween(x1, y1, x2, y2)
+      }
+    }
 
     this.scene.tweens.add({
-      targets:  g,
-      scaleX:   isLarge ? 3.5 : 2.5,
-      scaleY:   isLarge ? 3.5 : 2.5,
-      alpha:    0,
-      duration: isLarge ? 500 : 320,
-      ease:     'Sine.easeOut',
-      onComplete: () => {
-        // g 是直接加到 layer 的子节点，无需 layer 级 remove
-        g.destroy()
-      },
+      targets: g,
+      scaleX: effType === 'eff_ult' ? 1.8 : 1.25,
+      scaleY: effType === 'eff_ult' ? 1.8 : 1.25,
+      alpha: 0,
+      duration: effType === 'eff_ult' ? 460 : 280,
+      ease: 'Sine.easeOut',
+      onComplete: () => g.destroy(),
     })
   }
 }

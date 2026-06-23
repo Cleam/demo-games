@@ -1,103 +1,106 @@
-/**
- * WinModal.ts
- * 胜利奖励弹窗（ModalLayer）。
- * 样式对齐截图 win06：标题"奖励卡"，2行×3列奖励格，金黄色主调。
- */
-
 import Phaser from 'phaser'
-import { GAME_WIDTH, GAME_HEIGHT } from '@/config/constants'
+import { GAME_HEIGHT, GAME_WIDTH } from '@/config/constants'
+import { type CharacterSlot, getCharacterConfig, getPresentationFrame, getPresentationScale } from '@/config/assetMapping'
+import { applyTextureToImage } from '@/utils/DynamicTexture'
 
-const CARD_W = 570
-const CARD_H  = 580
-const CARD_Y  = GAME_HEIGHT / 2 - 40  // 600
+const CARD_W = 600
+const CARD_H = 700
+const CARD_Y = GAME_HEIGHT / 2 - 6
 
-/** 奖励格内容（鱼名 → 对应颜色，缺少图片素材用彩色圆形代替） */
 const REWARDS = [
-  { name: '食人鱼',   color: 0xff6644 },
-  { name: '史前蛮鳄', color: 0xcc8822 },
-  { name: '巨型弹弹鱼', color: 0x4488ff },
-  { name: '史前巨鳄', color: 0x9944cc },
-  { name: '稀有金币', color: 0xffcc00 },
-  { name: '进化之源', color: 0x44cc88 },
+  '神装碎片', '上衣', '头盔', '鞋子', '神器',
+  '武器', '护腕', '项链', '头盔', '鞋子',
+  '加速券', '灵核石', '宝石币', '水生宝石', '钻石',
+  '召唤券', '进化石', '贝壳', '碎片', '宝箱',
 ]
 
 export class WinModal {
   private scene: Phaser.Scene
-  private root:  Phaser.GameObjects.Container
+  private root: Phaser.GameObjects.Container
 
   constructor(
-    scene:   Phaser.Scene,
-    layer:   Phaser.GameObjects.Container,
+    scene: Phaser.Scene,
+    layer: Phaser.GameObjects.Container,
+    heroSlot: CharacterSlot,
     onClaim: () => void,
   ) {
     this.scene = scene
-    this.root  = scene.add.container(GAME_WIDTH / 2, 0)
+    this.root = scene.add.container(GAME_WIDTH / 2, 0)
     this.root.setVisible(false)
 
-    // 全屏暗色遮罩
-    const overlay = scene.add.rectangle(0, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x000000, 0.85)
+    const heroCfg = getCharacterConfig(heroSlot)
+    const overlay = scene.add.rectangle(0, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x000000, 0.72)
 
-    // 弹窗卡片
-    const card = scene.add.rectangle(0, CARD_Y, CARD_W, CARD_H, 0x0d1a3a)
-    card.setStrokeStyle(2, 0xffd700)
+    const glow = scene.add.graphics()
+    glow.fillGradientStyle(0x3b1100, 0x3b1100, 0x090d21, 0x090d21, 0.92)
+    glow.fillRoundedRect(-CARD_W / 2, CARD_Y - CARD_H / 2, CARD_W, CARD_H, 26)
+    glow.lineStyle(4, 0xffbf31, 0.98)
+    glow.strokeRoundedRect(-CARD_W / 2, CARD_Y - CARD_H / 2, CARD_W, CARD_H, 26)
 
-    // 顶部金色装饰条
-    const topBar = scene.add.rectangle(0, CARD_Y - CARD_H / 2 + 16, CARD_W, 32, 0xffd700, 0.18)
+    const heroHalo = scene.add.circle(0, CARD_Y - 252, 118, 0xffde78, 0.24)
+    heroHalo.setStrokeStyle(4, 0xffe5a8, 0.75)
+    const hero = scene.add.image(0, CARD_Y - 245, '__DEFAULT').setVisible(false)
+    hero.setScale(getPresentationScale(heroSlot, 'result'))
+    applyTextureToImage(scene, hero, getPresentationFrame(heroSlot, 'result'))
 
-    // 标题 "奖励卡"
-    const titleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 54, '奖励卡', {
-      fontSize: '32px',
-      color: '#ffd700',
+    const titleBar = scene.add.rectangle(0, CARD_Y - 138, 360, 66, 0xf3c34a)
+    titleBar.setStrokeStyle(3, 0xffe8a8)
+    const title = scene.add.text(0, CARD_Y - 138, '恭喜获得', {
+      fontSize: '34px',
+      color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
+      stroke: '#915f0a',
+      strokeThickness: 8,
     }).setOrigin(0.5)
 
-    // 副标题
-    const subtitleTxt = scene.add.text(0, CARD_Y - CARD_H / 2 + 94, '挑战成功！', {
+    const subTitle = scene.add.text(0, CARD_Y - 94, `${heroCfg.displayName} 狩猎成功`, {
       fontSize: '15px',
-      color: '#88aacc',
+      color: '#ffd989',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
     }).setOrigin(0.5)
 
-    // 2行 × 3列奖励格
-    const rewardItems = this.createRewardGrid(scene, CARD_Y - 60)
+    const rewardItems = this.createRewardGrid(CARD_Y + 52)
 
-    // 领取按钮
-    const btnY  = CARD_Y + CARD_H / 2 - 62
-    const btnBg = scene.add.rectangle(0, btnY, 320, 66, 0xffd700)
-    btnBg.setStrokeStyle(2, 0xffeebb)
+    const btnY = CARD_Y + CARD_H / 2 - 66
+    const btnBg = scene.add.rectangle(0, btnY, 344, 70, 0xf0cb53)
+    btnBg.setStrokeStyle(3, 0xffefbc)
     const btnTxt = scene.add.text(0, btnY, '领取奖励', {
-      fontSize: '26px',
-      color: '#1a1000',
+      fontSize: '28px',
+      color: '#342100',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
     }).setOrigin(0.5)
 
     btnBg.setInteractive({ useHandCursor: true })
-    btnBg.on('pointerover',  () => btnBg.setFillStyle(0xffe066))
-    btnBg.on('pointerout',   () => btnBg.setFillStyle(0xffd700))
-    btnBg.on('pointerdown',  () => {
-      btnBg.setInteractive(false)
+    btnBg.on('pointerover', () => btnBg.setFillStyle(0xffd96b))
+    btnBg.on('pointerout', () => btnBg.setFillStyle(0xf0cb53))
+    btnBg.on('pointerdown', () => {
+      btnBg.disableInteractive()
       scene.tweens.add({
         targets: [btnBg, btnTxt],
-        scaleX: 0.93, scaleY: 0.93,
-        duration: 80, yoyo: true,
-        onComplete: () => onClaim(),
+        scaleX: 0.95,
+        scaleY: 0.95,
+        duration: 80,
+        yoyo: true,
+        onComplete: onClaim,
       })
     })
 
-    this.root.add([overlay, card, topBar, titleTxt, subtitleTxt, ...rewardItems, btnBg, btnTxt])
+    this.root.add([overlay, glow, heroHalo, hero, titleBar, title, subTitle, ...rewardItems, btnBg, btnTxt])
     layer.add(this.root)
   }
 
   show(): void {
     this.root.setVisible(true)
     this.root.setAlpha(0)
-    this.root.setScale(0.9)
+    this.root.setScale(0.92)
     this.scene.tweens.add({
       targets: this.root,
-      alpha: 1, scaleX: 1, scaleY: 1,
-      duration: 350,
+      alpha: 1,
+      scaleX: 1,
+      scaleY: 1,
+      duration: 340,
       ease: 'Back.easeOut',
     })
   }
@@ -106,7 +109,7 @@ export class WinModal {
     this.scene.tweens.add({
       targets: this.root,
       alpha: 0,
-      duration: 250,
+      duration: 220,
       ease: 'Sine.easeIn',
       onComplete: () => this.root.setVisible(false),
     })
@@ -116,43 +119,30 @@ export class WinModal {
     this.root.destroy(true)
   }
 
-  // ──────────────────────────────────────────────────────────────────
-
-  private createRewardGrid(
-    scene:  Phaser.Scene,
-    baseY:  number,
-  ): Phaser.GameObjects.GameObject[] {
+  private createRewardGrid(baseY: number): Phaser.GameObjects.GameObject[] {
     const items: Phaser.GameObjects.GameObject[] = []
+    const startX = -220
+    const startY = baseY - 136
 
-    // 3 列 × 2 行，格子 158×74
-    const colX  = [-162, 0, 162]
-    const rowY  = [baseY - 42, baseY + 44]
-    const gW = 154
-    const gH  = 72
+    for (let i = 0; i < REWARDS.length; i++) {
+      const col = i % 5
+      const row = Math.floor(i / 5)
+      const x = startX + col * 110
+      const y = startY + row * 102
 
-    for (let row = 0; row < 2; row++) {
-      for (let col = 0; col < 3; col++) {
-        const r   = REWARDS[row * 3 + col]
-        const cx  = colX[col]
-        const cy  = rowY[row]
-
-        // 格子底色（琥珀黄）
-        const bg = scene.add.rectangle(cx, cy, gW, gH, 0x5a3800)
-        bg.setStrokeStyle(1.5, 0xffdd44)
-
-        // 彩色鱼图标占位圆（缺少真实鱼类图片素材）
-        const icon = scene.add.arc(cx, cy - 12, 22, 0, 360, false, r.color)
-        icon.setStrokeStyle(1.5, 0xffffff, 0.35)
-
-        // 鱼名
-        const txt = scene.add.text(cx, cy + 24, r.name, {
-          fontSize: '11px',
-          color: '#ffeeaa',
-          fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-        }).setOrigin(0.5)
-
-        items.push(bg, icon, txt)
-      }
+      const slot = i % 4 === 0 ? 'final_actor' : i % 3 === 0 ? 'evolution_3' : i % 2 === 0 ? 'evolution_2' : 'evolution_1'
+      const box = this.scene.add.rectangle(x, y, 92, 84, 0xffd02e)
+      box.setStrokeStyle(3, 0xfff2ac)
+      const inner = this.scene.add.rectangle(x, y, 80, 72, 0x6d2f00)
+      const icon = this.scene.add.image(x, y - 8, '__DEFAULT').setVisible(false)
+      icon.setScale(0.34)
+      applyTextureToImage(this.scene, icon, getPresentationFrame(slot, 'portrait'))
+      const txt = this.scene.add.text(x, y + 32, REWARDS[i], {
+        fontSize: '10px',
+        color: '#fff2b6',
+        fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
+      }).setOrigin(0.5)
+      items.push(box, inner, icon, txt)
     }
     return items
   }
