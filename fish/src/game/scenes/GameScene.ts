@@ -228,9 +228,7 @@ export class GameScene extends Phaser.Scene {
     } else {
       this.winModal = new WinModal(this, this.modalLayer, 'final_actor', () => this.onClaimReward())
     }
-    this.ctaPage = new CtaPage(this, this.ctaLayer, 'final_actor', () => {
-      console.log('[CTA] clickthrough — 宿主注入跳链')
-    })
+    this.ctaPage = new CtaPage(this, this.ctaLayer, 'final_actor')
   }
 
   private spawnHero(level: HeroLevel): void {

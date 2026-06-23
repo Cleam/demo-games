@@ -13,7 +13,6 @@ export class CtaPage {
     scene: Phaser.Scene,
     layer: Phaser.GameObjects.Container,
     heroSlot: CharacterSlot,
-    onClickthrough?: () => void,
   ) {
     this.scene = scene
     this.root = scene.add.container(GAME_WIDTH / 2, 0)
@@ -57,36 +56,6 @@ export class CtaPage {
     hero.setScale(getPresentationScale(heroSlot, 'cta') * 1.55)
     hero.setOrigin(0.5, 0.5)
 
-    const textA = scene.add.text(0, 918, '无需下载', {
-      fontSize: '92px',
-      color: '#ffffff',
-      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-      fontStyle: 'bold',
-      stroke: '#5b4fe6',
-      strokeThickness: 10,
-    }).setOrigin(0.5)
-    const textB = scene.add.text(0, 1028, '点击即玩', {
-      fontSize: '92px',
-      color: '#ffffff',
-      fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
-      fontStyle: 'bold',
-      stroke: '#5b4fe6',
-      strokeThickness: 10,
-    }).setOrigin(0.5)
-
-    const hitArea = scene.add.rectangle(0, 980, 620, 260, 0x000000, 0.001)
-    hitArea.setInteractive({ useHandCursor: true })
-    hitArea.on('pointerdown', () => {
-      scene.tweens.add({
-        targets: [textA, textB],
-        scaleX: 0.96,
-        scaleY: 0.96,
-        duration: 90,
-        yoyo: true,
-        onComplete: () => onClickthrough?.(),
-      })
-    })
-
     scene.tweens.add({
       targets: hero,
       y: 562,
@@ -96,7 +65,7 @@ export class CtaPage {
       ease: 'Sine.easeInOut',
     })
 
-    this.root.add([bg, rails, title, subTitle, heroGlow, hero, textA, textB, hitArea])
+    this.root.add([bg, rails, title, subTitle, heroGlow, hero])
     layer.add(this.root)
   }
 
