@@ -1,18 +1,20 @@
 import Phaser from 'phaser'
 import { GAME_HEIGHT, GAME_WIDTH } from '@/config/constants'
-import { type CharacterSlot, getPresentationFrame, getPresentationScale } from '@/config/assetMapping'
-import { applyTextureToImage } from '@/utils/DynamicTexture'
+import { type CharacterSlot, getPresentationScale } from '@/config/assetMapping'
+import { FrameAnimPlayer } from '@/game/actors/FrameAnimPlayer'
+import { ManifestLoader } from '@/utils/ManifestLoader'
 
 const CARD_Y = GAME_HEIGHT / 2 - 10
 
 export class LoseModal {
   private scene: Phaser.Scene
   private root: Phaser.GameObjects.Container
+  private endPlayer?: FrameAnimPlayer
 
   constructor(
     scene: Phaser.Scene,
     layer: Phaser.GameObjects.Container,
-    heroSlot: CharacterSlot,
+    _heroSlot: CharacterSlot,
     onRetry: () => void,
     onExit: () => void,
   ) {
@@ -37,9 +39,11 @@ export class LoseModal {
 
     const heroPlate = scene.add.circle(0, CARD_Y - 116, 86, 0x0d1839, 0.78)
     heroPlate.setStrokeStyle(5, 0x9cb6e8, 0.72)
-    const hero = scene.add.image(0, CARD_Y - 124, '__DEFAULT').setVisible(false)
-    hero.setScale(getPresentationScale(heroSlot, 'result') * 0.72)
-    applyTextureToImage(scene, hero, getPresentationFrame(heroSlot, 'result'))
+    this.endPlayer = new FrameAnimPlayer(scene)
+    const hero = this.endPlayer.gameObject
+    hero.setPosition(0, CARD_Y - 124)
+    hero.setScale(getPresentationScale('final_actor', 'result') * 0.86)
+    hero.setOrigin(0.5, 0.5)
 
     const title = scene.add.text(0, CARD_Y - 12, '挑战失败', {
       fontSize: '74px',
@@ -111,6 +115,14 @@ export class LoseModal {
   }
 
   show(): void {
+    const endFrames = ManifestLoader.getHeroEndFrames()
+    if (endFrames.length > 0 && this.endPlayer) {
+      const trim = ManifestLoader.getTrimmedFrame(endFrames[0])
+      if (trim) {
+        this.endPlayer.gameObject.setOrigin(trim.centerAnchor.x, trim.centerAnchor.y)
+      }
+      this.endPlayer.play(endFrames, { frameRate: 18, loop: true })
+    }
     this.root.setVisible(true)
     this.root.setAlpha(0)
     this.root.setScale(0.92)
@@ -125,6 +137,7 @@ export class LoseModal {
   }
 
   hide(): void {
+    this.endPlayer?.stop()
     this.scene.tweens.add({
       targets: this.root,
       alpha: 0,
@@ -135,6 +148,7 @@ export class LoseModal {
   }
 
   destroy(): void {
+    this.endPlayer?.destroy()
     this.root.destroy(true)
   }
 }

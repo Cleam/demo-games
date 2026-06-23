@@ -20,6 +20,7 @@ const PUBLIC_DIR = join(ROOT, 'public')
 const OUTPUT_PATH = join(PUBLIC_DIR, 'manifest.json')
 
 const HERO_DIR = join(IMAGES_DIR, 'hero')
+const HERO_END_DIR = join(HERO_DIR, 'end')
 const NPC_DIR = join(IMAGES_DIR, 'npc')
 const BOSS_PATH = join(IMAGES_DIR, 'boss.png')
 
@@ -191,6 +192,7 @@ function parsePngTrim(filePath) {
 const manifest = {
   version: 2,
   heroesByLevel: {},
+  heroEnd: [],
   npcWaves: {},
   boss: { url: toUrlPath(BOSS_PATH) },
   trimData: {},
@@ -216,6 +218,18 @@ for (const level of HERO_LEVELS) {
     atk: frames.map(toUrlPath),
   }
   for (const framePath of frames) {
+    manifest.trimData[toUrlPath(framePath)] = parsePngTrim(framePath)
+  }
+}
+
+if (isDirectory(HERO_END_DIR)) {
+  const endFrames = naturalSort(
+    safeReadDir(HERO_END_DIR)
+      .filter(name => extname(name).toLowerCase() === '.png' && name.includes('-idle_'))
+      .map(name => join(HERO_END_DIR, name)),
+  )
+  manifest.heroEnd = endFrames.map(toUrlPath)
+  for (const framePath of endFrames) {
     manifest.trimData[toUrlPath(framePath)] = parsePngTrim(framePath)
   }
 }

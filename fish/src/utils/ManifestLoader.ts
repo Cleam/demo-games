@@ -12,6 +12,7 @@ export interface TrimmedFrame {
 interface ManifestData {
   version: number
   heroesByLevel: Record<string, { atk: string[] }>
+  heroEnd: string[]
   npcWaves: Record<string, { idle: string[] }>
   boss: { url: string }
   trimData: Record<string, TrimmedFrame>
@@ -35,6 +36,10 @@ export const ManifestLoader = {
 
   getNpcFrames(wave: NpcWaveId): string[] {
     return _data?.npcWaves[wave]?.idle ?? []
+  },
+
+  getHeroEndFrames(): string[] {
+    return _data?.heroEnd ?? []
   },
 
   getBossFrame(): string {

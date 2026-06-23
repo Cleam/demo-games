@@ -136,6 +136,38 @@
       ]
     }
   },
+  "heroEnd": [
+    "/assets/images/hero/end/fish_151011-idle_00.png",
+    "/assets/images/hero/end/fish_151011-idle_01.png",
+    "/assets/images/hero/end/fish_151011-idle_02.png",
+    "/assets/images/hero/end/fish_151011-idle_03.png",
+    "/assets/images/hero/end/fish_151011-idle_04.png",
+    "/assets/images/hero/end/fish_151011-idle_05.png",
+    "/assets/images/hero/end/fish_151011-idle_06.png",
+    "/assets/images/hero/end/fish_151011-idle_07.png",
+    "/assets/images/hero/end/fish_151011-idle_08.png",
+    "/assets/images/hero/end/fish_151011-idle_09.png",
+    "/assets/images/hero/end/fish_151011-idle_10.png",
+    "/assets/images/hero/end/fish_151011-idle_11.png",
+    "/assets/images/hero/end/fish_151011-idle_12.png",
+    "/assets/images/hero/end/fish_151011-idle_13.png",
+    "/assets/images/hero/end/fish_151011-idle_14.png",
+    "/assets/images/hero/end/fish_151011-idle_15.png",
+    "/assets/images/hero/end/fish_151011-idle_16.png",
+    "/assets/images/hero/end/fish_151011-idle_17.png",
+    "/assets/images/hero/end/fish_151011-idle_18.png",
+    "/assets/images/hero/end/fish_151011-idle_19.png",
+    "/assets/images/hero/end/fish_151011-idle_20.png",
+    "/assets/images/hero/end/fish_151011-idle_21.png",
+    "/assets/images/hero/end/fish_151011-idle_22.png",
+    "/assets/images/hero/end/fish_151011-idle_23.png",
+    "/assets/images/hero/end/fish_151011-idle_24.png",
+    "/assets/images/hero/end/fish_151011-idle_25.png",
+    "/assets/images/hero/end/fish_151011-idle_26.png",
+    "/assets/images/hero/end/fish_151011-idle_27.png",
+    "/assets/images/hero/end/fish_151011-idle_28.png",
+    "/assets/images/hero/end/fish_151011-idle_29.png"
+  ],
   "npcWaves": {
     "01": {
       "idle": [
@@ -2938,6 +2970,666 @@
       "mouthAnchor": {
         "x": 0.30693386773547093,
         "y": 0.54
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_00.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 144,
+        "y": 96,
+        "width": 508,
+        "height": 216
+      },
+      "renderOffset": {
+        "x": -600,
+        "y": 15
+      },
+      "centerAnchor": {
+        "x": 0.19939879759519039,
+        "y": 0.5396825396825397
+      },
+      "mouthAnchor": {
+        "x": 0.2961122244488978,
+        "y": 0.5282539682539683
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_01.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 145,
+        "y": 85,
+        "width": 507,
+        "height": 226
+      },
+      "renderOffset": {
+        "x": -599.5,
+        "y": 9
+      },
+      "centerAnchor": {
+        "x": 0.19964929859719438,
+        "y": 0.5238095238095238
+      },
+      "mouthAnchor": {
+        "x": 0.2961723446893788,
+        "y": 0.5118518518518518
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_02.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 146,
+        "y": 111,
+        "width": 506,
+        "height": 200
+      },
+      "renderOffset": {
+        "x": -599,
+        "y": 22
+      },
+      "centerAnchor": {
+        "x": 0.1998997995991984,
+        "y": 0.5582010582010583
+      },
+      "mouthAnchor": {
+        "x": 0.2962324649298597,
+        "y": 0.5476190476190477
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_03.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 147,
+        "y": 114,
+        "width": 505,
+        "height": 196
+      },
+      "renderOffset": {
+        "x": -598.5,
+        "y": 23
+      },
+      "centerAnchor": {
+        "x": 0.2001503006012024,
+        "y": 0.5608465608465608
+      },
+      "mouthAnchor": {
+        "x": 0.2962925851703407,
+        "y": 0.5504761904761905
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_04.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 149,
+        "y": 100,
+        "width": 503,
+        "height": 210
+      },
+      "renderOffset": {
+        "x": -597.5,
+        "y": 16
+      },
+      "centerAnchor": {
+        "x": 0.2006513026052104,
+        "y": 0.5423280423280423
+      },
+      "mouthAnchor": {
+        "x": 0.2964128256513026,
+        "y": 0.5312169312169313
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_05.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 149,
+        "y": 90,
+        "width": 503,
+        "height": 220
+      },
+      "renderOffset": {
+        "x": -597.5,
+        "y": 11
+      },
+      "centerAnchor": {
+        "x": 0.2006513026052104,
+        "y": 0.5291005291005291
+      },
+      "mouthAnchor": {
+        "x": 0.2964128256513026,
+        "y": 0.5174603174603174
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_06.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 149,
+        "y": 114,
+        "width": 503,
+        "height": 197
+      },
+      "renderOffset": {
+        "x": -597.5,
+        "y": 23.5
+      },
+      "centerAnchor": {
+        "x": 0.2006513026052104,
+        "y": 0.5621693121693122
+      },
+      "mouthAnchor": {
+        "x": 0.2964128256513026,
+        "y": 0.5517460317460318
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_07.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 148,
+        "y": 115,
+        "width": 504,
+        "height": 197
+      },
+      "renderOffset": {
+        "x": -598,
+        "y": 24.5
+      },
+      "centerAnchor": {
+        "x": 0.20040080160320642,
+        "y": 0.5648148148148148
+      },
+      "mouthAnchor": {
+        "x": 0.29635270541082165,
+        "y": 0.5543915343915344
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_08.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 146,
+        "y": 106,
+        "width": 506,
+        "height": 207
+      },
+      "renderOffset": {
+        "x": -599,
+        "y": 20.5
+      },
+      "centerAnchor": {
+        "x": 0.1998997995991984,
+        "y": 0.5542328042328042
+      },
+      "mouthAnchor": {
+        "x": 0.2962324649298597,
+        "y": 0.5432804232804234
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_09.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 145,
+        "y": 97,
+        "width": 507,
+        "height": 218
+      },
+      "renderOffset": {
+        "x": -599.5,
+        "y": 17
+      },
+      "centerAnchor": {
+        "x": 0.19964929859719438,
+        "y": 0.544973544973545
+      },
+      "mouthAnchor": {
+        "x": 0.2961723446893788,
+        "y": 0.5334391534391534
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_10.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 145,
+        "y": 119,
+        "width": 507,
+        "height": 197
+      },
+      "renderOffset": {
+        "x": -599.5,
+        "y": 28.5
+      },
+      "centerAnchor": {
+        "x": 0.19964929859719438,
+        "y": 0.5753968253968254
+      },
+      "mouthAnchor": {
+        "x": 0.2961723446893788,
+        "y": 0.564973544973545
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_11.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 145,
+        "y": 121,
+        "width": 507,
+        "height": 196
+      },
+      "renderOffset": {
+        "x": -599.5,
+        "y": 30
+      },
+      "centerAnchor": {
+        "x": 0.19964929859719438,
+        "y": 0.5793650793650794
+      },
+      "mouthAnchor": {
+        "x": 0.2961723446893788,
+        "y": 0.5689947089947089
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_12.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 147,
+        "y": 112,
+        "width": 505,
+        "height": 207
+      },
+      "renderOffset": {
+        "x": -598.5,
+        "y": 26.5
+      },
+      "centerAnchor": {
+        "x": 0.2001503006012024,
+        "y": 0.5701058201058201
+      },
+      "mouthAnchor": {
+        "x": 0.2962925851703407,
+        "y": 0.5591534391534392
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_13.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 149,
+        "y": 102,
+        "width": 503,
+        "height": 219
+      },
+      "renderOffset": {
+        "x": -597.5,
+        "y": 22.5
+      },
+      "centerAnchor": {
+        "x": 0.2006513026052104,
+        "y": 0.5595238095238095
+      },
+      "mouthAnchor": {
+        "x": 0.2964128256513026,
+        "y": 0.5479365079365079
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_14.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 152,
+        "y": 128,
+        "width": 500,
+        "height": 202
+      },
+      "renderOffset": {
+        "x": -596,
+        "y": 40
+      },
+      "centerAnchor": {
+        "x": 0.20140280561122245,
+        "y": 0.6058201058201058
+      },
+      "mouthAnchor": {
+        "x": 0.2965931863727455,
+        "y": 0.5951322751322751
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_15.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 155,
+        "y": 131,
+        "width": 497,
+        "height": 214
+      },
+      "renderOffset": {
+        "x": -594.5,
+        "y": 49
+      },
+      "centerAnchor": {
+        "x": 0.20215430861723446,
+        "y": 0.6296296296296297
+      },
+      "mouthAnchor": {
+        "x": 0.2967735470941884,
+        "y": 0.6183068783068782
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_16.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 160,
+        "y": 114,
+        "width": 492,
+        "height": 244
+      },
+      "renderOffset": {
+        "x": -592,
+        "y": 47
+      },
+      "centerAnchor": {
+        "x": 0.20340681362725452,
+        "y": 0.6243386243386243
+      },
+      "mouthAnchor": {
+        "x": 0.29707414829659323,
+        "y": 0.6114285714285714
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_17.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 165,
+        "y": 102,
+        "width": 487,
+        "height": 266
+      },
+      "renderOffset": {
+        "x": -589.5,
+        "y": 46
+      },
+      "centerAnchor": {
+        "x": 0.20465931863727455,
+        "y": 0.6216931216931217
+      },
+      "mouthAnchor": {
+        "x": 0.29737474949899795,
+        "y": 0.6076190476190476
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_18.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 170,
+        "y": 126,
+        "width": 482,
+        "height": 248
+      },
+      "renderOffset": {
+        "x": -587,
+        "y": 61
+      },
+      "centerAnchor": {
+        "x": 0.2059118236472946,
+        "y": 0.6613756613756614
+      },
+      "mouthAnchor": {
+        "x": 0.29767535070140283,
+        "y": 0.6482539682539682
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_19.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 173,
+        "y": 136,
+        "width": 479,
+        "height": 240
+      },
+      "renderOffset": {
+        "x": -585.5,
+        "y": 67
+      },
+      "centerAnchor": {
+        "x": 0.2066633266533066,
+        "y": 0.6772486772486772
+      },
+      "mouthAnchor": {
+        "x": 0.29785571142284567,
+        "y": 0.6645502645502646
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_20.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 173,
+        "y": 109,
+        "width": 479,
+        "height": 266
+      },
+      "renderOffset": {
+        "x": -585.5,
+        "y": 53
+      },
+      "centerAnchor": {
+        "x": 0.2066633266533066,
+        "y": 0.6402116402116402
+      },
+      "mouthAnchor": {
+        "x": 0.29785571142284567,
+        "y": 0.6261375661375661
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_21.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 171,
+        "y": 97,
+        "width": 481,
+        "height": 270
+      },
+      "renderOffset": {
+        "x": -586.5,
+        "y": 43
+      },
+      "centerAnchor": {
+        "x": 0.2061623246492986,
+        "y": 0.6137566137566137
+      },
+      "mouthAnchor": {
+        "x": 0.29773547094188374,
+        "y": 0.5994708994708995
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_22.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 166,
+        "y": 120,
+        "width": 486,
+        "height": 236
+      },
+      "renderOffset": {
+        "x": -589,
+        "y": 49
+      },
+      "centerAnchor": {
+        "x": 0.20490981963927857,
+        "y": 0.6296296296296297
+      },
+      "mouthAnchor": {
+        "x": 0.29743486973947897,
+        "y": 0.6171428571428571
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_23.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 161,
+        "y": 136,
+        "width": 491,
+        "height": 207
+      },
+      "renderOffset": {
+        "x": -591.5,
+        "y": 50.5
+      },
+      "centerAnchor": {
+        "x": 0.2036573146292585,
+        "y": 0.6335978835978836
+      },
+      "mouthAnchor": {
+        "x": 0.2971342685370741,
+        "y": 0.6226455026455027
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_24.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 156,
+        "y": 103,
+        "width": 496,
+        "height": 225
+      },
+      "renderOffset": {
+        "x": -594,
+        "y": 26.5
+      },
+      "centerAnchor": {
+        "x": 0.20240480961923848,
+        "y": 0.5701058201058201
+      },
+      "mouthAnchor": {
+        "x": 0.29683366733466937,
+        "y": 0.5582010582010583
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_25.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 151,
+        "y": 90,
+        "width": 501,
+        "height": 228
+      },
+      "renderOffset": {
+        "x": -596.5,
+        "y": 15
+      },
+      "centerAnchor": {
+        "x": 0.20115230460921843,
+        "y": 0.5396825396825397
+      },
+      "mouthAnchor": {
+        "x": 0.29653306613226454,
+        "y": 0.5276190476190477
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_26.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 147,
+        "y": 114,
+        "width": 505,
+        "height": 202
+      },
+      "renderOffset": {
+        "x": -598.5,
+        "y": 26
+      },
+      "centerAnchor": {
+        "x": 0.2001503006012024,
+        "y": 0.5687830687830688
+      },
+      "mouthAnchor": {
+        "x": 0.2962925851703407,
+        "y": 0.5580952380952381
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_27.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 144,
+        "y": 125,
+        "width": 508,
+        "height": 190
+      },
+      "renderOffset": {
+        "x": -600,
+        "y": 31
+      },
+      "centerAnchor": {
+        "x": 0.19939879759519039,
+        "y": 0.582010582010582
+      },
+      "mouthAnchor": {
+        "x": 0.2961122244488978,
+        "y": 0.5719576719576719
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_28.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 143,
+        "y": 97,
+        "width": 509,
+        "height": 217
+      },
+      "renderOffset": {
+        "x": -600.5,
+        "y": 16.5
+      },
+      "centerAnchor": {
+        "x": 0.19914829659318636,
+        "y": 0.5436507936507936
+      },
+      "mouthAnchor": {
+        "x": 0.2960521042084169,
+        "y": 0.5321693121693122
+      }
+    },
+    "/assets/images/hero/end/fish_151011-idle_29.png": {
+      "sourceWidth": 1996,
+      "sourceHeight": 378,
+      "bounds": {
+        "x": 144,
+        "y": 85,
+        "width": 508,
+        "height": 227
+      },
+      "renderOffset": {
+        "x": -600,
+        "y": 9.5
+      },
+      "centerAnchor": {
+        "x": 0.19939879759519039,
+        "y": 0.5251322751322751
+      },
+      "mouthAnchor": {
+        "x": 0.2961122244488978,
+        "y": 0.5131216931216931
       }
     },
     "/assets/images/npc/01/fish_13203-idle_00.png": {
@@ -8906,6 +9598,7 @@
   "ui": {
     "as1": "/assets/images/as1.png",
     "as2": "/assets/images/as2.png",
-    "bg": "/assets/images/bg.png"
+    "bg": "/assets/images/bg.png",
+    "modal_win": "/assets/images/modal_win.png"
   }
 }

@@ -1,11 +1,13 @@
 import Phaser from 'phaser'
 import { GAME_HEIGHT, GAME_WIDTH } from '@/config/constants'
-import { type CharacterSlot, getCharacterConfig, getPresentationFrame, getPresentationScale } from '@/config/assetMapping'
-import { applyTextureToImage } from '@/utils/DynamicTexture'
+import { type CharacterSlot, getCharacterConfig, getPresentationScale } from '@/config/assetMapping'
+import { FrameAnimPlayer } from '@/game/actors/FrameAnimPlayer'
+import { ManifestLoader } from '@/utils/ManifestLoader'
 
 export class CtaPage {
   private scene: Phaser.Scene
   private root: Phaser.GameObjects.Container
+  private endPlayer?: FrameAnimPlayer
 
   constructor(
     scene: Phaser.Scene,
@@ -47,30 +49,32 @@ export class CtaPage {
       strokeThickness: 5,
     }).setOrigin(0.5)
 
-    const heroGlow = scene.add.circle(0, 548, 186, 0x5300ac, 0.18)
-    heroGlow.setStrokeStyle(8, 0xdc8dff, 0.26)
-    const hero = scene.add.image(-12, 552, '__DEFAULT').setVisible(false)
-    hero.setScale(getPresentationScale(heroSlot, 'cta'))
-    applyTextureToImage(scene, hero, getPresentationFrame(heroSlot, 'cta'))
+    const heroGlow = scene.add.circle(0, 576, 252, 0x5300ac, 0.22)
+    heroGlow.setStrokeStyle(10, 0xdc8dff, 0.34)
+    this.endPlayer = new FrameAnimPlayer(scene)
+    const hero = this.endPlayer.gameObject
+    hero.setPosition(0, 584)
+    hero.setScale(getPresentationScale(heroSlot, 'cta') * 1.55)
+    hero.setOrigin(0.5, 0.5)
 
-    const textA = scene.add.text(0, 934, '无需下载', {
-      fontSize: '74px',
+    const textA = scene.add.text(0, 918, '无需下载', {
+      fontSize: '92px',
       color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
       stroke: '#5b4fe6',
-      strokeThickness: 8,
+      strokeThickness: 10,
     }).setOrigin(0.5)
-    const textB = scene.add.text(0, 1024, '点击即玩', {
-      fontSize: '74px',
+    const textB = scene.add.text(0, 1028, '点击即玩', {
+      fontSize: '92px',
       color: '#ffffff',
       fontFamily: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif',
       fontStyle: 'bold',
       stroke: '#5b4fe6',
-      strokeThickness: 8,
+      strokeThickness: 10,
     }).setOrigin(0.5)
 
-    const hitArea = scene.add.rectangle(0, 978, 460, 180, 0x000000, 0.001)
+    const hitArea = scene.add.rectangle(0, 980, 620, 260, 0x000000, 0.001)
     hitArea.setInteractive({ useHandCursor: true })
     hitArea.on('pointerdown', () => {
       scene.tweens.add({
@@ -85,7 +89,7 @@ export class CtaPage {
 
     scene.tweens.add({
       targets: hero,
-      y: 536,
+      y: 562,
       duration: 1200,
       yoyo: true,
       repeat: -1,
@@ -97,6 +101,14 @@ export class CtaPage {
   }
 
   show(): void {
+    const endFrames = ManifestLoader.getHeroEndFrames()
+    if (endFrames.length > 0 && this.endPlayer) {
+      const trim = ManifestLoader.getTrimmedFrame(endFrames[0])
+      if (trim) {
+        this.endPlayer.gameObject.setOrigin(trim.centerAnchor.x, trim.centerAnchor.y)
+      }
+      this.endPlayer.play(endFrames, { frameRate: 18, loop: true })
+    }
     this.root.setVisible(true)
     this.root.setAlpha(0)
     this.scene.tweens.add({
@@ -108,6 +120,7 @@ export class CtaPage {
   }
 
   destroy(): void {
+    this.endPlayer?.destroy()
     this.root.destroy(true)
   }
 }

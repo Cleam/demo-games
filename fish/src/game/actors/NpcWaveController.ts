@@ -52,13 +52,13 @@ export class NpcWaveController {
         x,
         y,
         scale,
-        flipX: true,
+        flipX: false,
         alpha: 0.96,
       }, true, 12)
 
       this.scene.tweens.add({
         targets: actor.player.gameObject,
-        x: x - 28,
+        x: x + 28,
         y: y + (col % 2 === 0 ? -8 : 8),
         duration: 1200 + i * 45,
         repeat: -1,

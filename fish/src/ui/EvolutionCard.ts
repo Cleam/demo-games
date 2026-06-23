@@ -4,6 +4,7 @@ import type { HeroLevel } from '@/config/progression'
 import { HERO_LEVEL_INFO } from '@/config/progression'
 import { type CharacterSlot, getCharacterConfig, getPresentationFrame, getPresentationScale } from '@/config/assetMapping'
 import { applyTextureToImage } from '@/utils/DynamicTexture'
+import { ManifestLoader } from '@/utils/ManifestLoader'
 
 export type CardState = 'locked' | 'current' | 'unlocked'
 
@@ -21,6 +22,13 @@ export class EvolutionCard {
   private progressBg: Phaser.GameObjects.Rectangle
   private progressFill: Phaser.GameObjects.Rectangle
   private levelTxt: Phaser.GameObjects.Text
+
+  private static readonly PORTRAIT_VISIBLE_WIDTH: Partial<Record<CharacterSlot, number>> = {
+    evolution_1: 82,
+    evolution_2: 84,
+    evolution_3: 88,
+    final_actor: 92,
+  }
 
   constructor(
     scene: Phaser.Scene,
@@ -45,8 +53,16 @@ export class EvolutionCard {
     const portraitFrame = scene.add.rectangle(-250, 0, 118, 86, 0xffffff)
     portraitFrame.setStrokeStyle(1.5, 0xdad1bb)
     this.portrait = scene.add.image(-250, -4, '__DEFAULT').setVisible(false)
-    this.portrait.setScale(getPresentationScale(slot, 'portrait') * 1.08)
-    applyTextureToImage(scene, this.portrait, getPresentationFrame(slot, 'portrait'))
+    const portraitUrl = getPresentationFrame(slot, 'portrait')
+    const trim = ManifestLoader.getTrimmedFrame(portraitUrl)
+    const targetVisibleWidth = EvolutionCard.PORTRAIT_VISIBLE_WIDTH[slot] ?? 84
+    if (trim) {
+      this.portrait.setOrigin(trim.centerAnchor.x, trim.centerAnchor.y)
+      this.portrait.setScale(targetVisibleWidth / trim.bounds.width)
+    } else {
+      this.portrait.setScale(getPresentationScale(slot, 'portrait') * 1.08)
+    }
+    applyTextureToImage(scene, this.portrait, portraitUrl)
 
     this.levelTxt = scene.add.text(-306, -38, `Lv.${info.levelRequired}`, {
       fontSize: '14px',
